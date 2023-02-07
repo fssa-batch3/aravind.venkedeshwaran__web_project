@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,25 @@
     <!-- page title added -->
     <title>FRESHTIME | SIGN-IN</title>
 
-        <!-- adding favicon -->
-        <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
+    <!-- adding favicon -->
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
 
 
     <!-- ubuntu font link added -->
     <link rel="stylesheet" href="../assets/css/signin.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+    </style>
 
     <!-- bootstrap for adding icon  -->
-    <script
-    src="https://kit.fontawesome.com/ee40c53027.js"
-    integrity=""
-    crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ee40c53027.js" integrity="" crossorigin="anonymous">
     </script>
-    
+
 </head>
+
 <body>
 
     <!-- total starts -->
@@ -46,15 +48,15 @@
                 <input type="checkbox" id="checkbox" required>Remember Me </input><label for="checkbox">.</label>
                 <p>Forget Password?</p>
             </div>
-            <!-- <button onclick="signin()">Sign Up</button> -->
+            <button onclick="signin()">Sign Up</button>
         </form>
         <!-- sign in form ends -->
 
         <p>---(or)---</p>
 
-    <!-- other sign in starts -->
+        <!-- other sign in starts -->
         <div class="other-signin">
-            <a href="dashboard.html" ><i class="fa fa-google"></i></a>
+            <a href="dashboard.html"><i class="fa fa-google"></i></a>
             <a href="dashboard.html"><i class="fa fa-facebook"></i></a>
             <a href="dashboard.html"><i class="fa fa-apple"></i></a>
         </div>
@@ -63,25 +65,48 @@
 
     <!-- img added -->
     <img src="../assets/Images/sign-in pic.png" alt="" width="800px">
-<script>
-    // console.log(document.getElementById("name").value )
-    // console.log(document.getElementById("email").value )
-    // console.log(document.getElementById("password").value )
+    <script>
+        // console.log(document.getElementById("name").value )
+        // console.log(document.getElementById("email").value )
+        // console.log(document.getElementById("password").value )
 
-    // function signin() {
-    // const username = document.getElementById("name").value
-    // const email= document.getElementById("email").value
-    // const password= document.getElementById("password").value
-    // console.log(username)
-    // console.log(email)
-    // console.log(password)    
-    // localStorage.setItem("user_name", username)
-    // localStorage.setItem("user_email", email)
-    // localStorage.setItem("user_password", password)
-    // window.location.href = ""
-    // }
-    
-    
-</script>
+        // function signin() {
+        // const username = document.getElementById("name").value
+        // const email= document.getElementById("email").value
+        // const password= document.getElementById("password").value
+        // console.log(username)
+        // console.log(email)
+        // console.log(password)    
+        // localStorage.setItem("user_name", username)
+        // localStorage.setItem("user_email", email)
+        // localStorage.setItem("user_password", password)
+        // window.location.href = ""
+        // }
+
+
+        function signin() {
+
+            let user = {}; //object 
+
+            user["name"] = document.getElementById("name").value;
+            user["email"] = document.getElementById("email").value;
+            user["password"] = document.getElementById("password").value;
+
+            let record = JSON.parse(localStorage.getItem('User List')) || [];
+            record.push(user);
+            localStorage.setItem('User List', JSON.stringify(record));
+
+            if (user["name"] != "" && user["email"] != "" && user["password"] != "" ) {
+                alert("Logged In")
+                
+            }
+            else{
+                alert("Invalid credential")
+            }
+        }
+        
+
+    </script>
 </body>
+
 </html>
