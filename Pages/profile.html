@@ -141,11 +141,9 @@
      <script>
          
 
-         let users = JSON.parse(localStorage.getItem('profileData'));
-        console.log(users)
-
-         for (let i=1; i <= users.length; i++){
-        document.getElementById("name").value = users[i]["name"];
+        let users = JSON.parse(localStorage.getItem('profileData'));
+        for (let i=0; i <= users.length; i++){
+        document.getElementById("name").value = users[i]["name"]; //users[1][name]
         document.getElementById("email").value = users[i]["email"];
          }
 
