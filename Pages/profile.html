@@ -140,16 +140,19 @@
      <!-- pin script started -->
      <script>
          
-        //  const user_email = localStorage.getItem("user_email");
-        //  console.log(user_email)
-        //  document.getElementById("email").value = user_email
 
+         let users = JSON.parse(localStorage.getItem('profileData'));
+        console.log(users)
 
+         for (let i=1; i <= users.length; i++){
+        document.getElementById("name").value = users[i]["name"];
+        document.getElementById("email").value = users[i]["email"];
+         }
 
          let sidepanel = document.querySelector('.sidepanel');
          let toggle = document.querySelector('.toggle');
          toggle.onclick = function(){
-             sidepanel.classList.toggle('active')
+         sidepanel.classList.toggle('active')
          }
          
      </script>

@@ -92,9 +92,9 @@
             user["email"] = document.getElementById("email").value;
             user["password"] = document.getElementById("password").value;
 
-            let record = JSON.parse(localStorage.getItem('User List')) || [];
+            let record = JSON.parse(localStorage.getItem('profileData')) || [];
             record.push(user);
-            localStorage.setItem('User List', JSON.stringify(record));
+            localStorage.setItem('profileData', JSON.stringify(record));
 
             if (user["name"] != "" && user["email"] != "" && user["password"] != "" ) {
                 alert("Logged In")
