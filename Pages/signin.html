@@ -92,7 +92,7 @@
             user["email"] = document.getElementById("email").value;
             user["password"] = document.getElementById("password").value;
 
-            let record = JSON.parse(localStorage.getItem('profileData')) || [];
+            let record = JSON.parse(localStorage.getItem('profileData')) || []; //array
             record.push(user);
             localStorage.setItem('profileData', JSON.stringify(record));
 
