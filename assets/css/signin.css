@@ -95,7 +95,11 @@ img{
     }
     .signinform{
         width: 300px;
-        margin-left: 0;
         margin: 10%;
+        margin-left: 0;
+        
     }
+}
+input:valid{
+    border-color: green;
 }
