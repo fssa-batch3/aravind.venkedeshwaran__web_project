@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 
@@ -7,84 +8,90 @@
 	<title>FRESHTIME | SIGNUP Form</title>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<link rel="stylesheet" href="../assets/css/signup.css">
-	 
 
-	 <!-- adding favicon -->
-	 <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
- 
- 
-	 <!-- ubuntu font link added -->
-	 <link rel="stylesheet" href="../assets/css/signin.css">
-	 <link rel="preconnect" href="https://fonts.googleapis.com">
-	 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	 <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-	 <style>
-		 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-	 </style>
- 
-	 <!-- bootstrap for adding icon  -->
-	 <script src="https://kit.fontawesome.com/ee40c53027.js" integrity="" crossorigin="anonymous">
-	 </script>
+	<link rel="stylesheet" href="../assets/css/signup.css">
+
+
+	<!-- adding favicon -->
+	<link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
+
+
+	<!-- ubuntu font link added -->
+	<link rel="stylesheet" href="../assets/css/signin.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+	</style>
+
+	<!-- bootstrap for adding icon  -->
+	<script src="https://kit.fontawesome.com/ee40c53027.js" integrity="" crossorigin="anonymous">
+	</script>
 </head>
+
 <body>
 
 
 	<!-- sign in form starts  -->
-		<div class="form-box">
+	<div class="form-box">
 
-			<h1>Welcome to <br> <span class="title">FRESHTIME</span></h1>
-        	<p class="tagline">Unlock Your Full Potential</p>
+		<h1>Welcome to <br> <span class="title">FRESHTIME</span></h1>
+		<p class="tagline">Unlock Your Full Potential</p>
 
-			<div class="button-box">
-				<div id="btn"></div>
-				<button type="button" class="toggle-btn" onclick="login()">Log In</button>
-				<button type="button" class="toggle-btn" onclick="register()">Register</button>
-			</div>
+		<div class="button-box">
+			<div id="btn"></div>
+			<button type="button" class="toggle-btn" onclick="login()">Log In</button>
+			<button type="button" class="toggle-btn" onclick="register()">Register</button>
+		</div>
 
-			<!-- Registeration form starts  -->
-			<form id="register" class="input-group" onsubmit="usercret()">
-				<input type="name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+" title="Username doesn't contain spaces or number" required />
-				<input type="email"  id="email" class="input-field" placeholder="Email" required />
-				<input type="password"  id="password" class="input-field" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" title="Password Should be Atleast 8 Charecters and Should Contain Atleast One Uppercase, One LowerCase, One Number and One Special Charecter" required />
+		<!-- Registeration form starts  -->
+		<form id="register" class="input-group" onsubmit="usercret()">
+			<input type="name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
+				title="Username doesn't contain spaces or number" required />
+			<input type="email" id="email" class="input-field" placeholder="Email" required />
+			<input type="password" id="password" class="input-field" placeholder="Password"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+				title="Password Should be Atleast 8 Charecters and Should Contain Atleast One Uppercase, One LowerCase, One Number and One Special Charecter"
+				required />
 
-				<input type="checkbox" class="check-box  " /><span>I agree to the terms & conditions</span>
-				<button type="submit" class="submit-btn" >Register</button>
-			</form>
+			<input type="checkbox" class="check-box " required /><span>I agree to the terms & conditions</span>
+			<button type="submit" class="submit-btn">Register</button>
+		</form>
 
-			<!-- log in form starts  -->
-			<form id="login" class="input-group" onsubmit="logincret()">
-				<input type="text" id = "emaillogin" class="input-field" placeholder="Name or Email" required />
-				<input type="text" id = "passwordlogin" class="input-field" placeholder="Password" required />
-				<input type="checkbox" class="check-box" /><span>Remember Password</span>
-				<a href="profile.html"><button type="submit" class="submit-btn"  >Log In</button></a>
-			</form>
+		<!-- log in form starts  -->
+		<form id="login" class="input-group" >
+			<input type="text" id="emaillogin" class="input-field" placeholder="Name or Email" required />
+			<input type="text" id="passwordlogin" class="input-field" placeholder="Password" required />
+			<input type="checkbox" class="check-box" /><span>Remember Password</span>
+			<button type="submit" class="submit-btn">Log In</button>
+			<!-- <a href="profile.html"></a> -->
+		</form>
 
-			
-		
-			<!-- sign in form ends -->
 
-			<p class="or" >---(or)---</p>
 
-			<!-- other sign in starts -->
-			<div class="other-signin">
-				<a href="profile.html"><i class="fa fa-google"></i></a>
-				<a href="profile.html"><i class="fa fa-facebook"></i></a>
-				<a href="profile.html"><i class="fa fa-apple"></i></a>
-			</div>
+		<!-- sign in form ends -->
 
-			<!-- other sign in ends -->
+		<p class="or">---(or)---</p>
+
+		<!-- other sign in starts -->
+		<div class="other-signin">
+			<a href="profile.html"><i class="fa fa-google"></i></a>
+			<a href="profile.html"><i class="fa fa-facebook"></i></a>
+			<a href="profile.html"><i class="fa fa-apple"></i></a>
+		</div>
+
+		<!-- other sign in ends -->
 	</div>
 
-			<img src="../assets/Images/sign-in pic.png" alt="" width="800px">
+	<img src="../assets/Images/sign-in pic.png" alt="" width="800px">
 
 
 
 	<script>
-		var x = document.getElementById("login");
-		var y = document.getElementById("register");
-		var z = document.getElementById("btn");
+		let x = document.getElementById("login");
+		let y = document.getElementById("register");
+		let z = document.getElementById("btn");
 
 		function register() {
 			x.style.left = "-400px";
@@ -98,45 +105,44 @@
 			z.style.left = "0";
 		}
 
-		function usercret(){
+		function usercret() {
 
 			let name = document.getElementById("name").value;
 			let email = document.getElementById("email").value;
 			let password = document.getElementById("password").value;
 
 			user = {
-				username : name,
-				useremail : email,
-				userpassword : password
+				username: name,
+				useremail: email,
+				userpassword: password
 			}
 
 			let userlist = JSON.parse(localStorage.getItem('userdata')) ?? [];
 			// checking already registered email or not 
 			// let user = JSON.parse(localStorage.getItem('userdata'));
-			let j = 0; 
+			let j = 0;
 
-			for (let i=0; i <= userlist.length-1; i++){
+			for (let i = 0; i <= userlist.length - 1; i++) {
 				if (userlist[i]["useremail"] === email) {
 					j = 1;
 					break;
 				}
-         	}
+			}
 
-			if(j==1){
+			if (j == 1) {
 				alert("Email Id Already Exist")
 			}
-			else{
+			else {
 				userlist.push(user)
-				localStorage.setItem('userdata',JSON.stringify(userlist))
+				localStorage.setItem('userdata', JSON.stringify(userlist))
 				alert("Successfully! You Created an Account")
-				}	
-
-			
-
-			
+			}
 		}
 
-		function logincret() {
+
+		const login_form = document.getElementById("login");
+
+		const validateform = () => {
 
 			let users = JSON.parse(localStorage.getItem('userdata'));
 
@@ -144,28 +150,39 @@
 
 			let password = document.getElementById("passwordlogin").value;
 
-			let j = 0; 
+			let success = false;
 
-			for (let i=0; i <= users.length-1; i++){
+			for (let i = 0; i < users.length; i++) {
+
 				if (users[i]["useremail"] == email && users[i]["userpassword"] == password) {
-					j = 1;
+					success = true;
 					break;
 				}
-         	}
 
-			if(j==1){
-				alert("Logged In")
-				// window.location.replace = "profile.html",true;
 			}
 
-			else{
+			if (success) {
+				alert("Logged In")
+				window.location.href = "profile.html";
+
+
+
+			}
+
+			else {
 				alert("Invalid Credentials")
-				}
-			
+			}
 		}
 
-		
+	login_form.addEventListener('submit', e => {
 
+		e.preventDefault();
+
+		validateform();
+
+
+	})
 	</script>
 </body>
+
 </html>
