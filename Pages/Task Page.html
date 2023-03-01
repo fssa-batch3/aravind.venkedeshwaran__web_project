@@ -64,55 +64,58 @@
                             <p class="top-2">If not now. When?</p>
                             <div class="date-task">
                                 <p><span class="day">Mon</span> <br> <span class="date">19</span> <br> <span class="day">Dec</span></p>
-                            <label for="add-task"></label>
-                            <input type="text" id="add-task" placeholder="+  Add Task...">
-                            <button class="addbtn">ADD</button>
+                            <input for="taskinput" type="text" id="add-task" placeholder="+  Add Task...">
+                            <button id="addbtn" onclick="addtask()">ADD</button>
                         </div>
                         </div>
 
                         
-                        <div class="main-cont">
+                        <!-- <div class="main-cont">
 
                             <div class="headers">
                                 <p>Task</p>
                                 <p>Due Date</p>
                                 <p>Priority</p>
                                 <p>Progress</p>
-                            </div>
+                            </div> -->
+
+                        <div class="addtasks">
+                            <ul id="tasklist"></ul>
+                        </div>
 
                             <!-- each task added -->
-                            <div class="task-list">
+                            <!-- <div class="task-list">
                 
                                 <p>Project <br>Layout</p>
                                 <p>19 Dec 2022, <br>5:00 Pm</p>
                                 <p>High <br>Priority</p>
                                 <p class="inprogress">Inprogress</p>
                                 <button class="start">Start</button>
-                            </div>
+                            </div> -->
                             <!-- each task ends -->
 
                             <!-- each task added -->
-                            <div class="task-list">
+                            <!-- <div class="task-list">
                 
                                 <p>Project <br>Layout</p>
                                 <p>19 Dec 2022, <br>5:00 Pm</p>
                                 <p>High <br>Priority</p>
                                 <p class="inprogress">Inprogress</p>
                                 <button class="start">Start</button>
-                            </div>
+                            </div> -->
                             <!-- each task ends -->
                             
                             <!-- each task added -->
-                            <div class="task-list">
+                            <!-- <div class="task-list">
                 
                                 <p>Project <br>Layout</p>
                                 <p>19 Dec 2022, <br>5:00 Pm</p>
                                 <p>High <br>Priority</p>
                                 <p class="inprogress">Inprogress</p>
                                 <button class="start">Start</button>
-                            </div>
+                            </div> -->
                             <!-- each task ends -->
-                        </div>                      
+                        <!-- </div>                       -->
                     </div>
                     <!-- task section ends -->
 
@@ -121,7 +124,7 @@
             <input type="checkbox" id="checkbox2"><label for="checkbox">.</label>
             <input type="checkbox" id="checkbox3"><label for="checkbox">.</label>
 
-            <div class="task-notes">
+            <!-- <div class="task-notes">
 
 
                 <h2>Task Name #01</h2>
@@ -150,7 +153,7 @@
                 <input type="radio" id="radio" aria-label="sub-task"><span id="sub-task">Add New Sutask</span></input> <label for="radio">.</label>
                 <h3>Attachment:</h3>
                 <p class="files">Click here to add / drop your files here</p>
-            </div>
+            </div> -->
             <!-- task description page ends  -->
 
                 <!-- circle starts -->
@@ -168,8 +171,48 @@
     toggle.onclick = function(){
         sidepanel.classList.toggle('active')
     }
+
+    
+    let taskinput = document.getElementById("add-task");
+    let addbtn = document.getElementById("addbtn");
+    let tasklist = document.getElementById("tasklist");
+
+    let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
+    existingtask.forEach(task => rendertask(task))
+
+    function addtask() {
+        let newtask = {todos : taskinput.value};
+        existingtask.push(newtask);
+        localStorage.setItem("usertasks",JSON.stringify(existingtask))
+        rendertask(newtask)
+    }
+    
+    function rendertask(task) {
+        let li = document.createElement('li')
+        li.innerHTML = `
+        <span id="taskspan">${task.todos}
+            <span id="todosdescrip">Project Description</span>
+        </span>
+        <button id="startbtn"><i class="fa fa-play"></i></button>
+        <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
+        `
+        li.querySelector('#deletebtn').addEventListener('click',() => {
+            let index = existingtask.findIndex(t => t.todos == task.todos)
+            existingtask.splice(index, 1)
+            localStorage.setItem("usertasks", JSON.stringify(existingtask))
+            li.remove()
+        })
+        tasklist.append(li)
+    }
+
+    // function for add task when enter press key is pressed
+    document.querySelector('#add-task').addEventListener('keypress', 
+    function (e) { 
+        if (e.key === 'Enter') { 
+            addtask()
+        }
+    });
 </script>
 <!-- pin script ends -->
-
 </body>
 </html>

@@ -46,13 +46,13 @@
 		</div>
 
 		<!-- Registeration form starts  -->
-		<form id="register" class="input-group" onsubmit="usercret()">
+		<form id="register" class="input-group" onsubmit="signup()">
 			<input type="name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
 				title="Username doesn't contain spaces or number" required />
 			<input type="email" id="email" class="input-field" placeholder="Email" required />
 			<input type="password" id="password" class="input-field" placeholder="Password"
-				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
-				title="Password Should be Atleast 8 Charecters and Should Contain Atleast One Uppercase, One LowerCase, One Number and One Special Charecter"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,32}$"
+				title="Password Should be Atleast 8 Characters and Should Contain Atleast One Uppercase, One LowerCase, One Number and One Special Charecter"
 				required />
 
 			<input type="checkbox" class="check-box " required /><span>I agree to the terms & conditions</span>
@@ -60,9 +60,9 @@
 		</form>
 
 		<!-- log in form starts  -->
-		<form id="login" class="input-group" >
+		<form id="login" class="input-group">
 			<input type="text" id="emaillogin" class="input-field" placeholder="Name or Email" required />
-			<input type="text" id="passwordlogin" class="input-field" placeholder="Password" required />
+			<input type="password" id="passwordlogin" class="input-field" placeholder="Password" required />
 			<input type="checkbox" class="check-box" /><span>Remember Password</span>
 			<button type="submit" class="submit-btn">Log In</button>
 			<!-- <a href="profile.html"></a> -->
@@ -105,83 +105,78 @@
 			z.style.left = "0";
 		}
 
-		function usercret() {
+	
 
-			let name = document.getElementById("name").value;
-			let email = document.getElementById("email").value;
-			let password = document.getElementById("password").value;
+		function signup(){
+		
+		let username = document.getElementById("name").value;
+		let useremail = document.getElementById("email").value;
+		let userpassword = document.getElementById("password").value;
 
-			user = {
-				username: name,
-				useremail: email,
-				userpassword: password
-			}
+		let user_details={
+			"name" : username,
+			"email" : useremail,
+			"password": userpassword,
+		}
 
-			let userlist = JSON.parse(localStorage.getItem('userdata')) ?? [];
-			// checking already registered email or not 
-			// let user = JSON.parse(localStorage.getItem('userdata'));
-			let j = 0;
+		let userarray = JSON.parse(localStorage.getItem("userdata")) ?? [];
 
-			for (let i = 0; i <= userlist.length - 1; i++) {
-				if (userlist[i]["useremail"] === email) {
-					j = 1;
-					break;
-				}
-			}
+		let j = 0; 
 
-			if (j == 1) {
-				alert("Email Id Already Exist")
-			}
-			else {
-				userlist.push(user)
-				localStorage.setItem('userdata', JSON.stringify(userlist))
-				alert("Successfully! You Created an Account")
+		for(let i =0; i < userarray.length; i++){
+			if(userarray[i]["email"] === useremail){
+				j = 1;
+				break;
 			}
 		}
 
-
-		const login_form = document.getElementById("login");
-
-		const validateform = () => {
-
-			let users = JSON.parse(localStorage.getItem('userdata'));
-
-			let email = document.getElementById("emaillogin").value;
-
-			let password = document.getElementById("passwordlogin").value;
-
-			let success = false;
-
-			for (let i = 0; i < users.length; i++) {
-
-				if (users[i]["useremail"] == email && users[i]["userpassword"] == password) {
-					success = true;
-					break;
-				}
-
-			}
-
-			if (success) {
-				alert("Logged In")
-				window.location.href = "profile.html";
-
-
-
-			}
-
-			else {
-				alert("Invalid Credentials")
-			}
+		if(j == 1){
+			alert("Email Id Already Exist");
+		}
+		else{
+		userarray.push(user_details);
+		localStorage.setItem("userdata",JSON.stringify (userarray));
+		alert("Successfully Signed Up");
 		}
 
-	login_form.addEventListener('submit', e => {
+		}
+
+		let loginform = document.getElementById("login");
+
+		loginform.addEventListener('submit', e => {
 
 		e.preventDefault();
 
-		validateform();
+		logincret();
+		});
 
+		function logincret() {
+			
+            let users = JSON.parse(localStorage.getItem('userdata'));
 
-	})
+			let name = document.getElementById("emaillogin").value;
+            let email = document.getElementById("emaillogin").value;
+            let password = document.getElementById("passwordlogin").value;
+
+            let j = 0; 
+            for (let i=0; i < users.length; i++){
+                if (users[i]["email"] == email || users[i]["name"] == name && users[i]["password"] == password) {
+                    j = 1;
+					localStorage.setItem("userlogin",JSON.stringify(email))
+                    break;
+                }
+            }
+
+            if(j==1){
+                alert("Logged In")
+				window.location.href = "profile.html",true;
+            }
+            else{
+                alert("Invalid Credentials")
+                }
+        }
+
+		
 	</script>
 </body>
 
