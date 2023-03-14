@@ -188,12 +188,16 @@
         // This code refer the delete function
 
         function deleteprofile() {
-            // confirm("Are you sure want to delete your account?")
+            confirm("Are you sure want to delete your account?")
+
             for (let i = 0; i <  users.length; i++) {
+
             if(document.getElementById("email").value == users[i]["email"]){
-                users.splice(i,1)
+                users.splice(i,1)//(2,1)
                 localStorage.setItem("userdata", JSON.stringify(users));
+                window.location.href = 'signup.html'
             }
+
             }
         }
 
