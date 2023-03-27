@@ -22,7 +22,7 @@ headingDiv.classList.add("heading");
 headingDiv.innerText = notes[i].heading;
 mainNotesDiv.appendChild(headingDiv);
 
-const tagsDiv = document.createElement("div");
+const tagsDiv = document.createElement("div") ;
 tagsDiv.classList.add("tags");
 mainNotesDiv.appendChild(tagsDiv);
 
