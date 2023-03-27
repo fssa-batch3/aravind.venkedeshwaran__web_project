@@ -46,11 +46,11 @@
 		</div>
 
 		<!-- Registeration form starts  -->
-		<form id="register" class="input-group" onsubmit="signup()">
-			<input type="name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
+		<form id="register" class="input-group" action="/" method="post" onsubmit="signup()">
+			<input type="name" name = "name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
 				title="Username doesn't contain spaces or number" required />
-			<input type="email" id="email" class="input-field" placeholder="Email" required />
-			<input type="password" id="password" class="input-field" placeholder="Password"
+			<input type="email" name="email" id="email" class="input-field" placeholder="Email" required />
+			<input type="password" name="password" id="password" class="input-field" placeholder="Password"
 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,32}$"
 				title="Password Should be Atleast 8 Characters and Should Contain Atleast One Uppercase, One LowerCase, One Number and One Special Charecter"
 				required />
@@ -60,9 +60,9 @@
 		</form>
 
 		<!-- log in form starts  -->
-		<form id="login" class="input-group">
-			<input type="text" id="emaillogin" class="input-field" placeholder="Name or Email" required />
-			<input type="password" id="passwordlogin" class="input-field" placeholder="Password" required />
+		<form id="login" class="input-group" action="/" method="post">
+			<input type="text" name="emaillogin" id="emaillogin" class="input-field" placeholder="Name or Email" required />
+			<input type="password" name="passwordlogin" id="passwordlogin" class="input-field" placeholder="Password" required />
 			<input type="checkbox" class="check-box" /><span>Remember Password</span>
 			<button type="submit" class="submit-btn">Log In</button>
 			<!-- <a href="profile.html"></a> -->
@@ -76,108 +76,15 @@
 
 		<!-- other sign in starts -->
 		<div class="other-signin">
-			<a href="profile.html"><i class="fa fa-google"></i></a>
-			<a href="profile.html"><i class="fa fa-facebook"></i></a>
-			<a href="profile.html"><i class="fa fa-apple"></i></a>
+			<a href="/Pages/profile.html"><i class="fa fa-google"></i></a>
+			<a href="/Pages/profile.html"><i class="fa fa-facebook"></i></a>
+			<a href="/Pages/profile.html"><i class="fa fa-apple"></i></a>
 		</div>
 
 		<!-- other sign in ends -->
 	</div>
 
 	<img src="../assets/Images/sign-in pic.png" alt="" width="800px">
-
-
-
-	<script>
-		let x = document.getElementById("login");
-		let y = document.getElementById("register");
-		let z = document.getElementById("btn");
-
-		function register() {
-			x.style.left = "-400px";
-			y.style.left = "50px";
-			z.style.left = "110px";
-		}
-
-		function login() {
-			x.style.left = "50px";
-			y.style.left = "450px";
-			z.style.left = "0";
-		}
-
-	
-
-		function signup(){
-		
-		let username = document.getElementById("name").value;
-		let useremail = document.getElementById("email").value;
-		let userpassword = document.getElementById("password").value;
-
-		let user_details={
-			"name" : username,
-			"email" : useremail,
-			"password": userpassword,
-		}
-
-		let userarray = JSON.parse(localStorage.getItem("userdata")) ?? [];
-
-		let j = 0; 
-
-		for(let i =0; i < userarray.length; i++){
-			if(userarray[i]["email"] === useremail){
-				j = 1;
-				break;
-			}
-		}
-
-		if(j == 1){
-			alert("Email Id Already Exist");
-		}
-		else{
-		userarray.push(user_details);
-		localStorage.setItem("userdata",JSON.stringify (userarray));
-		alert("Successfully Signed Up");
-		}
-
-		}
-
-		let loginform = document.getElementById("login");
-
-		loginform.addEventListener('submit', e => {
-
-		e.preventDefault();
-
-		logincret();
-		});
-
-		function logincret() {
-			
-            let users = JSON.parse(localStorage.getItem('userdata'));
-
-			let name = document.getElementById("emaillogin").value;
-            let email = document.getElementById("emaillogin").value;
-            let password = document.getElementById("passwordlogin").value;
-
-            let j = 0; 
-            for (let i=0; i < users.length; i++){
-                if (users[i]["email"] == email || users[i]["name"] == name && users[i]["password"] == password) {
-                    j = 1;
-					localStorage.setItem("userlogin",JSON.stringify(email))
-                    break;
-                }
-            }
-
-            if(j==1){
-                alert("Logged In")
-				window.location.href = "profile.html",true;
-            }
-            else{
-                alert("Invalid Credentials")
-                }
-        }
-
-		
-	</script>
 </body>
-
+<script src="../assets/JS/signup.js"></script>
 </html>

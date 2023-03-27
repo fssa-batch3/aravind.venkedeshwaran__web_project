@@ -29,22 +29,7 @@
 
 <body>
     <div class="main"> <!--The Total Page starts-->
-        <!-- Sidepanel starts -->
-        <div class="sidepanel">
-            <a href="../index.html"><img src="../assets/Images/FRESHTIME LOGO NEW.png" width="250px" alt="logo"></a>
-            <a href="dashboard.html"><i class='fas fa-home'></i><span class="title">Home</span></a>
-            <a href="Task Page.html"><i class="fas fa-tasks"></i><span class="title">Task</span></a>
-            <a href="timer.html"><i class='far fa-hourglass'></i><span class="title">Timer</span< /a>
-                    <a href="habit.html"><i class='fas fa-spa'></i><span class="title">Habit</span></a>
-                    <a href="journal-dashboard.html"><i class='far fa-paper-plane'></i><span
-                            class="title">Journal</span></a>
-                    <a href="leaderboard.html"><i class="fa-solid fa-shield-halved"></i></i><span
-                            class="title">Leaderboard</span></a>
-                    <a href="profile.html"><i class='fas fa-user-ninja'></i><span class="title">Profile</span></a>
-                    <div class="toggle"></div>
-        </div>
-
-        <!-- profile starts -->
+       <!-- profile starts -->
         <div class="profile">
 
             <!-- profile left starts -->
@@ -140,77 +125,7 @@
         </div>
         <!-- profile ends -->
     </div>
-    <!-- circle starts -->
-    <div class="circle1"></div>
-    <div class="circle2"></div>
-    <div class="circle3"></div>
-    <div class="circle4"></div>
-    <div class="circle5"></div>
-    <!-- circle ended -->
-
-    <!-- pin script started -->
-    <script>
-
-        let users = JSON.parse(localStorage.getItem('userdata'));
-        let userlogin = JSON.parse(localStorage.getItem('userlogin'));
-        
-        for (let i = 0; i <  users.length; i++) {
-            if(userlogin == users[i].email  ||userlogin == users[i].name ){
-            document.getElementById("name").value = users[i]["name"]; //users[1][name]
-            document.getElementById("email").value = users[i]["email"];
-            }
-        }
-        //  enable and disable input for edit and update operation
-        function enablename() {
-        document.getElementById("name").disabled = false;
-        }
-        function enablepassword() {
-            document.getElementById("password").disabled = false;
-        }
-
-        function editprofile() {
-            for(let i = 0 ; i < users.length; i++){
-            if(document.getElementById("email").value == users[i]["email"]){
-                users[i].name = document.getElementById("name").value;
-                users[i].password = document.getElementById("password").value;
-                }
-            }
-
-            if(document.getElementById("name").value != "" && document.getElementById("password").value != ""){
-            localStorage.setItem('userdata',JSON.stringify(users))
-            alert("Successfully your profile updated")
-            }
-            else{
-                alert("Username or password field could not be empty")
-            }
-        }
-
-        // This code refer the delete function
-
-        function deleteprofile() {
-            confirm("Are you sure want to delete your account?")
-
-            for (let i = 0; i <  users.length; i++) {
-
-            if(document.getElementById("email").value == users[i]["email"]){
-                users.splice(i,1)//(2,1)
-                localStorage.setItem("userdata", JSON.stringify(users));
-                window.location.href = 'signup.html'
-            }
-
-            }
-        }
-
-        let sidepanel = document.querySelector('.sidepanel');
-        let toggle = document.querySelector('.toggle');
-        toggle.onclick = function () {
-            sidepanel.classList.toggle('active')
-        }
-
-
-
-    </script>
-    <!-- pin script ended -->
 </body>
-
+<script src="../assets/JS/profile.js"></script>
+<script src="../assets/JS/template.js"></script>
 </html>
