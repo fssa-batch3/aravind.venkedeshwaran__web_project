@@ -3,8 +3,6 @@ About:
 
 FRESHTIME Is a Time Management Website, in which you can add task, set a timer, work on your focus, and get your productivity score. and freshtime also has journal to track your thought and it also has habit tracker you can also track your habit. FRESHTIME IS ONE STEP SOLUTION TO ALL YOUR TIME RELATED PROBLEMS :)
 
-# E-commerce
-
 ## User
 
 ### Create an account
@@ -12,24 +10,24 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
     - Steps:
         1. Navigate to the registration page.
         2. Enter the required information such as name, email, and password.
-        3. Click the "Create Account" button.
+        3. Click the "Register" button.
     - Expected Result:
         - The user is redirected to the login page.
 
-### Create an account
+### Log In Their Account
 - Scenario 1: Successfully login in to account
     - Steps:
         1. Navigate to the login page.
-        2. Enter the required information such as email, and password.
+        2. Enter the required information such as email or name and password.
         3. Click the "login" button.
     - Expected Result:
         - The user is redirected to the user profile page.
 
 
-### View products/items
+### View Task Page
 - Scenario 1: Successfully view products/items
     - Steps:
-        1. Log in as a buyer.
+        1. Logged In.
         2. Navigate to the product listing page.
         3. View the list of available products/items.
     - Expected Result:
@@ -61,7 +59,7 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
 ### Add product/item to cart
 - Scenario 1: Successfully add product/item to cart
     - Steps:
-        1. Log in as a buyer.
+        1. Log in as a user.
         2. Navigate to the product listing page.
         3. Select a product/item to add to cart.
         4. Click the "Add to Cart" button.
@@ -71,7 +69,7 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
 ### View items in cart
 - Scenario 1: Successfully view items in cart
     - Steps:
-        1. Log in as a buyer.
+        1. Log in as a user.
         2. Navigate to the cart page.
         3. View the list of items in the cart.
     - Expected Result:
