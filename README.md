@@ -27,20 +27,22 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
 ### Add Task
 - Scenario 1: Successfully add task or todos
     - Steps:
-        1. Logged In.
-        2. Navigate to the product listing page.
-        3. View the list of available products/items.
+        1. User Logged In.
+        2. Navigate to the Task Page.
+        3. Type your task name in the bar.
+        4. Enter or Click on the add button to add task.
     - Expected Result:
-        - The user can view the list of available products/items.
+        - The user can add their task.
 
-### Log In Their Account
-- Scenario 1: Successfully login in to account
+### Delete Task
+- Scenario 1: Successfully delete task or todos
     - Steps:
-        1. Navigate to the Task page.
-        2. Enter the required information such as email or name and password.
-        3. Click the "login" button.
+        1. User Logged In.
+        2. Navigate to the Task Page.
+        3. you can see the task you had added
+        4. Click on the delete button to delete task or todos
     - Expected Result:
-        - The user is redirected to the user profile page.
+        - The user can delete their task.
 
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fssa-batch3_aravind.venkedeshwaran__web_project&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fssa-batch3_aravind.venkedeshwaran__web_project)
