@@ -45,14 +45,17 @@ for(let i =0; i < userarray.length; i++){
 }
 
 if(j == 1){
-    alert("Email Id Already Exist");
+    // alert("Email Id Already Exist");
+    Notify.error("Email Id Already Exist");
+
 }
 
 //if new user pushing into local storage
 else{
 userarray.push(user_details);
 localStorage.setItem("userdata",JSON.stringify (userarray));
-alert("Successfully Signed Up");
+// alert("Successfully Signed Up");
+Notify.success("Successfully Signed Up");
 }
 
 }
@@ -84,10 +87,12 @@ function logincret() {
     }
 
     if(j==1){
-        alert("Logged In")
+        // alert("Logged In")
+        Notify.success("Logged In");
         window.location.href = "/Pages/profile.html",true;
     }
     else{
-        alert("Invalid Credentials")
+        // alert("Invalid Credentials")
+        Notify.error("Invalid Credentials");
         }
 }
