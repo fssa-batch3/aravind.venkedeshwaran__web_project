@@ -23,13 +23,34 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
     - Expected Result:
         - The user is redirected to the user profile page.
 
+### Edit Profile
+- Scenario 1: Successfully Edit their profile.
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Profile Page.
+        3. User can see their details which is fetched when they signed up.
+        4. Click on the edit button to edit their name, password, and phone number.
+    - Expected Result:
+        - The user successfully edit their profile details.
+
+
+### Delete Profile
+- Scenario 1: Successfully Delete their profile.
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Profile Page.
+        3. User can see their details which is fetched when they signed up.
+        4. Click on the delete button to delete their profile.
+    - Expected Result:
+        - The user successfully delete their profile details.
+
 
 ### Add Task
 - Scenario 1: Successfully add task or todos
     - Steps:
         1. User Logged In.
         2. Navigate to the Task Page.
-        3. Type your task name in the bar.
+        3. Type task name in the bar.
         4. Enter or Click on the add button to add task.
     - Expected Result:
         - The user can add their task.
@@ -39,10 +60,81 @@ FRESHTIME Is a Time Management Website, in which you can add task, set a timer, 
     - Steps:
         1. User Logged In.
         2. Navigate to the Task Page.
-        3. you can see the task you had added
+        3. User can see the task had added
         4. Click on the delete button to delete task or todos
     - Expected Result:
         - The user can delete their task.
+
+
+### Start Timer
+- Scenario 1: Successfully start timer
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Timer Page.
+        3. User can click play button to start 25:00 Min Timer.
+        4. After 25 min 5 min break will held
+
+    - Expected Result:
+        - The user can successfully start the timer.
+
+
+### Add Habit
+- Scenario 1: Successfully add habit
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Habit Page.
+        3. User can click add habit button.
+        4. Type Habit Name, Habit Descrition and click on add habit
+    - Expected Result:
+        - The user can add their habit.
+
+
+### Delete Habit
+- Scenario 1: Successfully delete habit
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Task Page.
+        3. User can see the habit they had added
+        4. Click on the habit name click delete button to delete task or todos
+    - Expected Result:
+        - The user can delete their habit.
+
+### Add Notes
+- Scenario 1: Successfully add habit
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Notes Page.
+        3. User can click add Notes button.
+        4. Type Notes Heading, Date and add tags and start to type their notes.
+        5. Navigated to they all notes tab. user can view every notes they have saved
+    - Expected Result:
+        - The user can successfully add their notes.
+
+
+### View Notes
+- Scenario 1: Successfully View Notes
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Notes Page.
+        3. User can view their all notes they already saved.
+    - Expected Result:
+        - The user successfully view their every notes they saved.
+
+
+### Delete Notes
+- Scenario 1: Successfully delete habit
+    - Steps:
+        1. User Logged In.
+        2. Navigate to the Notes Page.
+        3. User can see the every notes they had added.
+        4. Click on the notes name one box pops up click delete button to delete notes.
+    - Expected Result:
+        - The user can delete their notes.
+
+
+Dashboard Functionality : Yet To Start.
+Animedoro Functionality : Yet To Start.
+LeaderBoard Functionality : Yet To Start.
 
 
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=fssa-batch3_aravind.venkedeshwaran__web_project&metric=bugs)](https://sonarcloud.io/summary/new_code?id=fssa-batch3_aravind.venkedeshwaran__web_project)
@@ -56,3 +148,5 @@ User flow: https://drive.google.com/file/d/1eF-NIzO4najV1Lk4jfR5fgFyTCAcw8X8/vie
 Wireframe: https://drive.google.com/file/d/1jF6ASqcDFD9vvdtULzrgZR-EL1uBAgbb/view?usp=sharing
 
 Live Server: https://aravindramvjs.github.io/FRESHTIME/
+
+
