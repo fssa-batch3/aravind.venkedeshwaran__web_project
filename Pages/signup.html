@@ -47,7 +47,7 @@
 		</div>
 
 		<!-- Registeration form starts  -->
-		<form id="register" class="input-group" action="/" method="post" onsubmit="signup()">
+		<form id="register" class="input-group"onsubmit="signup()">
 			<input type="name" name = "name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
 				title="Username doesn't contain spaces or number" required />
 			<input type="email" name="email" id="email" class="input-field" placeholder="Email" required />
@@ -61,7 +61,7 @@
 		</form>
 
 		<!-- log in form starts  -->
-		<form id="login" class="input-group" action="/" method="post">
+		<form id="login" class="input-group">
 			<input type="text" name="emaillogin" id="emaillogin" class="input-field" placeholder="Name or Email" required />
 			<input type="password" name="passwordlogin" id="passwordlogin" class="input-field" placeholder="Password" required />
 			<input type="checkbox" class="check-box" /><span>Remember Password</span>
