@@ -7,8 +7,9 @@ logoLinkA.href = "../index.html";
 sidepanelDiv.appendChild(logoLinkA);
 
 const logoImg = document.createElement("img");
-logoImg.src = "../Images/FRESHTIME LOGO NEW.png";
-logoImg.width = "250px";
+logoImg.src = "../assets/Images/FRESHTIME LOGO NEW.png";
+// logoImg.classList.add("logo");
+logoImg.width = "250";
 logoImg.alt = "logo";
 logoLinkA.appendChild(logoImg);
 

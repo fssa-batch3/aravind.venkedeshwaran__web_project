@@ -24,6 +24,7 @@ let savenotes = document.getElementById("savenotes");
     savenotes.addEventListener('click', e => {
         e.preventDefault();
         addnotes();
-        alert("Your Notes are Saved")
+        // alert("Your Notes are Saved")
+        Notify.success("Your Notes are Saved");
         window.location.href = "notesall.html"
 });

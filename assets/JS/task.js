@@ -16,6 +16,7 @@ function addtask() {
     let newtask = { todos: taskinput.value };
     existingtask.push(newtask);
     localStorage.setItem("usertasks", JSON.stringify(existingtask))
+    Notify.success(`${taskinput.value} Task Added`)
     rendertask(newtask)
 }
 
@@ -31,8 +32,10 @@ function rendertask(task) {
     li.querySelector('#deletebtn').addEventListener('click', () => {
         let index = existingtask.findIndex(t => t.todos == task.todos)
         existingtask.splice(index, 1)
-        localStorage.setItem("usertasks", JSON.stringify(existingtask))
+        localStorage.setItem("usertasks", JSON.stringify(existingtask));
+        Notify.error(`${task.todos} Task Removed`)
         li.remove()
+        
     })
     tasklist.append(li)
 }

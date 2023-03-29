@@ -18,15 +18,6 @@ close.onclick = function() {
     newhabitcls.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-// let habitPage = document.querySelector(".habit")
-// window.onclick = function (event) {
-//     if (event.target == habitPage) {
-//         newhabitcls.style.display = "none";
-//     }
-// }
-
-
 // store habit in local storage
 let habitinput = document.getElementById("habitname");
 let addhabitbtn = document.getElementById("addhabit");
@@ -40,6 +31,7 @@ function addhabit() {
     existinghabit.push(newhabit);
     localStorage.setItem("userhabit", JSON.stringify(existinghabit))
     renderhabit(newhabit)
+    Notify.success(`${habitinput.value} Habit Added`);
 }
 
 function renderhabit(habit) {

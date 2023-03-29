@@ -25,10 +25,12 @@ function editprofile() {
 
     if(document.getElementById("name").value != "" && document.getElementById("password").value != ""){
     localStorage.setItem('userdata',JSON.stringify(users))
-    alert("Successfully your profile updated")
+    Notify.success("Successfully your profile updated")
+    // alert("Successfully your profile updated")
     }
     else{
-        alert("Username or password field could not be empty")
+        // alert("Username or password field could not be empty")
+        Notify.error("Username or password field could not be empty")
     }
 }
 
@@ -42,7 +44,8 @@ function deleteprofile() {
     if(document.getElementById("email").value == users[i]["email"]){
         users.splice(i,1)//(2,1)
         localStorage.setItem("userdata", JSON.stringify(users));
-        window.location.href = 'signup.html'
+        window.location.href = 'signup.html';
+        Notify.error("Profile Deleted")
     }
 
     }
