@@ -14,7 +14,14 @@ function login() {
     z.style.left = "0";
 }
 
+let registerform = document.getElementById("register");
 
+registerform.addEventListener('submit', e => {
+
+e.preventDefault();
+
+signup();
+});
 
 function signup(){
 
