@@ -96,7 +96,7 @@ function logincret() {
     if(j==1){
         // alert("Logged In")
         Notify.success("Logged In");
-        window.location.href = "/Pages/profile.html",true;
+        window.location.href = "/Pages/profile.html";
     }
     else{
         // alert("Invalid Credentials")
