@@ -66,7 +66,7 @@
     font-size: 22px;
     padding: 15px;
     border-radius: 15px;
-    background-color: white;
+    color: white;
     height: 60px;
     width: 230px;
     position: fixed;
@@ -75,7 +75,7 @@
     background-color: #007bff;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
 } 
-.addnotes a{
+.addnotes p a{
     text-decoration: none;
     color: white;
 }
