@@ -20,26 +20,6 @@
     margin-top: 20px;
     
 }
-/*.quotes,.insights{
-    padding: 20px;
-    width: 600px;
-    font-size: 20px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-    border-radius: 15px;
-    text-align: center;
-    margin-top: 40px;
-}
-.insights{
-    display: flex;
-}
-.insights p{
-    padding-left: 40px;
-}
-h2{
-    margin-top: 40px;
-    margin-bottom: 40px;
-} */
 .allnotes{
     display:flex;
     margin-top: 50px;
@@ -61,6 +41,11 @@ h2{
     font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
+    display: flex;   
+}
+.dot{
+    margin-left: 150px;
+    margin-top: -5px;
 }
 .heading{
     font-size: 24px;
@@ -76,9 +61,6 @@ h2{
     margin-right: 5px;
     margin-top: 20px;
 }
-/* .row-1{
-    display: flex;
-} */
 
 .addnotes{
     font-size: 22px;
@@ -163,4 +145,21 @@ h2{
 .allnotes a{
     text-decoration: none;
     color: black;
+}
+.viewnotes{
+    height: 100px;
+    width: 250px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+} 
+.viewnotes p{
+    margin-top: 10px;
+}
+.viewnotes hr{
+    width: 250px;
+    margin-top: 2px;
+}
+.notes1{
+    padding-top: 10px;
 }

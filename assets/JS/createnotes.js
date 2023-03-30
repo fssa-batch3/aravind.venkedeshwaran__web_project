@@ -4,7 +4,7 @@ document.querySelector(".welcome").innerHTML = `<h3>Today | ${currentDate}</h3>`
 
 let notesheading = document.getElementById("headline");
 let notescreated = document.getElementById("lastmodified");
-let notes = document.getElementById("notesinput");
+let notes_se = document.getElementById("notesinput");
 
 notescreated.value = currentDate;
 
@@ -14,7 +14,7 @@ function addnotes() {
     let newnotes = {
         "heading": notesheading.value,
         "createdOn": notescreated.value,
-        "notes": notes.value
+        "notes": notes_se.value
     }
     existingnotes.push(newnotes);
     localStorage.setItem("usernotes", JSON.stringify(existingnotes))
@@ -26,5 +26,5 @@ let savenotes = document.getElementById("savenotes");
         addnotes();
         // alert("Your Notes are Saved")
         Notify.success("Your Notes are Saved");
-        window.location.href = "notesall.html"
+        window.location.href = "notesall.html";
 });

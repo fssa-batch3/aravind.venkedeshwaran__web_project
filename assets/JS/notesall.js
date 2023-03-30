@@ -14,8 +14,16 @@ notesLink.appendChild(mainNotesDiv);
 
 const dateDiv = document.createElement("div");
 dateDiv.classList.add("date");
-dateDiv.innerText = notes[i].createdOn;
 mainNotesDiv.appendChild(dateDiv);
+
+const datep = document.createElement("p");
+datep.innerText = notes[i].createdOn;
+dateDiv.appendChild(datep);
+
+const dotp = document.createElement("P");
+dotp.classList.add("dot");
+dotp.innerText = "...";
+dateDiv.appendChild(dotp);
 
 const headingDiv = document.createElement("div");
 headingDiv.classList.add("heading");
@@ -42,6 +50,5 @@ const notesParagraph = document.createElement("p");
 notesParagraph.innerText = notes[i].notes;
 notesDiv.appendChild(notesParagraph);
 }
-
 
 
