@@ -4,20 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 
+	<!-- google sign in meta tag -->
+	<meta name="google-signin-client_id"
+		content="561479867362-oeds8n5l4m6sf5lor73h4c8114q411be.apps.googleusercontent.com">
+
 	<!-- page title added -->
 	<title>FRESHTIME | SIGNUP Form</title>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- fontawesome icon link -->
 
+
+	<!-- linking css -->
 	<link rel="stylesheet" href="../assets/css/signup.css">
 
+	<!-- linking notify.css -->
+	<link rel="stylesheet" href="../assets/css/notify.css">
 
 	<!-- adding favicon -->
 	<link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
 
 
 	<!-- ubuntu font link added -->
-	<link rel="stylesheet" href="../assets/css/signin.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -26,9 +33,10 @@
 	</style>
 
 	<!-- bootstrap for adding icon  -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/ee40c53027.js" integrity="" crossorigin="anonymous">
 	</script>
-	<link rel="stylesheet" href="../assets/css/notify.css">
+
 </head>
 
 <body>
@@ -48,7 +56,7 @@
 
 		<!-- Registeration form starts  -->
 		<form id="register" class="input-group">
-			<input type="name" name = "name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
+			<input type="name" name="name" id="name" class="input-field" placeholder="Name" pattern="[A-Za-z]+"
 				title="Username doesn't contain spaces or number" required />
 			<input type="email" name="email" id="email" class="input-field" placeholder="Email" required />
 			<input type="password" name="password" id="password" class="input-field" placeholder="Password"
@@ -62,8 +70,10 @@
 
 		<!-- log in form starts  -->
 		<form id="login" class="input-group">
-			<input type="text" name="emaillogin" id="emaillogin" class="input-field" placeholder="Name or Email" required />
-			<input type="password" name="passwordlogin" id="passwordlogin" class="input-field" placeholder="Password" required />
+			<input type="text" name="emaillogin" id="emaillogin" class="input-field" placeholder="Name or Email"
+				required />
+			<input type="password" name="passwordlogin" id="passwordlogin" class="input-field" placeholder="Password"
+				required />
 			<input type="checkbox" class="check-box" /><span>Remember Password</span>
 			<button type="submit" class="submit-btn">Log In</button>
 			<!-- <a href="profile.html"></a> -->
@@ -77,16 +87,27 @@
 
 		<!-- other sign in starts -->
 		<div class="other-signin">
-			<a href="/Pages/profile.html"><i class="fa fa-google"></i></a>
+			<!-- <a href="/Pages/profile.html"><i class="fa fa-google"></i></a>
 			<a href="/Pages/profile.html"><i class="fa fa-facebook"></i></a>
-			<a href="/Pages/profile.html"><i class="fa fa-apple"></i></a>
+			<a href="/Pages/profile.html"><i class="fa fa-apple"></i></a> -->
+			<div class="g-signin2" data-onsuccess="onSignIn"></div>
 		</div>
 
 		<!-- other sign in ends -->
 	</div>
 
 	<img src="../assets/Images/sign-in pic.png" alt="" width="800px">
+
+
 	<script src="../assets/JS/signup.js"></script>
 	<script src="../assets/JS/notify.js"></script>
+	
+
+	<!-- google sign in  -->
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="../assets/JS/profile.js"></script>
+
 </body>
+
 </html>

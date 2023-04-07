@@ -101,14 +101,14 @@ span {
 }
 .other-signin{
 	height: 300px;
-	margin-left: -20px;
+	margin-left: 125px;
+	margin-top: 20px;
 }
 .or{
 	margin-top: 350px;
 	margin-left: -20px;
 }
-.fa{
-	
+/* .fa{
     margin: 20px;
     height: 38px;
     width: 45px;
@@ -116,9 +116,11 @@ span {
     background-color: white;
     color: black;
     padding-top: 10px;
-    font-size: 28px;
     cursor: pointer;
-}
+} */
+/* .other-signin a{
+	font-size: 30px;
+} */
 #login {
 	left: 50px;
 }

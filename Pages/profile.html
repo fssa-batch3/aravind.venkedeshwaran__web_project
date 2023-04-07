@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- google sign in meta tag -->
+	<meta name="google-signin-client_id"
+    content="561479867362-oeds8n5l4m6sf5lor73h4c8114q411be.apps.googleusercontent.com">
+
     <title>Freshtime | Profile</title>
 
     <link rel="stylesheet" href="../assets/css/profile.css">
@@ -37,7 +41,7 @@
 
                 <!-- profile card starts -->
                 <div class="profile-card">
-                    <img src="../assets/Images/profile.jpg" alt="profile">
+                    <img src="../assets/Images/profile.jpg" alt="profile" id="profilePic">
                     <h2>Profile:</h2>
 
                     <label for="name">
@@ -74,7 +78,7 @@
 
                     <div class="savendel">
                         <button class="save" onclick="editprofile()">Save</button>
-                        <button class="save" onclick="deleteprofile()">Delete</button>
+                        <button class="save" onclick="signOut()">Sign Out</button>
                     </div>
                     
                 </div>
@@ -129,4 +133,25 @@
 <script src="../assets/JS/profile.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
+
+<!-- google sign in  -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    //  Google Sign In 
+    function onSignIn(googleUser) {
+        let profile = googleUser.getBasicProfile();
+        $("#name").text(profile.getName());
+        $("#email").text(profile.getEmail());
+        $("#profilePic").attr('src',profile.getImageUrl());
+    }
+
+    //  Google Sign Out
+    function signOut() {
+        let auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        alert('User signed out.');
+        });
+    }
+</script>
 </html>
