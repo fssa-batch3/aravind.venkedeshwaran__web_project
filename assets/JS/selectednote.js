@@ -12,9 +12,9 @@ const usernotesform = document.createElement("form");
 usernotesform.id = "usernotesform";
 document.querySelector(".journal").append(usernotesform)
 
-const headlineH1 = document.createElement("h1");
+const headlineH1 = document.createElement("input");
 headlineH1.id = "headline";
-headlineH1.innerText = heading;
+headlineH1.value = heading || notesheading;
 usernotesform.appendChild(headlineH1);
 
 const labellastmodifiedLabel = document.createElement("label");
@@ -33,13 +33,32 @@ usernotesform.appendChild(hr);
 const notesinputTextarea = document.createElement("textarea");
 notesinputTextarea.name = "usernotes";
 notesinputTextarea.id = "notesinput";
-notesinputTextarea.cols = "68";
-notesinputTextarea.rows = "20";
+notesinputTextarea.cols = "95";
+notesinputTextarea.rows = "25";
 notesinputTextarea.value = notes;
 usernotesform.appendChild(notesinputTextarea);
 
-const savenotesButton = document.createElement("button");
-savenotesButton.classList.add("savenotes");
-savenotesButton.id = "savenotes";
-savenotesButton.innerText = "save";
-usernotesform.appendChild(savenotesButton);
+// save notes
+let notesheading = document.getElementById("headline").value;
+let notescreated = document.getElementById("lastmodified");
+let notes_se = document.getElementById("notesinput");
+
+// let editnotes = JSON.parse(localStorage.getItem("usernotes"));
+
+// function editfunc() {
+//     for(let i = 0; i < editnotes.length; i++){
+//         editnotes[i][heading] = notesheading.value
+//         editnotes[i][notes] = notes_se .value
+//     }
+//     editnotes.push(newnotes);
+//     localStorage.setItem("usernotes", JSON.stringify(editnotes))
+// }
+
+// let savenotes = document.getElementById("savenotes");
+//     savenotes.addEventListener('click', e => {
+//         e.preventDefault();
+//         editfunc();
+//         // alert("Your Notes are Saved")
+//         // Notify.success("Your Notes are Saved");
+//         window.location.href = "notesall.html";
+// });

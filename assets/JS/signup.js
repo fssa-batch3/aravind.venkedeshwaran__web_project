@@ -63,6 +63,7 @@ userarray.push(user_details);
 localStorage.setItem("userdata",JSON.stringify (userarray));
 // alert("Successfully Signed Up");
 Notify.success("Successfully Signed Up");
+login();
 }
 
 }

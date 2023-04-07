@@ -11,6 +11,7 @@ document.querySelector(".allnotes").append(notesLink)
 const mainNotesDiv = document.createElement("div");
 mainNotesDiv.classList.add("main_notes");
 notesLink.appendChild(mainNotesDiv);
+// document.querySelector(".allnotes").append(mainNotesDiv)
 
 const dateDiv = document.createElement("div");
 dateDiv.classList.add("date");
@@ -20,10 +21,10 @@ const datep = document.createElement("p");
 datep.innerText = notes[i].createdOn;
 dateDiv.appendChild(datep);
 
-const dotp = document.createElement("P");
-dotp.classList.add("dot");
-dotp.innerText = "...";
-dateDiv.appendChild(dotp);
+// const dotp = document.createElement("P");
+// dotp.classList.add("dot");
+// dotp.innerText = "...";
+// dateDiv.appendChild(dotp);
 
 const headingDiv = document.createElement("div");
 headingDiv.classList.add("heading");
@@ -52,3 +53,8 @@ notesDiv.appendChild(notesParagraph);
 }
 
 
+// let dot = document.querySelector(".dot");
+// let viewnotes = document.querySelector(".viewnotes")
+// dot.onclick = function () {
+//     viewnotes.style.display = "block"
+// }

@@ -1,4 +1,4 @@
-.circle3{
+.circle3, .circle5{
     display: none;
 }
 .journal{
@@ -32,7 +32,7 @@
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
     border-radius: 15px;
-    background-color: white;
+    /* background-color: rgb(245,248,252); */
     margin-right: 40px;
     margin-bottom: 50px;
     overflow: hidden;
@@ -121,14 +121,14 @@
 }
 #notesinput{
     cursor:text;
-    font-size: 28px;
+    font-size: 20px;
 }
 .tagsbtn{
     position: relative;
     right: 200px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.savenotes{
+/* .savenotes{
     font-size: 22px;
     padding: 15px;
     border-radius: 15px;
@@ -140,17 +140,22 @@
     bottom: 50px;
     color: black;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
-}
+} */
 .allnotes a{
     text-decoration: none;
     color: black;
 }
-.viewnotes{
+/* .viewnotes{
     height: 100px;
     width: 250px;
     background-color: white;
+    color: black;
     border-radius: 15px;
     text-align: center;
+    display: none;
+    position: relative;
+    bottom: 500px;
+    left: 250px;
 } 
 .viewnotes p{
     margin-top: 10px;
@@ -161,4 +166,18 @@
 }
 .notes1{
     padding-top: 10px;
+}
+.fa-trash{
+    margin-left: 10px;
+} */
+.saveDelete{
+    float: right;
+    margin-right: 200px;
+    margin-top: -50px;
+}
+.saveDelete button{
+background-color: #D08FF6;
+color: white;
+border-radius: 5px;
+cursor: pointer;
 }
