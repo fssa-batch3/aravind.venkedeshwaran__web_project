@@ -1,12 +1,12 @@
-let users = JSON.parse(localStorage.getItem('userdata'));
-let userlogin = JSON.parse(localStorage.getItem('userlogin'));
+// let users = JSON.parse(localStorage.getItem('userdata'));
+// let userlogin = JSON.parse(localStorage.getItem('userlogin'));
 
-for (let i = 0; i <  users.length; i++) {
-    if(userlogin == users[i].email  ||userlogin == users[i].name ){
-    document.getElementById("name").value = users[i]["name"];
-    document.getElementById("email").value = users[i]["email"];
-    }
-}
+// for (let i = 0; i <  users.length; i++) {
+//     if(userlogin == users[i].email  ||userlogin == users[i].name ){
+//     document.getElementById("name").value = users[i]["name"];
+//     document.getElementById("email").value = users[i]["email"];
+//     }
+// }
 //  enable and disable input for edit and update operation
 function enablename() {
 document.getElementById("name").disabled = false;
