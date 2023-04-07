@@ -106,7 +106,13 @@
 	<!-- google sign in  -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="../assets/JS/profile.js"></script>
+	<script>
+		function onSignIn(googleUser) {
+		let profile = googleUser.getBasicProfile();
+		window.location.href = "/Pages/profile.html";
+	}
+	</script>
+	
 
 </body>
 
