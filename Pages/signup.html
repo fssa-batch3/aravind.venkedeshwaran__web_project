@@ -87,10 +87,10 @@
 
 		<!-- other sign in starts -->
 		<div class="other-signin">
-			<!-- <a href="/Pages/profile.html"><i class="fa fa-google"></i></a>
-			<a href="/Pages/profile.html"><i class="fa fa-facebook"></i></a>
+			<button id="gsign" onclick="signIn()"><i class="fa fa-google"></i>Sign In With Google</button>
+			<!--<a href="/Pages/profile.html"><i class="fa fa-facebook"></i></a>
 			<a href="/Pages/profile.html"><i class="fa fa-apple"></i></a> -->
-			<div class="g-signin2" onsubmit="redirect()"></div>
+			
 		</div>
 
 		<!-- other sign in ends -->
@@ -101,16 +101,8 @@
 
 	<script src="../assets/JS/signup.js"></script>
 	<script src="../assets/JS/notify.js"></script>
-	
-
 	<!-- google sign in  -->
-	<script src="https://apis.google.com/js/platform.js" async defer integrity=""></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity=""></script>
-	<script>
-		function redirect() {
-		window.location.href = "/Pages/profile.html";
-		}
-	</script>
+	<script src="../assets/JS/googlesignin.js"></script>
 	
 
 </body>

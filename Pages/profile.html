@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- google sign in meta tag -->
-	<meta name="google-signin-client_id"
-    content="561479867362-oeds8n5l4m6sf5lor73h4c8114q411be.apps.googleusercontent.com">
+
 
     <title>Freshtime | Profile</title>
 
@@ -134,24 +133,5 @@
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
 
-<!-- google sign in  -->
-<script src="https://apis.google.com/js/platform.js" async defer integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"></script>
-<script>
-    //  Google Sign In 
-    function onSignIn(googleUser) {
-        let profile = googleUser.getBasicProfile();
-        $("#name").text(profile.getName());
-        $("#email").text(profile.getEmail());
-        $("#profilePic").attr('src',profile.getImageUrl());
-    }
-
-    //  Google Sign Out
-    function signOut() {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        alert('User signed out.');
-        });
-    }
 </script>
 </html>

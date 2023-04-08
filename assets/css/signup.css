@@ -101,7 +101,7 @@ span {
 }
 .other-signin{
 	height: 300px;
-	margin-left: 125px;
+	/* margin-left: 125px; */
 	margin-top: 20px;
 }
 .or{
@@ -134,4 +134,17 @@ span {
 
 input:valid {
 	border-color: green;
+}
+
+#gsign{
+	border: none;
+	padding: 15px;
+	font-size: 18px;
+	background-color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.fa-google{
+	margin-right: 10px;
+	color: #4284f4;
 }
