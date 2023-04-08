@@ -4,7 +4,7 @@ for(let i = 0; i < notes.length; i++){
 
 //Notes Card
 const notesLink = document.createElement("a");
-notesLink.href = `notes.html?heading=${notes[i].heading}&createdOn=${notes[i].createdOn}&notes=${notes[i].notes}`
+notesLink.href = `notes.html?notes_id=${notes[i].notes_id}&heading=${notes[i].heading}&createdOn=${notes[i].createdOn}&notes=${notes[i].notes}`
 notesLink.id = "noteslink";
 document.querySelector(".allnotes").append(notesLink)
 

@@ -2,6 +2,7 @@ const url = window.location.search;
     
 const urlParams = new URLSearchParams(url)
 
+let notes_id = urlParams.get('notes_id');
 let heading = urlParams.get('heading');
 let date = urlParams.get('createdOn');
 let notes = urlParams.get('notes');
@@ -14,7 +15,7 @@ document.querySelector(".journal").append(usernotesform)
 
 const headlineH1 = document.createElement("input");
 headlineH1.id = "headline";
-headlineH1.value = heading || notesheading;
+headlineH1.value = heading;
 usernotesform.appendChild(headlineH1);
 
 const labellastmodifiedLabel = document.createElement("label");
@@ -38,27 +39,38 @@ notesinputTextarea.rows = "25";
 notesinputTextarea.value = notes;
 usernotesform.appendChild(notesinputTextarea);
 
-// save notes
+
+
+
+// edit notes
+let allnotes = JSON.parse(localStorage.getItem("usernotes"));
+function editnotes() {
+
 let notesheading = document.getElementById("headline").value;
-let notescreated = document.getElementById("lastmodified");
-let notes_se = document.getElementById("notesinput");
+let notes_se = document.getElementById("notesinput").value;
 
-// let editnotes = JSON.parse(localStorage.getItem("usernotes"));
+for(let i = 0; i < allnotes.length; i++){
+    if(allnotes[i].notes_id == notes_id){
+        allnotes[i].heading = notesheading;
+        allnotes[i].notes = notes_se;
+        Notify.success("Your Notes are Saved");
+        window.location.href = "notesall.html";
+    }
+    localStorage.setItem("usernotes",JSON.stringify(allnotes))
+}
 
-// function editfunc() {
-//     for(let i = 0; i < editnotes.length; i++){
-//         editnotes[i][heading] = notesheading.value
-//         editnotes[i][notes] = notes_se .value
-//     }
-//     editnotes.push(newnotes);
-//     localStorage.setItem("usernotes", JSON.stringify(editnotes))
-// }
+}
 
-// let savenotes = document.getElementById("savenotes");
-//     savenotes.addEventListener('click', e => {
-//         e.preventDefault();
-//         editfunc();
-//         // alert("Your Notes are Saved")
-//         // Notify.success("Your Notes are Saved");
-//         window.location.href = "notesall.html";
-// });
+// Delete Notes
+function deletenotes() {
+    confirm("Are you sure want to delete your account?")
+
+    for (let i = 0; i <  allnotes.length; i++) {
+        if(allnotes[i].notes_id == notes_id){
+            allnotes.splice(i,1)
+            localStorage.setItem("usernotes",JSON.stringify(allnotes))
+            Notify.error("Notes Deleted")
+            window.location.href = "notesall.html";  
+        }
+    }
+} 

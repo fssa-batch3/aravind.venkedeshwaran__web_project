@@ -12,6 +12,7 @@ let existingnotes = JSON.parse(localStorage.getItem("usernotes")) ?? [];
 
 function addnotes() {
     let newnotes = {
+        "notes_id":Math.floor(Math.random() * Date.now()),
         "heading": notesheading.value,
         "createdOn": notescreated.value,
         "notes": notes_se.value
