@@ -339,6 +339,6 @@
     padding: 15px;
     border-radius: 15px;
     color: white;
-    font-size: 22px;
+    /* font-size: 22px; */
     cursor: pointer;
 }
