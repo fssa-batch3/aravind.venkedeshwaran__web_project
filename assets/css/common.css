@@ -4,9 +4,9 @@
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
-/* body{
-    background-color: #F0F2F5;
-} */
+body{
+    background-color: #F7F7FF;
+}
 .circle1{
     height: 20rem;
     width: 20rem;
@@ -14,7 +14,7 @@
     top: 1%;
     left: 2%;
     border-radius: 50%;
-    background-color: #299AEE;
+    background-color: #b5eeff;
     z-index: -1;
 }
 .circle2{
@@ -24,7 +24,7 @@
     bottom: -10%;
     right: -5%; 
     border-radius: 50%;
-    background-color: #299AEE;
+    background-color: #ceafee;
     z-index: -1;
 }
 .circle3{
@@ -34,7 +34,7 @@
     bottom: 1%;
     left: 40%; 
     border-radius: 50%;
-    background-color: #299AEE;
+    background-color: #5b347d;
     z-index: -1;
 }
 .circle4{
@@ -44,7 +44,7 @@
     top: 2%;
     right: 40%; 
     border-radius: 50%;
-    background-color: #299AEE;
+    background-color: #d08ff6;
     z-index: -1;
 }
 .circle5{
@@ -54,7 +54,7 @@
     top: 1%;
     right: 12%; 
     border-radius: 50%;
-    background-color: #299AEE;
+    background-color: #f9d0e7;
     z-index: -1;
 }
 .main{
