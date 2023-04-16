@@ -4,8 +4,58 @@
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
 }
-body{
-    background-color: #f7f7ff;
+/* body{
+    background-color: #F0F2F5;
+} */
+.circle1{
+    height: 20rem;
+    width: 20rem;
+    position: absolute;
+    top: 1%;
+    left: 2%;
+    border-radius: 50%;
+    background-color: #299AEE;
+    z-index: -1;
+}
+.circle2{
+    height: 25rem;
+    width: 25rem;
+    position: fixed;
+    bottom: -10%;
+    right: -5%; 
+    border-radius: 50%;
+    background-color: #299AEE;
+    z-index: -1;
+}
+.circle3{
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    bottom: 1%;
+    left: 40%; 
+    border-radius: 50%;
+    background-color: #299AEE;
+    z-index: -1;
+}
+.circle4{
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    top: 2%;
+    right: 40%; 
+    border-radius: 50%;
+    background-color: #299AEE;
+    z-index: -1;
+}
+.circle5{
+    height: 8rem;
+    width: 8rem;
+    position: absolute;
+    top: 1%;
+    right: 12%; 
+    border-radius: 50%;
+    background-color: #299AEE;
+    z-index: -1;
 }
 .main{
     height: 100%;
@@ -24,6 +74,7 @@ body{
     transition: 0.5s;
     overflow: hidden;
     z-index: 10;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 .sidepanel:hover{
     width: 300px;
@@ -116,50 +167,4 @@ body{
 .fa-user-ninja:hover{
     transition: 0.88s;
     transform: translate(10px);
-}
-.circle1{
-    height: 20rem;
-    width: 20rem;
-    position: absolute;
-    top: 1%;
-    left: 2%;
-    border-radius: 50%;
-    background-color: #b5eeff;
-}
-.circle2{
-    height: 25rem;
-    width: 25rem;
-    position: fixed;
-    bottom: -10%;
-    right: -5%; 
-    border-radius: 50%;
-    background-color: #ceafee;
-    z-index: -1;
-}
-.circle3{
-    height: 2rem;
-    width: 2rem;
-    position: absolute;
-    bottom: 1%;
-    left: 40%; 
-    border-radius: 50%;
-    background-color: #5b347d;
-}
-.circle4{
-    height: 2rem;
-    width: 2rem;
-    position: absolute;
-    top: 2%;
-    right: 40%; 
-    border-radius: 50%;
-    background-color: #d08ff6;
-}
-.circle5{
-    height: 8rem;
-    width: 8rem;
-    position: absolute;
-    top: 1%;
-    right: 12%; 
-    border-radius: 50%;
-    background-color: #f9d0e7;
 }
