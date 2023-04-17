@@ -28,6 +28,7 @@ function signup(){
 // geting and storing html data in a variable name
 let username = document.getElementById("name").value;
 let useremail = document.getElementById("email").value;
+useremail = useremail.toLowerCase();
 let userpassword = document.getElementById("password").value;
 
 //creating an object to collect info and store in json file

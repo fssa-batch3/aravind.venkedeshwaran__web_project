@@ -72,3 +72,11 @@ function popup() {
 }
 
 
+let signedupusers = JSON.parse(localStorage.getItem("userdata"));
+let loggedinuser = JSON.parse(localStorage.getItem("userlogin"));
+
+for(let i = 0; i < signedupusers.length; i++){
+    if(loggedinuser == signedupusers[i]["email"]){
+        document.getElementById("username").innerText = signedupusers[i]["name"]
+    }
+}

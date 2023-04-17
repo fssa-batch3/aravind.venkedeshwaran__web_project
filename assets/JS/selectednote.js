@@ -63,14 +63,16 @@ for(let i = 0; i < allnotes.length; i++){
 
 // Delete Notes
 function deletenotes() {
-    confirm("Are you sure want to delete your account?")
+    let response = confirm("Are you sure want to delete your account?")
 
-    for (let i = 0; i <  allnotes.length; i++) {
-        if(allnotes[i].notes_id == notes_id){
-            allnotes.splice(i,1)
-            localStorage.setItem("usernotes",JSON.stringify(allnotes))
-            Notify.error("Notes Deleted")
-            window.location.href = "notesall.html";  
+    if(response){
+        for (let i = 0; i <  allnotes.length; i++) {
+            if(allnotes[i].notes_id == notes_id){
+                allnotes.splice(i,1)
+                localStorage.setItem("usernotes",JSON.stringify(allnotes))
+                Notify.error("Notes Deleted")
+                window.location.href = "notesall.html";  
+            }
         }
     }
 } 

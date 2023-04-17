@@ -1,10 +1,3 @@
-let sidepanel = document.querySelector('.sidepanel');
-let toggle = document.querySelector('.toggle');
-toggle.onclick = function () {
-sidepanel.classList.toggle('active')
-}
-
-
 let taskinput = document.getElementById("add-task");
 let addbtn = document.getElementById("addbtn");
 let tasklist = document.getElementById("tasklist");
@@ -12,14 +5,19 @@ let tasklist = document.getElementById("tasklist");
 let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
 existingtask.forEach(task => rendertask(task))
 
+
+// add task function
 function addtask() {
     let newtask = { todos: taskinput.value };
     existingtask.push(newtask);
     localStorage.setItem("usertasks", JSON.stringify(existingtask))
     Notify.success(`${taskinput.value} Task Added`)
     rendertask(newtask)
+    taskinput.value = ""
 }
 
+
+// render task in local storage function
 function rendertask(task) {
     let li = document.createElement('li')
     li.innerHTML = `
@@ -40,24 +38,45 @@ function rendertask(task) {
     tasklist.append(li)
 }
 
-// function for add task when enter press key is pressed
-document.querySelector('#add-task').addEventListener('keypress',
-    function (e) {
-        if (e.key === 'Enter') {
-            addtask()
+// if taskinput is empty or space, task should not be added
+addbtn.addEventListener("click", e =>{
+    if(taskinput.value.trim() != ""){
+        addtask();
+        EnterKeyTask()
+    }
+    else{
+        Notify.error(`Type Any Task Name`)
+    }
+})
 
+// function for add task when enter press key is pressed
+taskinput.addEventListener('keypress',e =>{
+    
+        if (e.key === 'Enter') {
+            if(taskinput.value != ""){
+                addtask()
+            }
+            else{
+                Notify.error(`Type Any Task Name`)
+            }
         }
-    });
+    
+}); 
+
+
 // function for pop up window
 let task_notes = document.querySelector(".task-notes")
 function popup() {
     task_notes.style.display = "block";
 }
+
+
 // function for close pop up window
 let close = document.getElementById("close")
 close.onclick = function() {
     task_notes.style.display = "none";
 }
+
 
 // When the user clicks anywhere outside of the modal, close it
 let taskPage = document.querySelector(".task-page")
