@@ -46,63 +46,31 @@
     <div class="main">
 
         <!-- task section starts -->
+        <!-- Header -->
         <div class="task-page">
             <div class="top">
-                <p class="top-1">Good Morning, <span id="username"></span></p>
+                <p class="top-1">Good Morning, <span id="username"></span><span class="dot">.</span></p>
                 <p class="top-2">If not now. When?</p>
                 <div class="date-task">
-                    <p><span class="day">Mon</span> <br> <span class="date">19</span> <br> <span class="day">Dec</span>
+                    <p><span id="digitaltime"></span> <span class="day"></span> <br> <span class="date"></span> <br> <span class="month"></span>
                     </p>
                     <input for="taskinput" type="text" name="addtask" id="add-task" placeholder="+  Add Task..." autofocus>
                     <button id="addbtn">ADD</button>
                 </div>
             </div>
 
+
+            <!-- Task List -->
             <div class="addtasks">
                 <ul id="tasklist"></ul>
                 <div id="task_notes_active"></div>
             </div>
 
-
-            <!-- each task added -->
-            <!-- <div class="task-list">
-                
-                                <p>Project <br>Layout</p>
-                                <p>19 Dec 2022, <br>5:00 Pm</p>
-                                <p>High <br>Priority</p>
-                                <p class="inprogress">Inprogress</p>
-                                <button class="start">Start</button>
-                            </div> -->
-            <!-- each task ends -->
-
-            <!-- each task added -->
-            <!-- <div class="task-list">
-                
-                                <p>Project <br>Layout</p>
-                                <p>19 Dec 2022, <br>5:00 Pm</p>
-                                <p>High <br>Priority</p>
-                                <p class="inprogress">Inprogress</p>
-                                <button class="start">Start</button>
-                            </div> -->
-            <!-- each task ends -->
-
-            <!-- each task added -->
-            <!-- <div class="task-list">
-                
-                                <p>Project <br>Layout</p>
-                                <p>19 Dec 2022, <br>5:00 Pm</p>
-                                <p>High <br>Priority</p>
-                                <p class="inprogress">Inprogress</p>
-                                <button class="start">Start</button>
-                            </div> -->
-            <!-- each task ends -->
-            <!-- </div>                       -->
         </div>
-        <!-- task section ends -->
 
+
+        <!-- Task Details -->
         <div class="task-notes">
-
-
             <h2>Task Name #01 <span id="close">&times;</span></h2>
 
             <button><i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me</button>
@@ -120,10 +88,7 @@
                 <option value="High Priority">High Priority</option>
                 <option value="Waste Of Time">Waste Of Time</option>
             </select>
-
-
             <h3>Notes:</h3>
-
             <input type="text" placeholder="Insert Your Notes Here" id="notes">
             <h3>Sub Task:</h3>
             <input type="radio" id="radio" aria-label="sub-task"><span id="sub-task">Add New Sutask</span></input>
@@ -131,7 +96,29 @@
             <h3>Attachment:</h3>
             <p class="files">Click here to add / drop your files here</p>
         </div>
-        <!-- task description page ends  -->
+        <!-- task details ends -->
+
+
+        <!-- Suggestion Task -->
+        <div class="suggestiontask">
+            <div class="suggestionheader">
+                <h3><i class="fa fa-lightbulb-o"></i> Suggested Task</h3> <br>
+                <input  id="searchinput" type="search" placeholder="search"><i class="fa fa-search"></i></input>
+            </div>
+            <div class="suggestiontasklist">
+                <ul id="suggestionlist">
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Suggestion Bar -->
+        <div class="sidebaractivator">
+            <div id="bulb"><i class="fa fa-lightbulb-o"></i></div>
+            <div id="arrow"><i class='fas fa-arrow-right'></i></div>
+        </div>
+
+        
     </div>
 </body>
 <script src="../assets/JS/task.js"> </script>

@@ -2,7 +2,7 @@ let users = JSON.parse(localStorage.getItem('userdata'));
 let userlogin = JSON.parse(localStorage.getItem('userlogin'));
 
 for (let i = 0; i <  users.length; i++) {
-    if(userlogin == users[i].email  ||userlogin == users[i].name ){
+    if(userlogin == users[i].email ){
     document.getElementById("name").value = users[i]["name"];
     document.getElementById("email").value = users[i]["email"];
     }
@@ -56,8 +56,8 @@ function deleteprofile() {
 
 //google sign in
 // Parse query string to see if page request is coming from OAuth 2.0 server.
-var params = {};
-var regex = /([^&=]+)=([^&]*)/g, m;
+let params = {};
+let regex = /([^&=]+)=([^&]*)/g, m;
 while (m = regex.exec(location.href)) {
     params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
 }

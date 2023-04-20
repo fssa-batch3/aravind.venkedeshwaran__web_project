@@ -128,7 +128,7 @@ const circle5 = document.createElement("div");
 circle5.classList.add("circle5");
 document.body.appendChild(circle5);
 
-
+// toggle sidebar
 let sidepanel = document.querySelector('.sidepanel');
 let toggle = document.querySelector('.toggle');
 toggle.onclick = function(){
@@ -137,6 +137,8 @@ toggle.onclick = function(){
 
 
 
+
+// Display Username
 let signedupusers = JSON.parse(localStorage.getItem("userdata"));
 let loggedinuser = JSON.parse(localStorage.getItem("userlogin"));
 

@@ -17,7 +17,7 @@ function addnotes() {
         "createdOn": notescreated.value,
         "notes": notes_se.value
     }
-    existingnotes.push(newnotes);
+    existingnotes.push(newnotes);                                               
     localStorage.setItem("usernotes", JSON.stringify(existingnotes))
 }
 
