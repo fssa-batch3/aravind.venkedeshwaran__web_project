@@ -15,24 +15,25 @@ day.innerText = currentDate.slice(0,4);
 date.innerText = currentDate.slice(8,10);
 month.innerText = currentDate.slice(4,7);
 
+
 // Digital Clock
 let digitaltime = document.getElementById("digitaltime")
-let display;
+let thishour = displayClock().slice(16,21);
 window.onload = displayClock();
 function displayClock(){
-    cur_time = Date()
-    currentHrs = Number(cur_time.slice(16,18))
+    let display = Date();
+    document.querySelector("#digitaltime").innerHTML = display.slice(16,25);
     setTimeout(displayClock, 1000); 
-    return currentHrs;
+    return display
 }
-digitaltime.style.display = "none";
+// digitaltime.style.display = "none";
 
 
 
 
 // add and save task in local storage
 let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
-existingtask.forEach(task => rendertask(task))
+
 
 // add task function
 function addtask() {
@@ -41,14 +42,47 @@ function addtask() {
         todos: taskinput.value,
         date: Date().slice(4,16),
         time: Date().slice(16, 25),
-        status: "not completed"
+        status: "not completed",
+        loc: "myday"
     };
     existingtask.push(newtask);
     localStorage.setItem("usertasks", JSON.stringify(existingtask));
     Notify.success(`${taskinput.value} Task Added`);
-    rendertask(newtask)
-    rendersuggestion(newtask)
+    rendertask(newtask);
+    tasksuggestion(newtask);
     taskinput.value = ""
+    // let j = 0;
+    // for(let i = 0; i < existingtask.length; i++){
+    //     if(existingtask[i]["loc"] == "myday")
+    //         j = 1;
+    //     else if(existingtask[i]["loc"] == "suggestion"){
+    //         j = 0;
+    //     }
+    // }
+    // if(j == 1){
+        
+    //     taskinput.value = ""
+    // }
+    // else{
+    //     tasksuggestion(newtask)
+    //     taskinput.value = ""
+    // }
+    
+}
+
+let j = 0;
+for(let i = 0; i < existingtask.length; i++){
+    if(existingtask[i]["loc"] == "myday")
+        j = 1;
+    else if(existingtask[i]["loc"] == "suggestion"){
+        j = 0;
+    }
+}
+if(j == 1){
+    existingtask.forEach(task => rendertask(task))
+}
+else{
+    existingtask.forEach(task => tasksuggestion(task))
 }
 
 
@@ -97,29 +131,22 @@ function rendertask(task) {
 }
 
 
+// Task suggestion
 
+function tasksuggestion(task) {
+    if(thishour == "20:40" && task.status == "not completed" && (task.loc == "myday" || task.loc == "suggestion")){
+        let indexlocation = existingtask.findIndex(t => t.taskId == task.taskId)
+        existingtask[indexlocation]["loc"] = "suggestion";
+        let weekday = "Yesterday";
+        let li = document.createElement('li')
+        li.innerHTML = `<span id="suggestionspan"><i class="fa fa-plus"></i> ${task.todos}</span> <br> <br>
+                        <span id="sugduedate">From ${weekday}</span>
+                        `
 
-
-// Task Suggestion
-let existingsuggestion = JSON.parse(localStorage.getItem("usertasks")) ?? [];
-existingtask.forEach(task => rendersuggestion(task))
-
-function rendersuggestion(suggestion) {
-    
-    let weekday = "Yesterday";
-    let li = document.createElement('li')
-    li.innerHTML = `<span id="suggestionspan"><i class="fa fa-plus"></i> ${suggestion.todos}</span> <br> <br>
-                    <span id="sugduedate">From ${weekday}</span>
-                    `
-    // li.querySelector('#deletebtn').addEventListener('click', () => {
-    //     let index = existingsuggestion.findIndex(s => s.todos == suggestion.todos)
-    //     existingsuggestion.splice(index, 1)
-    //     localStorage.setItem("tasksuggestion", JSON.stringify(existingsuggestion));
-    //     Notify.error(`${suggestion.todos} Task Removed`)
-    //     li.remove()
-        
-    // })
-    suggestiontask.append(li)
+        suggestiontask.append(li)
+        tasklist.remove(li)
+        localStorage.setItem("usertasks", JSON.stringify(existingtask));
+    }
 }
 
 
@@ -199,3 +226,10 @@ arrowicon.onclick = ()=>{
     bulbicon.style.display = "block";
     suggestions.style.display = "none"
 }
+
+
+
+
+
+
+
