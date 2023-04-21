@@ -3,40 +3,90 @@ let addbtn = document.getElementById("addbtn");
 let tasklist = document.getElementById("tasklist");
 let suggestiontask = document.querySelector("#suggestionlist")
 
+
+
+
+// Display today date, day and month
+let day = document.querySelector(".day")
+let date = document.querySelector(".date");
+let month = document.querySelector(".month");
+let currentDate = Date();
+day.innerText = currentDate.slice(0,4);
+date.innerText = currentDate.slice(8,10);
+month.innerText = currentDate.slice(4,7);
+
+// Digital Clock
+let digitaltime = document.getElementById("digitaltime")
+let display;
+window.onload = displayClock();
+function displayClock(){
+    cur_time = Date()
+    currentHrs = Number(cur_time.slice(16,18))
+    setTimeout(displayClock, 1000); 
+    return currentHrs;
+}
+digitaltime.style.display = "none";
+
+
+
+
+// add and save task in local storage
 let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
 existingtask.forEach(task => rendertask(task))
 
-
 // add task function
-let newtask = { 
-    taskId: Math.floor(Math.random() * Date.now()),
-    todos: "",
-    date: Date().slice(4,16),
-    time: Date().slice(16, 25),
-    status: "not completed"
-};
 function addtask() {
-    newtask["todos"] = taskinput.value
+    let newtask = { 
+        taskId: Math.floor(Math.random() * Date.now()),
+        todos: taskinput.value,
+        date: Date().slice(4,16),
+        time: Date().slice(16, 25),
+        status: "not completed"
+    };
     existingtask.push(newtask);
     localStorage.setItem("usertasks", JSON.stringify(existingtask));
-    rendertask(newtask);
     Notify.success(`${taskinput.value} Task Added`);
-    rendersuggestion(newtask);
-    taskinput.value = "";
+    rendertask(newtask)
+    rendersuggestion(newtask)
+    taskinput.value = ""
 }
+
 
 // render task in local storage function
 function rendertask(task) {
     let li = document.createElement('li')
-    li.innerHTML = `<span id="taskspan" onclick="popup()">${task.todos}
+    let indexStatus = existingtask.findIndex(t => t.todos == task.todos)
+    if(existingtask[indexStatus]["status"] == "completed"){
+    li.innerHTML = `<span id="taskspan" onclick="popup()"><s>${task.todos}</s>
                     <span id="todosdescrip">Project Description</span>
                     </span>
-                    <button id="checkmark">&#10004;</button>
+                    <button id="checkmark" >&#10004;</button>
                     <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
                     `
+    }
+    else{
+        li.innerHTML = `<span id="taskspan" onclick="popup()">${task.todos}
+                    <span id="todosdescrip">Project Description</span>
+                    </span>
+                    <button id="checkmark" >&#10004;</button>
+                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
+                    `
+    }
+    li.querySelector('#checkmark').addEventListener('click', () => {
+        let indexDone = existingtask.findIndex(t => t.todos == task.todos)
+        li.innerHTML = `<span id="taskspan" onclick="popup()"><s>${task.todos}</s>
+                        <span id="todosdescrip">Project Description</span>
+                        </span>
+                        <button id="checkmark" >&#10004;</button>
+                        <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`
+        existingtask[indexDone]["status"] = "completed"
+        localStorage.setItem("usertasks", JSON.stringify(existingtask));
+        Notify.success(`${task.todos} Task Completed`)
+        
+    });
     li.querySelector('#deletebtn').addEventListener('click', () => {
-        let index = existingtask.findIndex(t => t.todos == task.todos)
-        existingtask.splice(index, 1)
+        let indexDel = existingtask.findIndex(t => t.todos == task.todos)
+        existingtask.splice(indexDel, 1)
         localStorage.setItem("usertasks", JSON.stringify(existingtask));
         Notify.error(`${task.todos} Task Removed`)
         li.remove()
@@ -46,10 +96,13 @@ function rendertask(task) {
     
 }
 
-// Task Suggestion
 
+
+
+
+// Task Suggestion
 let existingsuggestion = JSON.parse(localStorage.getItem("usertasks")) ?? [];
-existingsuggestion.forEach(suggestion => rendersuggestion(suggestion))
+existingtask.forEach(task => rendersuggestion(task))
 
 function rendersuggestion(suggestion) {
     
@@ -69,15 +122,19 @@ function rendersuggestion(suggestion) {
     suggestiontask.append(li)
 }
 
+
+
+
+
 // if taskinput is empty or space, task should not be added
-addbtn.addEventListener("click", e =>{
+addbtn.onclick = () => {
     if(taskinput.value.trim() != ""){
         addtask();
     }
     else{
         Notify.error(`Type Any Task Name`)
     }
-})
+}
 
 // function for add task when enter press key is pressed
 taskinput.addEventListener('keypress',e =>{
@@ -92,6 +149,9 @@ taskinput.addEventListener('keypress',e =>{
         }
     
 }); 
+
+
+
 
 
 // function for pop up window
@@ -118,6 +178,8 @@ window.onclick = function (event) {
 
 
 
+
+
 let arrowicon = document.getElementById("arrow");
 let bulbicon = document.getElementById("bulb");
 let suggestions = document.querySelector(".suggestiontask")
@@ -137,28 +199,3 @@ arrowicon.onclick = ()=>{
     bulbicon.style.display = "block";
     suggestions.style.display = "none"
 }
-
-
-// Display today date, day and month
-let day = document.querySelector(".day")
-let date = document.querySelector(".date");
-let month = document.querySelector(".month");
-let currentDate = Date();
-day.innerText = currentDate.slice(0,4);
-date.innerText = currentDate.slice(8,10);
-month.innerText = currentDate.slice(4,7);
-// let time = currentDate.slice(16,20);
-// if(time == "23:54"){
-//     existingtask["status"] = true;
-//     existingtask.push(newtask);
-//     localStorage.setItem("usertasks", JSON.stringify(existingtask));
-// }
-
-
-// Digital Clock
-// window.onload = displayClock();
-function displayClock(){
-    var display = new Date().toLocaleTimeString();
-    document.getElementById("digitaltime").innerHTML = display;
-    setTimeout(displayClock, 1000); 
-  }
