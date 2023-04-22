@@ -94,27 +94,115 @@ function rendertask(task) {
 }
 
 
+
+
+
 // Task Details
 let taskTitle = document.getElementById("taskName");
 let taskspanlist = document.querySelectorAll("li");
-taskspanlist.forEach(task => {
+taskspanlist.forEach((task,index) => {
     task.onclick = ()=>{
-        const clickedText = task.querySelector('#taskHeading').textContent;
-        taskTitle.innerText = clickedText
+        let clickedTask = task.querySelector('#taskHeading').textContent;
+        taskTitle.innerText = clickedTask;
+
+        // get value from dues and save in local storage
+        savedues(index)
+
+        // get value from local storage and display it in value task details
+        displaydues(index)
+
+        subtask(index)
+
+        rendertask(task)
     }
 })
 
-// Display current time in task details
-let duetime = document.getElementById("duetime");
-let currentTime = Date().slice(16, 21);
-duetime.value = currentTime;
 
-// Display current date in task details
-let duedate = document.getElementById("duedate");
-duedate.value = new Date().toJSON().slice(0, 10)
+let dueTime = document.getElementById("duetime");
+let dueDate = document.getElementById("duedate");
+let PriorityTask = document.getElementById("Priority");
+function savedues(index) {
+     // setting duetime in local storage
+     dueTime.onchange = () => {
+         existingtask[index]["duetime"] = dueTime.value;
+         localStorage.setItem("usertasks", JSON.stringify(existingtask));
+         alert("Duetime Changed")
+     }
+
+     // setting duedate in local storage
+     dueDate.onchange = () => {
+         existingtask[index]["duedate"] = dueDate.value;
+         localStorage.setItem("usertasks", JSON.stringify(existingtask));
+         alert("DueDate Changed")
+     }
+
+     // setting priority in local storage
+     PriorityTask.onchange = () => {
+         existingtask[index]["priority"] = PriorityTask.value;
+         localStorage.setItem("usertasks", JSON.stringify(existingtask));
+         alert("priority Changed")
+     }
+}
+
+function displaydues(index) {
+    // Display current or saved time in task details
+    let currentTime = Date().slice(16, 21);
+    if(existingtask[index]["duetime"] == ""){
+        dueTime.value = currentTime;
+    }
+    else{
+        dueTime.value = existingtask[index]["duetime"]
+    }
+    
+
+    // Display current date in task details
+    if(existingtask[index]["duedate"] == ""){
+        dueDate.value = new Date().toJSON().slice(0, 10)
+    }
+    else{
+        dueDate.value = existingtask[index]["duedate"];
+    }
+
+    // Display Priority
+    if(existingtask[index]["priority"] != ""){
+        PriorityTask.value = existingtask[index]["priority"];
+    }
+}
+
+
+let subTaskCheck = document.getElementById("subtaskcheck");
+let subTask = document.getElementById('subtask');
+function subtask(index) {
+    subTask.onchange = () =>{
+        let existingsubtask = existingtask[index].subtask == "" ? [] : existingtask[index].subtask;
+        let newsubtask = {
+            task: subTask.value,
+            status: subTaskCheck.checked ? "done" : "not done"
+        };
+        existingsubtask.push(newsubtask);
+        existingtask[index].subtask = existingsubtask;
+        localStorage.setItem("usertasks", JSON.stringify(existingtask));
+        alert("subtask added");
+        rendersubtask(newsubtask)
+    }
+}
 
 
 
+function rendersubtask(){
+    const subtaskDiv = document.querySelector('.subtask');
+
+
+    existingtask.forEach(item => {
+        item.subtask.forEach(task => {
+          const taskli = document.createElement('li');
+          taskli.innerHTML = `<input type="checkbox" id="subtaskstatus">
+                              <label id="subtaskstatus">${task.task}</label>`
+                              
+            subtaskDiv.append(taskli)
+        });
+      });
+}
 
 // if taskinput is empty or space, task should not be added
 addbtn.onclick = () => {
@@ -235,4 +323,26 @@ window.onclick = function (event) {
 //     arrowicon.style.display = "none";
 //     bulbicon.style.display = "block";
 //     suggestions.style.display = "none"
+// }
+
+// let subTaskBtn = document.getElementById("subtaskbtn");
+// subTaskBtn.onclick = () =>{
+//     // Get the subtask div
+//     const subtaskDiv = document.querySelector(".subtask");
+
+//     // Create the input elements
+//     const checkboxInput = document.createElement("input");
+//     checkboxInput.type = "checkbox";
+//     checkboxInput.id = "subtaskcheck";
+
+//     const textInput = document.createElement("input");
+//     textInput.type = "text";
+//     textInput.setAttribute("for", "subtaskcheck");
+//     textInput.id = "subtask";
+//     textInput.placeholder = "Add Task Sub";
+
+//     // Append the input elements to the subtask div
+//     subtaskDiv.appendChild(checkboxInput);
+//     subtaskDiv.appendChild(textInput);
+
 // }

@@ -90,10 +90,13 @@
                 <option value="Waste Of Time">Waste Of Time</option>
             </select>
             <h3>Notes:</h3>
-            <input type="text" placeholder="Insert Your Notes Here" id="notes">
-            <h3>Sub Task:</h3>
-            <input type="radio" id="radio" aria-label="sub-task"><span id="sub-task">Add New Sutask</span></input>
-            <label for="radio">.</label>
+            <textarea placeholder="Insert Your Notes Here" id="notes" rows="6" cols="45" ></textarea>
+            <div class="subtask">
+                <h3>Sub Task:</h3>
+                <!-- <button id="subtaskbtn"><i class="fa fa-square-o"></i> Add Sub Task</button> <br>-->
+                <input type="checkbox" id="subtaskcheck">
+                <input type="text" for="subtaskcheck" id="subtask" placeholder="Add Task Sub"> 
+            </div>
             <h3>Attachment:</h3>
             <p class="files">Click here to add / drop your files here</p>
         </div>

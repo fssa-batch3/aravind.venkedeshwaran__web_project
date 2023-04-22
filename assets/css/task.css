@@ -122,6 +122,7 @@
     border: none;
     font-size: 16px;
     margin-bottom: 20px;
+    padding-top: 15px;
 }
 .taskDetails h3{
     margin-bottom: 20px;
@@ -132,7 +133,7 @@
     bottom: 5px;
     
 }
-.taskDetails p, #sub-task{
+.taskDetails p{
     color: #aaaaaa;
     position: relative;
     bottom: 5px;
@@ -273,4 +274,14 @@
     box-shadow: 0 0 18px rgba(0,0,0,.08);
     width: 100px;
     cursor: pointer;
+}
+#subtask{
+    font-size: 16px;
+    outline: none;
+    border: none;
+}
+#subtaskbtn{
+    margin-top: -10px;
+    margin-left: -12px;
+    box-shadow: none;
 }
