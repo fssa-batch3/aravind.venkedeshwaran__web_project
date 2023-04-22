@@ -54,7 +54,7 @@
     margin-top: 28px;
     margin-left: 20px;
 }
-.task-notes{
+/* .taskDetails{
     position: relative;
     left: 480px;
     bottom: 800px;
@@ -71,13 +71,30 @@
 @keyframes down{
     0%{transform: translateY(-1200px);}
     50%{transform: translateY(-10px);}
+} */
+.taskDetails{
+    background-color: white;
+    width: 500px;
+    height: 100vh;
+    position: absolute;
+    bottom: 1px;
+    left: 1050px;
+    padding: 30px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    display: none;
+    animation-name: out;
+    animation-duration: 1.25s;
 }
-.task-notes h2 span{
+@keyframes out{
+    0%{transform: translateX(1200px);}
+}
+.taskDetails h2 span{
     float: right;
     cursor: pointer;
 }
 
-.task-notes button{
+.taskDetails button{
     padding: 10px;
     font-size: 16px;
     border-radius: 15px;
@@ -88,24 +105,25 @@
     background-color: white;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
-.task-notes button:hover{
+.taskDetails button:hover{
     background-color:aliceblue;
 }
-#Priority, #date{
+#Priority, #duedate{
     margin-bottom: 30px;
     margin-left: 20px;
     padding: 8px;
     font-size: 16px;
 }
-#date{
+#duedate, #duetime{
     margin-left: 100px;
+    margin-top: 20px;
 }
 #notes{
     border: none;
     font-size: 16px;
     margin-bottom: 20px;
 }
-.task-notes h3{
+.taskDetails h3{
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -114,7 +132,7 @@
     bottom: 5px;
     
 }
-.task-notes p, #sub-task{
+.taskDetails p, #sub-task{
     color: #aaaaaa;
     position: relative;
     bottom: 5px;
@@ -207,8 +225,10 @@
     padding-top: 10px;
 }
 #taskspan{
-    margin-left: -100px;
+    margin-left: -90px;
+    /* margin-right: 10px; */
     cursor: pointer;
+    /* display: flex; */
 }
 .addtasks{
     height: 600px;

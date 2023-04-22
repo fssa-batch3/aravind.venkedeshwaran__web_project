@@ -70,16 +70,17 @@
 
 
         <!-- Task Details -->
-        <div class="task-notes">
-            <h2>Task Name #01 <span id="close">&times;</span></h2>
+        <div class="taskDetails">
+            <h2 id="taskName"><span id="close">&times;</span></h2>
 
             <button><i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me</button>
             <Button><i class="fa fa-hashtag" style="color:violet"></i>Tags</Button>
             <button><i class="fa fa-user"></i>Personal</button>
             <button><i class="fa fa-suitcase" style="color:skyblue"></i>Work</button> <br>
-
+            <label for="time">Due Time: </label>
+            <input type="time" id="duetime"> <br>
             <label for="date">Due Date: </label>
-            <input type="date" id="date"> <br>
+            <input type="date" id="duedate"> <br>
 
             <label for="Priority">Priority Of Your Task: </label>
             <select name="Priority" id="Priority">
@@ -100,7 +101,7 @@
 
 
         <!-- Suggestion Task -->
-        <div class="suggestiontask">
+        <!-- <div class="suggestiontask">
             <div class="suggestionheader">
                 <h3><i class="fa fa-lightbulb-o"></i> Suggested Task</h3> <br>
                 <input  id="searchinput" type="search" placeholder="search"><i class="fa fa-search"></i></input>
@@ -112,11 +113,11 @@
         </div>
 
 
-        <!-- Suggestion Bar -->
-        <div class="sidebaractivator">
+         Suggestion Bar -->
+       <!-- <div class="sidebaractivator">
             <div id="bulb"><i class="fa fa-lightbulb-o"></i></div>
             <div id="arrow"><i class='fas fa-arrow-right'></i></div>
-        </div>
+        </div> -->
 
         
     </div>
