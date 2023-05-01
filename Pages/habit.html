@@ -35,9 +35,165 @@
     </style>
 </head>
 <body>
-    <div class="main"></div>
+    <div class="main">
+        <div class="habit">
+
+            <div class="greeting">
+                <p class="wish">Good Morning, <span id="username"></span><span class="dot">.</span></p>
+                <input type="text" id="bedtime" placeholder="Add Your Bedtime">
+            </div>
+
+
+            <div class="row2">
+                <p class="weeklyslider"><span class="prev">&#8249;</span> <span class="prev">&#8250;</span> Mon, Dec 12 - Sun, Dec 18</p>
+                <!-- <button class="addhabit">+ Add New Habit</button> -->
+                <button class="addhabit" id="addhabitbtn" role="button" onclick="popup()">Add New Habit</button>
+            </div>
+
+
+            <div class="progressbar">
+                <progress id="file" value="65" max="100"> 65% </progress>
+                <div class="progressdetails">
+                    <p> <i class="fa fa-arrow-up"></i><span class="para">Up 5% From Last Week</span></p>
+                    <p class="achieved">68% Achieved</p>
+                </div>
+            </div>
+
+            
+            <hr>
+            <!-- <div class="weekdays">
+                <p>Habit</p>
+                <p class="mon">Mon</p>
+                <p>Tue</p>
+                <p>Wed</p>
+                <p>Thur</p>
+                <p>Fri</p>
+                <p>Sat</p>
+                <p>Sun</p>
+            </div> -->
+
+            <div class="weeklyhabit">
+                <ul id="habitlist">
+                    <!-- actual habit list comes here -->
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="habitdetails">
+            <div class="habitdheader">
+                <p class="habitname">Habit Name</p>
+                <p class="edithabit"><i class='fa fa-edit'></i></p>
+                <p id="closehabitdetails"><i class="fa fa-close" style="font-size:24px"></i></p>
+            </div>
+            <hr>
+            <div class="streak">
+                <div class="streakcardrow1">
+                    <div class="streakcard" id="donecard">
+                        <p class="statushabit">&#10004; Complete</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                    <div class="streakcard" id="failcard">
+                        <p class="statushabit">&#10004; Skip</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                </div>
+                <div class="streakcardrow2">
+                    <div class="streakcard" id="skipcard">
+                        <p class="statushabit">&#10004; Fail</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                    <div class="streakcard" id="totalcard">
+                        <p class="statushabit">&#10004; Total</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                </div>
+            </div>
+            <h2>Calender View</h2>
+            <div class="calender">
+                <img class="calenderimg" src="../assets/Images/calendar.png" alt="Calender">
+            </div>
+            <div class="higheststreak">
+                <p class="startingdate">Apr 01</p>
+                <p class="totlastreak">30</p>
+                <p class="endingdate">Apr 30</p>
+
+            </div>
+            <div class="progresshabit">
+
+            </div>
+        </div>
+
+
+        <div class="addhabitpopup">
+            <div class="habitheader">
+                <div class="design">
+                    <p></p>
+                </div>
+                <div>
+                    <h3 class="habitheading">Add Habit  <span id="close">&times;</span> </h3>
+                    <p class="habitquote">Tackle your goals in daily doses</p>
+                </div>
+            </div>
+            <div class="habitnamepopup">
+                <label for="habitname" id="habitnamelabel">Habit: </label>
+                <input id="habitname" placeholder="Add Habit"  required><br>
+                <!-- <label for="habitdescription" id="habitdeslabel">Habit Description:</label> 
+                <input id="habitdescription" type="text" placeholder="Habit Description"> <br>-->
+                <div class="habittype">
+                    <label for="habittype" id="habittypelabel">Habit Type: </label>
+                    <!-- <input type="checkbox" for="todocheck" id="todocheck"> -->
+                    <div class="checkbox-wrapper-33">
+                        <label class="checkbox">
+                          <input class="checkbox__trigger visuallyhidden" type="checkbox" />
+                          <span class="checkbox__symbol">
+                            <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M4 14l8 7L24 7"></path>
+                            </svg>
+                          </span>
+                          <p class="checkbox__textwrapper">To Do</p>
+                        </label>
+                      </div>
+                    <!-- <input type="checkbox" for="donotdocheck" id="donotdocheck"> <label for="donotdocheck">Do Not Do</label> -->
+                    <div class="checkbox-wrapper-32">
+                        <input type="checkbox" name="checkbox-32" id="checkbox-32">
+                        <label for="checkbox-32">
+                          Don't Do
+                        </label>
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M 10 10 L 90 90" stroke="#000" stroke-dasharray="113" stroke-dashoffset="113"></path>
+                          <path d="M 90 10 L 10 90" stroke="#000" stroke-dasharray="113" stroke-dashoffset="113"></path>
+                        </svg>
+                      </div>
+                      
+                </div>
+                <div class="weeklyfreq">
+                    <p>Weekly Frequency: </p>
+                    <button>Mon</button>
+                    <button>Tue</button>
+                    <button>Wed</button>
+                    <button>Thu</button>
+                    <button>Fri</button>
+                    <button>Sat</button>
+                    <button>Sun</button>
+                    <button>Week Days </button>
+                    <button>Every Day</button>
+                </div>
+                <label for="reminder" id="reminderlabel">Reminder: </label>
+                <input type="time" id="reminder">
+                <div class="savediv">
+                    <button id="cancel">Cancel</button>
+                    <button id="savehabit">Save Habit</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-<script src="../assets/JS/task.js"> </script>
+<script src="../assets/JS/habit.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
 </html>

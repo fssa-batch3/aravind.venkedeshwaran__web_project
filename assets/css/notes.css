@@ -30,12 +30,13 @@
     height: 400px;
     width: 300px;
     padding: 15px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
     border-radius: 15px;
-    /* background-color: rgb(245,248,252); */
+    /* background-color: rgb(245,248,252);*/
+    background-color: white;
     margin-right: 40px;
     margin-bottom: 50px;
     overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 .date{
     font-size: 18px;

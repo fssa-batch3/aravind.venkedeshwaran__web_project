@@ -20,7 +20,6 @@ month.innerText = currentDate.slice(4,7);
 // add and save task in local storage
 let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
 existingtask.forEach(task => rendertask(task))
-
 // add task function
 function addtask() {
     let newtask = { 
@@ -113,7 +112,7 @@ taskspanlist.forEach((task,index) => {
 
         subtask(index)
 
-        rendertask(task)
+        // existingtask[index].subtask.forEach(task => rendersubtask(task))
     }
 })
 
@@ -242,7 +241,7 @@ function popup() {
 
 // function for close pop up window
 let close = document.getElementById("close")
-close.onclick = function() {
+close.onclick= function() {
     taskDetails.style.display = "none";
 }
 

@@ -9,17 +9,17 @@ body{
     /* background-image: url(../Images/bgimages/windows-11-blue-stock-white-background-light-official-3840x2160-5616.jpg);
     background-size: cover;
     color: white; */
-
 }
+
 .circle1{
-    height: 20rem;
+    height: 20rem;  
     width: 20rem;
     position: absolute;
     top: 1%;
     left: 2%;
     border-radius: 50%;
     background-color: #b5eeff;
-    z-index: -1;
+    /* z-index: -1; */
 }
 .circle2{
     height: 25rem;
@@ -29,7 +29,7 @@ body{
     right: -5%; 
     border-radius: 50%;
     background-color: #ceafee;
-    z-index: -1;
+    /* z-index: -1; */
 }
 .circle3{
     height: 2rem;
@@ -39,7 +39,7 @@ body{
     left: 40%; 
     border-radius: 50%;
     background-color: #5b347d;
-    z-index: -1;
+    /* z-index: -1; */
 }
 .circle4{
     height: 2rem;
@@ -49,7 +49,7 @@ body{
     right: 40%; 
     border-radius: 50%;
     background-color: #d08ff6;
-    z-index: -1;
+    /* z-index: -1; */
 }
 .circle5{
     height: 8rem;
@@ -59,7 +59,7 @@ body{
     right: 12%; 
     border-radius: 50%;
     background-color: #f9d0e7;
-    z-index: -1;
+    /* z-index: -1; */
 }
 .main{
     height: 100%;
@@ -171,4 +171,77 @@ body{
 .fa-user-ninja:hover{
     transition: 0.88s;
     transform: translate(10px);
+}
+
+
+/* loader */
+#loader{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 50;
+	height: 0.5vw;
+	width: 0.5vw;
+	border-radius: 100%;
+	display: inline-block;
+	box-shadow: red -1vw -1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+    transition: opacity 0.75s, visibility 0.75s;
+	animation: dots 4s infinite ease-in-out;
+}
+.loaderHidden{
+    opacity: 0;
+    visibility: hidden;
+}
+@keyframes dots {
+	0% {
+		box-shadow: red -1vw -1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
+
+	8.33% {
+		box-shadow:  red 1vw -1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
+
+	16.67% {
+		box-shadow:  red 1vw 1vw 0 0.5vw, yellow 1vw 1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
+
+	25% {
+		box-shadow:  red -1vw 1vw 0 0.5vw, yellow -1vw 1vw 0 0.5vw, white -1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
+
+	33.33% {
+		box-shadow:  red -1vw -1vw 0 0.5vw, yellow -1vw 1vw 0 0.5vw, white -1vw -1vw 0 0.5vw, blue -1vw -1vw 0 0.5vw;
+	}
+
+	41.67% {
+		box-shadow:  red 1vw -1vw 0 0.5vw, yellow -1vw 1vw 0 0.5vw, white -1vw -1vw 0 0.5vw, blue 1vw -1vw 0 0.5vw;
+	}
+
+	50% {
+		box-shadow:  red 1vw 1vw 0 0.5vw, yellow -1vw 1vw 0 0.5vw, white -1vw -1vw 0 0.5vw, blue 1vw -1vw 0 0.5vw;
+	}
+
+	58.33% {
+		box-shadow:  red -1vw 1vw 0 0.5vw, yellow -1vw 1vw 0 0.5vw, white -1vw -1vw 0 0.5vw, blue 1vw -1vw 0 0.5vw;
+	}
+
+	66.67% {
+		box-shadow:  red -1vw -1vw 0 0.5vw, yellow -1vw -1vw 0 0.5vw, white -1vw -1vw 0 0.5vw, blue 1vw -1vw 0 0.5vw;
+	}
+
+	75% {
+		box-shadow:  red 1vw -1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw -1vw 0 0.5vw, blue 1vw -1vw 0 0.5vw;
+	}
+
+	83.33% {
+		box-shadow:  red 1vw 1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue 1vw 1vw 0 0.5vw;
+	}
+
+	91.67% {
+		box-shadow:  red -1vw 1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
+
+	100% {
+		box-shadow:  red -1vw -1vw 0 0.5vw, yellow 1vw -1vw 0 0.5vw, white 1vw 1vw 0 0.5vw, blue -1vw 1vw 0 0.5vw;
+	}
 }

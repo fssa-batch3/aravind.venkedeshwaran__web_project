@@ -78,18 +78,18 @@ notesSpan.classList.add("title");
 notesSpan.innerText = "Notes";
 notesLinkA.appendChild(notesSpan);
 
-const leaderboardLinkA = document.createElement("a");
-leaderboardLinkA.href = "leaderboard.html";
-sidepanelDiv.appendChild(leaderboardLinkA);
+// const leaderboardLinkA = document.createElement("a");
+// leaderboardLinkA.href = "leaderboard.html";
+// sidepanelDiv.appendChild(leaderboardLinkA);
 
-const leaderboardIcon = document.createElement("i");
-leaderboardIcon.classList.add("fa-solid", "fa-shield-halved");
-leaderboardLinkA.appendChild(leaderboardIcon);
+// const leaderboardIcon = document.createElement("i");
+// leaderboardIcon.classList.add("fa-solid", "fa-shield-halved");
+// leaderboardLinkA.appendChild(leaderboardIcon);
 
-const leaderboardSpan = document.createElement("span");
-leaderboardSpan.classList.add("title");
-leaderboardSpan.innerText = "Leaderboard";
-leaderboardLinkA.appendChild(leaderboardSpan);
+// const leaderboardSpan = document.createElement("span");
+// leaderboardSpan.classList.add("title");
+// leaderboardSpan.innerText = "Leaderboard";
+// leaderboardLinkA.appendChild(leaderboardSpan);
 
 const profileLink = document.createElement("a");
 profileLink.href = "profile.html";
@@ -147,3 +147,23 @@ for(let i = 0; i < signedupusers.length; i++){
         document.getElementById("username").innerText = signedupusers[i]["name"]
     }
 }
+
+
+
+// preloader
+let loaderDiv = document.createElement("div")
+loaderDiv.classList.add("loader-wrapper");
+loaderDiv.id = "loader"
+document.body.appendChild(loaderDiv);
+document.querySelector(".main").append(loaderDiv);
+
+window.addEventListener("load", ()=>{
+    let loader = document.querySelector("#loader") ;
+    loader.classList.add("loaderHidden");
+    loader.addEventListener("transitionend", () => {
+        loader.style.display = "none"
+        document.querySelector("body").style.display = "block"
+    })
+    
+})
+

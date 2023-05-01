@@ -35,7 +35,7 @@
         <div class="timer">
             <div class="timer-top">
                 <a href="#"><button><img src="../assets/Images/tomato-icon.svg" alt="tomoto" width="30px"> Pomodoro</button></a>
-                <a href="animedoro.html"><button><img src="../assets/Images/icons8-naruto.svg" alt="naruto" width="30px"> Animedoro</button></a>
+                <!-- <a href="animedoro.html"><button><img src="../assets/Images/icons8-naruto.svg" alt="naruto" width="30px"> Animedoro</button></a> -->
             </div>
             <br>
             <div class="timer-mid">
@@ -76,14 +76,14 @@
                 <button onclick="closeFullscreen();" id="fullscreen" aria-label="closescreen"><img src="../assets/Images/exit fullscreen.png" alt="" width="50px"></button>
                             
                 <script>
-                var elem = document.querySelector('.timer');
+                let element = document.querySelector('.timer');
                 function openFullscreen() {
-                  if (elem.requestFullscreen) {
-                    elem.requestFullscreen();
-                  } else if (elem.webkitRequestFullscreen) { /* Safari */
-                    elem.webkitRequestFullscreen();
-                  } else if (elem.msRequestFullscreen) { /* IE11 */
-                    elem.msRequestFullscreen();
+                  if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                  } else if (element.webkitRequestFullscreen) { /* Safari */
+                    element.webkitRequestFullscreen();
+                  } else if (element.msRequestFullscreen) { /* IE11 */
+                    element.msRequestFullscreen();
                   }
                 }
                             
