@@ -112,7 +112,6 @@ taskspanlist.forEach((task,index) => {
 
         subtask(index)
 
-        // existingtask[index].subtask.forEach(task => rendersubtask(task))
     }
 })
 
@@ -191,15 +190,14 @@ function subtask(index) {
 function rendersubtask(){
     const subtaskDiv = document.querySelector('.subtask');
 
-
     existingtask.forEach(item => {
-        item.subtask.forEach(task => {
+        for(let i = 0; i < item.subtask; i++){
           const taskli = document.createElement('li');
           taskli.innerHTML = `<input type="checkbox" id="subtaskstatus">
-                              <label id="subtaskstatus">${task.task}</label>`
+                              <label id="subtaskstatus">${item.subtask[i]}</label>`
                               
             subtaskDiv.append(taskli)
-        });
+        }
       });
 }
 

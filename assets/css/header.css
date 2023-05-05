@@ -1,0 +1,40 @@
+.header{
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.Freshtimelogo{
+    width: 200px;
+    height: 40px;
+}
+#search{
+    height: 40px;
+    width: 350px;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 350px;
+    margin-right: 50px;
+}
+.fa-search{
+    margin-left: -80px;
+    color: grey;
+}
+.dateday{
+    margin-left: 400px;
+    font-size: 22px;
+}
+.fa-bell{
+    font-size: 36px;
+    margin: 0px 60px 0px 30px;
+}
+.profilepic{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name{
+    font-size: 26px;
+    margin: 2px 0px 0px 5px;
+}

@@ -36,29 +36,50 @@ function renderhabit(habit) {
     let indexStatus = existinghabit.findIndex(h => h.habitName == habit.habitName)
     if(existinghabit[indexStatus]["status"] == "completed"){
         li.innerHTML = `<span id="habitspan" onclick="revealhabitdetails()">
-        <span id="habitHeading"> <s>${habit.habitName}</s></span>
-                        <span id="habitdescrip">Habit Description</span>
+        <span id="habitHeading"><p id="habitcolor"></p>  <p><s>${habit.habitName}</s></p></span>
+                        <span id="habitdescrip">0/1</span>
                         </span>
-                        <button id="checkmark" >&#10004;</button>
+                        <button id="checkmark" >
+                        <div class="checkbox-wrapper-5">
+                          <div class="check">
+                            <input id="check-5" type="checkbox">
+                            <label for="check-5"></label>
+                          </div>
+                        </div>
+
+                        </button>
                         <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`
     }
     else{
         li.innerHTML = `<span id="habitspan" onclick="revealhabitdetails()">
-                        <span id="habitHeading">${habit.habitName}</span>
-                        <span id="habitdescrip">Habit Description</span>
+                        <span id="habitHeading"><p id="habitcolor"></p> <p>${habit.habitName}</p></span>
+                        <span id="habitdescrip">0/1</span>
                         </span>
                      
-                    <button id="checkmark" >&#10004;</button>
-                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
-                    `
+                    <button id="checkmark" >
+                      <div class="checkbox-wrapper-5">
+                        <div class="check">
+                          <input id="check-5" type="checkbox">
+                          <label for="check-5"></label>
+                        </div>
+                    </div>
+                  </button>
+                  <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`
     }
     li.querySelector('#checkmark').addEventListener('click', () => {
         let indexDone = existinghabit.findIndex(h => h.habitName == habit.habitName)
         li.innerHTML = `<span id="habitspan" onclick="revealhabitdetails()">
-                        <span id="habitHeading"> <s>${habit.habitName}</s></span>
-                        <span id="habitdescrip">Habit Description</span>
+                        <span id="habitHeading"><p id="habitcolor"></p>  <p><s>${habit.habitName}</s></p></span>
+                        <span id="habitdescrip">0/1</span>
                         </span>
-                        <button id="checkmark" >&#10004;</button>
+                        <button id="checkmark" >
+                          <div class="checkbox-wrapper-5">
+                            <div class="check">
+                              <input id="check-5" type="checkbox">
+                              <label for="check-5"></label>
+                            </div>
+                          </div>
+                        </button>
                         <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`
         existinghabit[indexDone]["status"] = "completed"
         localStorage.setItem("userhabits", JSON.stringify(existinghabit))

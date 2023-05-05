@@ -549,40 +549,40 @@ progress{
 
 
 
-#deletebtn,#checkmark{
+#deletebtn{
   background-color: red;
   border-radius: 15px;
   border: none;
   color: white;
-  text-align: center;
+  margin-top: 15px;
   height: 50px;
   width: 55px;
   position:relative;
-  left: 100px;
-  cursor: pointer;
+  left: 250px;
+ text-align: center;
 } 
 #checkmark{
-  background-color: #0083ff;
-  color: white;
-  margin: 20px;
-  font-size: 26px;
-  font-weight: 900;
+  background-color: white;
+  border: none;
+  position:relative;
+  left: 200px;
+  cursor: pointer;
 }
 #habitlist li{
   list-style: none;
   background-color: white;
   margin: 30px;
-  width: 550px;
-  height: 100px;
+  width: 750px;
+  height: 80px;
   border-radius: 20px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-weight: 900;
   margin-left: -5px;
-  font-size: 24px;
+  font-size: 18px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.02),0 2px 18px rgba(0,0,0,0.05);
-  margin-left: 50px;
+  /* margin-left: 50px; */
 }
 
 #habitlist span{
@@ -597,11 +597,120 @@ progress{
   padding-top: 10px;
 }
 #habitspan{
-  margin-left: -80px;
+  margin-left: -200px;
   /* margin-right: 10px; */
   cursor: pointer;
   /* display: flex; */
 }
 .progressbar{
   margin-bottom: 20px;
+}
+#habitcolor{
+  background-color: #0083FF;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: -40px;
+}
+#habitHeading{
+  display: flex;
+}
+
+
+/* check btn */
+.checkbox-wrapper-5 .check {
+  --size: 40px;
+
+  position: relative;
+  background: linear-gradient(90deg, #f19af3, #f099b5);
+  line-height: 0;
+  perspective: 400px;
+  font-size: var(--size);
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"],
+.checkbox-wrapper-5 .check label,
+.checkbox-wrapper-5 .check label::before,
+.checkbox-wrapper-5 .check label::after,
+.checkbox-wrapper-5 .check {
+  appearance: none;
+  display: inline-block;
+  border-radius: var(--size);
+  border: 0;
+  transition: .35s ease-in-out;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.checkbox-wrapper-5 .check label {
+  width: calc(2.2 * var(--size));
+  height: var(--size);
+  background: #d7d7d7;
+  overflow: hidden;
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"] {
+  position: absolute;
+  z-index: 1;
+  width: calc(.8 * var(--size));
+  height: calc(.8 * var(--size));
+  top: calc(.1 * var(--size));
+  left: calc(.1 * var(--size));
+  background: linear-gradient(45deg, #dedede, #ffffff);
+  box-shadow: 0 6px 7px rgba(0,0,0,0.3);
+  outline: none;
+  margin: 0;
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked {
+  left: calc(1.3 * var(--size));
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label {
+  background: transparent;
+}
+
+.checkbox-wrapper-5 .check label::before,
+.checkbox-wrapper-5 .check label::after {
+  content: "· ·";
+  position: absolute;
+  overflow: hidden;
+  left: calc(.15 * var(--size));
+  top: calc(.5 * var(--size));
+  height: var(--size);
+  letter-spacing: calc(-0.04 * var(--size));
+  color: #9b9b9b;
+  font-family: "Times New Roman", serif;
+  z-index: 2;
+  font-size: calc(.6 * var(--size));
+  border-radius: 0;
+  transform-origin: 0 0 calc(-0.5 * var(--size));
+  backface-visibility: hidden;
+}
+
+.checkbox-wrapper-5 .check label::after {
+  content: "●";
+  top: calc(.65 * var(--size));
+  left: calc(.2 * var(--size));
+  height: calc(.1 * var(--size));
+  width: calc(.35 * var(--size));
+  font-size: calc(.2 * var(--size));
+  transform-origin: 0 0 calc(-0.4 * var(--size));
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::before,
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+  left: calc(1.55 * var(--size));
+  top: calc(.4 * var(--size));
+  line-height: calc(.1 * var(--size));
+  transform: rotateY(360deg);
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+  height: calc(.16 * var(--size));
+  top: calc(.55 * var(--size));
+  left: calc(1.6 * var(--size));
+  font-size: calc(.6 * var(--size));
+  line-height: 0;
 }
