@@ -112,25 +112,26 @@ let habiticon = document.querySelector(".habiticon");
 
 
 
-let habitstarter = document.querySelector(".habitstarter");
+// let habitstarter = document.querySelector(".habitstarter");
+// addHabitInput.addEventListener("change", () => {
+//   habitstarter.style.display = "block";
+//   habitPage.style.filter = "blur(3px)";
+//   habitName.value = addHabitInput.value
+// });
+
+// let habitstarterCancel = document.getElementById("startercancel");
+// habitstarterCancel.onclick = function () {
+//   habitstarter.style.display = "none";
+//   habitPage.style.filter = "none"
+// }
+
+// let habitstarterNext = document.getElementById("starternext");
 addHabitInput.addEventListener("change", () => {
-  habitstarter.style.display = "block";
-  habitPage.style.filter = "blur(3px)";
-  habitName.value = addHabitInput.value
-});
-
-let habitstarterCancel = document.getElementById("startercancel");
-habitstarterCancel.onclick = function () {
-  habitstarter.style.display = "none";
-  habitPage.style.filter = "none"
-}
-
-let habitstarterNext = document.getElementById("starternext");
-habitstarterNext.onclick = function () {
-  habitstarter.style.display = "none";
+  // habitstarter.style.display = "none";
   habitpopup.style.display = "block";
-  habitPage.style.filter = "blur(3px)"
-}
+  habitPage.style.filter = "blur(3px)";
+  habitName.value = addHabitInput.value;
+});
 
 let cancelHabit = document.getElementById("cancel");
 
@@ -180,6 +181,7 @@ saveHabit.addEventListener('click',
 // render habit in habit page
 
 function renderhabit(habit) {
+
   let li = document.createElement('li');
   li.innerHTML = `<div id="habitcard">
                         <div id="habitnamecard">
@@ -266,33 +268,72 @@ for (let i = 0; i < habitcheck.length; i++) {
   }
 }
 
-function streak() {
-let streakcount;
+// function streak() {
+// let streakcount;
 
-for (let i = 0; i < existinghabit.length; i++) {
-  for (let j = 0; j < existinghabit[i].habitActive.length; j++) {
-    let firstIndex = existinghabit[i].habitActive[j];
-    let secondIndex = existinghabit[i].habitActive[j + 1];
-    if (secondIndex) {
-      if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check 
-        let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
-        if (datedifference == 1) {
-          streakcount++
-        }
-        else {
-          streakcount = 0;
-        }
-      }
-    }
-    else {
-      streakcount = 1
-    }
-  }
-}
-  existinghabit[i]["habitActive"].push(gettoday);
-  localStorage.setItem("userhabits", JSON.stringify(existinghabit))
+// for (let i = 0; i < existinghabit.length; i++) {
+//   for (let j = 0; j < existinghabit[i].habitActive.length; j++) {
+//     let firstIndex = existinghabit[i].habitActive[j];
+//     let secondIndex = existinghabit[i].habitActive[j + 1];
+//     if (secondIndex) {
+//       if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check 
+//         let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
+//         if (datedifference == 1) {
+//           streakcount++
+//         }
+//         else {
+//           streakcount = 0;
+//         }
+//       }
+//     }
+//     else {
+//       streakcount = 1
+//     }
+//   }
+// }
+//   existinghabit[i]["habitActive"].push(gettoday);
+//   localStorage.setItem("userhabits", JSON.stringify(existinghabit))
 
+// }
+
+let streakhabitname = document.querySelector(".habitname");
+let deletehabit = document.querySelector("#deletehabit");
+let edithabit = document.querySelector(".edithabit");
+let habitpopupform = document.getElementById("habitpopupform");
+
+streakbtn.forEach((item,index)=>{
+  // habit name
+  item.addEventListener('click', ()=>{
+
+    streakhabitname.innerText = existinghabit[index].habitName;
+    deletehabit.setAttribute("onclick", `deleteexistinghabit(${index})`);
+    edithabit.setAttribute('onclick', `editinghabit(${index})`)
+
+
+  });
+
+});
+
+
+function deleteexistinghabit(index){
+  // Notify.error("Habit Deleted");
+  existinghabit.splice(index, 1);
+  localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+  location.reload();
 }
+
+function editinghabit(index) {
+  habitpopup.style.display = "block";
+  habitPage.style.filter = "blur(3px)";
+
+  habitName.value = existinghabit[index]["habitName"];
+  habitpopupform.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    existinghabit[index].habitName = habitName.value;
+    localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+  });
+};
+
 
 
 /*-------------------------------------------------CALENDAR SCRIPT-----------------------------------------------*/
