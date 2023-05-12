@@ -108,25 +108,25 @@ const toggleDiv = document.createElement("div");
 toggleDiv.classList.add("toggle");
 sidepanelDiv.appendChild(toggleDiv);
 
-const circle1 = document.createElement("div");
-circle1.classList.add("circle1");
-document.body.appendChild(circle1);
+// const circle1 = document.createElement("div");
+// circle1.classList.add("circle1");
+// document.body.appendChild(circle1);
 
-const circle2 = document.createElement("div");
-circle2.classList.add("circle2");
-document.body.appendChild(circle2);
+// const circle2 = document.createElement("div");
+// circle2.classList.add("circle2");
+// document.body.appendChild(circle2);
 
-const circle3 = document.createElement("div");
-circle3.classList.add("circle3");
-document.body.appendChild(circle3);
+// const circle3 = document.createElement("div");
+// circle3.classList.add("circle3");
+// document.body.appendChild(circle3);
 
-const circle4 = document.createElement("div");
-circle4.classList.add("circle4");
-document.body.appendChild(circle4);
+// const circle4 = document.createElement("div");
+// circle4.classList.add("circle4");
+// document.body.appendChild(circle4);
 
-const circle5 = document.createElement("div");
-circle5.classList.add("circle5");
-document.body.appendChild(circle5);
+// const circle5 = document.createElement("div");
+// circle5.classList.add("circle5");
+// document.body.appendChild(circle5);
 
 // toggle sidebar
 let sidepanel = document.querySelector('.sidepanel');

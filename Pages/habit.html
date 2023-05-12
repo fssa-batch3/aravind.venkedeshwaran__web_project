@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/habit.css">
     <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/notify.css">
+    <link rel="stylesheet" href="../assets/css/emojionearea.css">
 
     <!-- adding favicon -->
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
@@ -27,6 +28,8 @@
     <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
     </script>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
@@ -43,89 +46,30 @@
                 <input type="text" id="bedtime" placeholder="Add Your Bedtime">
             </div>
 
-
-            <div class="row2">
-                <p class="weeklyslider"><span class="prev">&#8249;</span> <span class="prev">&#8250;</span> Mon, Dec 12 - Sun, Dec 18</p>
-                <!-- <button class="addhabit">+ Add New Habit</button> -->
-                <button class="addhabit" id="addhabitbtn" role="button" onclick="popup()">Add New Habit</button>
-            </div>
-
-
-            <div class="progressbar">
-                <progress id="file" value="65" max="100"> 65% </progress>
-                <div class="progressdetails">
-                    <p> <i class="fa fa-arrow-up"></i><span class="para">Up 5% From Last Week</span></p>
-                    <p class="achieved">68% Achieved</p>
-                </div>
-            </div>
-
-            
-            <hr>
-            <!-- <div class="weekdays">
-                <p>Habit</p>
-                <p class="mon">Mon</p>
-                <p>Tue</p>
-                <p>Wed</p>
-                <p>Thur</p>
-                <p>Fri</p>
-                <p>Sat</p>
-                <p>Sun</p>
+            <!-- <div class="today">
+                <p>13 May Sunday</p>
             </div> -->
 
-            <div class="weeklyhabit">
-                <ul id="habitlist">
-                    <!-- actual habit list comes here -->
-                </ul>
+            <div class="daystimeline"></div>
+
+            <div class="habitlist"></div>
+
+            <div class="addhabit">
+                <div class="bubble"></div>
+                <div class="newhabit">
+                    <input type="text" id="addhabit" placeholder="+  Add Habit..." autofocus>
+                </div>
             </div>
         </div>
 
-        
-        <div class="habitdetails">
-            <div class="habitdheader">
-                <p class="habitname">Habit Name</p>
-                <p class="edithabit"><i class='fa fa-edit'></i></p>
-                <p id="closehabitdetails"><i class="fa fa-close" style="font-size:24px"></i></p>
-            </div>
-            <hr>
-            <div class="streak">
-                <div class="streakcardrow1">
-                    <div class="streakcard" id="donecard">
-                        <p class="statushabit">&#10004; Complete</p>
-                        <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
-                    </div>
-                    <div class="streakcard" id="failcard">
-                        <p class="statushabit">&#10004; Skip</p>
-                        <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
-                    </div>
-                </div>
-                <div class="streakcardrow2">
-                    <div class="streakcard" id="skipcard">
-                        <p class="statushabit">&#10004; Fail</p>
-                        <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
-                    </div>
-                    <div class="streakcard" id="totalcard">
-                        <p class="statushabit">&#10004; Total</p>
-                        <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
-                    </div>
-                </div>
-            </div>
-            <h2>Calender View</h2>
-            <div class="calender">
-                <img class="calenderimg" src="../assets/Images/calendar.png" alt="Calender">
-            </div>
-            <div class="higheststreak">
-                <p class="startingdate">Apr 01</p>
-                <p class="totlastreak">30</p>
-                <p class="endingdate">Apr 30</p>
-
-            </div>
-            <div class="progresshabit">
-
-            </div>
+        <div class="habitstarter">
+                <img src="../assets/Images/rocket.png" alt="habit gif" id="habitimg">
+                <h3>Start Today</h3>
+                <p>Start off today by making your habit very easy to achieve.
+                    By doing this you won't get burned out and give up.
+                </p>
+                <button id="startercancel">Cancel</button>
+                <button id="starternext">Next</button>
         </div>
 
 
@@ -135,43 +79,35 @@
                     <p></p>
                 </div>
                 <div>
-                    <h3 class="habitheading">Add Habit  <span id="close">&times;</span> </h3>
+                    <h3 class="habitheading">Add Habit </h3>
                     <p class="habitquote">Tackle your goals in daily doses</p>
                 </div>
             </div>
+
+
+            <!-- <form id="habitpopupform"> -->
             <div class="habitnamepopup">
                 <label for="habitname" id="habitnamelabel">Habit: </label>
-                <input id="habitname" placeholder="Add Habit"  required><br>
-                <!-- <label for="habitdescription" id="habitdeslabel">Habit Description:</label> 
-                <input id="habitdescription" type="text" placeholder="Habit Description"> <br>-->
-                <div class="habittype">
-                    <label for="habittype" id="habittypelabel">Habit Type: </label>
-                    <!-- <input type="checkbox" for="todocheck" id="todocheck"> -->
-                    <div class="checkbox-wrapper-33">
-                        <label class="checkbox">
-                          <input class="checkbox__trigger visuallyhidden" type="checkbox" />
-                          <span class="checkbox__symbol">
-                            <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28" version="1" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M4 14l8 7L24 7"></path>
-                            </svg>
-                          </span>
-                          <p class="checkbox__textwrapper">To Do</p>
-                        </label>
-                      </div>
-                    <!-- <input type="checkbox" for="donotdocheck" id="donotdocheck"> <label for="donotdocheck">Do Not Do</label> -->
-                    <div class="checkbox-wrapper-32">
-                        <input type="checkbox" name="checkbox-32" id="checkbox-32">
-                        <label for="checkbox-32">
-                          Don't Do
-                        </label>
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M 10 10 L 90 90" stroke="#000" stroke-dasharray="113" stroke-dashoffset="113"></path>
-                          <path d="M 90 10 L 10 90" stroke="#000" stroke-dasharray="113" stroke-dashoffset="113"></path>
-                        </svg>
-                      </div>
-                      
+                <input type="text" id="habitname" placeholder="Add Habit"  required><br>
+                <div class="iconcolor">
+                    <div class="icon">
+                        <input type="text" id="emojitextarea" class="habiticon">
+                        <p>Emoji</p>
+                    </div>
+
+                    <div class="color">
+                        <p class="habitcolor"></p>
+                        <p class="habitcolorspan">Color</p>
+                    </div>
                 </div>
-                <div class="weeklyfreq">
+                <div class="habittype">
+                    <label for="habittype" id="habittypelabel" name="habittype" required>Habit Type: </label>
+                    <input type="radio" name="habittype" id="todo">
+                    <label for="habittype" id="habittypelabel" name="habittype">To Do </label>
+                    <input type="radio" name="habittype" id="nottodo">
+                    <label for="habittype" id="habittypelabel" name="habittype">Not To Do</label>
+                </div>
+                <div class="weeklyfreq" required>
                     <p>Weekly Frequency: </p>
                     <button>Mon</button>
                     <button>Tue</button>
@@ -189,11 +125,160 @@
                     <button id="cancel">Cancel</button>
                     <button id="savehabit">Save Habit</button>
                 </div>
+            <!-- </form> -->
+
+
             </div>
+        </div>
+
+        <div class="habitstreak">
+            <div class="habitstreakheader">
+                <p class="habitname">Habit Name</p>
+                <p class="edithabit"><i class='fa fa-edit'></i></p>
+                <p id="deletehabit"><i class="fa fa-trash-o"></i><p>
+            </div>
+            <hr>
+
+            <div class="currentstreak">
+                <img src="../assets/Images/STREAK FIRE.svg" alt="Streak img" id="streakimg">
+                <div class="currstreakdays">
+                    <h3>Current Streak</h3>
+                    <p>1 Day</p>
+                </div>
+                <p id="streakfrom">From May 01 2023</p>
+            </div>
+
+
+            <div class="streak">
+                <div class="streakcardrow1">
+                    <div class="streakcard" id="donecard">
+                        <p class="statushabit">&#10004; COMPLETE</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                    <div class="streakcard" id="failcard">
+                        <p class="statushabit">&#10004; SKIP</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                </div>
+                <div class="streakcardrow2">
+                    <div class="streakcard" id="skipcard">
+                        <p class="statushabit">&#10004; FAIL</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                    <div class="streakcard" id="totalcard">
+                        <p class="statushabit">&#10004; TOTAL</p>
+                        <p class="totaldays">10 Days</p>
+                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calender">
+                    <div class="wrapper">
+                        <header>
+                            <p class="current-date"></p>
+                            <div class="icons">
+                            <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                            <span id="next" class="material-symbols-rounded">chevron_right</span>
+                            </div>
+                        </header>
+                        <div class="calendar">
+                            <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                            </ul>
+                            <ul class="days"></ul>
+                        </div>
+                    </div>
+            </div>
+            <!-- <div class="higheststreak">
+                <p class="startingdate">Apr 01</p>
+                <p class="totlastreak">30</p>
+                <p class="endingdate">Apr 30</p>
+
+            </div> -->
+            <div class="progresshabit">
+
+            </div>
+        </div>
+
+
+        <div class="notes">
+            <section>
+                <div class="habitheader">
+                    <div class="design">
+                        <p></p>
+                    </div>
+                    <div>
+                        <h3 class="habitheading">✨ Reflections </h3>
+                        <p class="habitquote">Take a moment and Reflect on your habit</p>
+                    </div>
+                </div>
+                <div class="title">
+                    <input type="text" id="title" placeholder="Title">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="first box">
+                            <input id="font-size" type="number" value="18" min="1" max="100" onchange="fontsize(this)">
+                        </div>
+                        <div class="second box">
+                            <button class="btn" data-type="heading">H</button>
+                            <button class="btn" data-type="bold">B</button>
+                            <button class="btn" data-type="italic"><i>i</i></button>
+                        </div>
+                        <div class="third box">
+                            <button type="button" onclick="leftalign(this)">
+                                <i class="fa-solid fa-align-left"></i>
+                            </button>
+                            <button type="button" onclick="centeralign(this)">
+                                <i class="fa-solid fa-align-center"></i>
+                            </button>
+                            <button type="button" onclick="rightalign(this)">
+                                <i class="fa-solid fa-align-right"></i>
+                            </button>
+                        </div>
+                        <div class="fourth box">
+                            <button class="btn" data-type="underline"><u>U</u></button>
+                            <button class="btn" data-type="ordered-list"><i class="fa-solid fa-list"></i></button>
+                            <button class="btn" data-type="unordered-list"><i class="fa-solid fa-list-ol"></i></button>
+                            <input type="color" onchange="fontcolor(this)">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="notes-editor" contenteditable="true"></div>
+                    </div>
+                </div>
+
+                <div class="savediv">
+                    <button id="cancelnotes">Cancel</button>
+                    <button id="savenotes">Save Notes</button>
+                </div>
+            </section>
         </div>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.4.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+<script>
+    $('#emojitextarea').emojioneArea({
+        ppxickerPosition: 'left',
+        searchPosition: "bottom",
+    })
+</script>
 <script src="../assets/JS/habit.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
+
 </html>

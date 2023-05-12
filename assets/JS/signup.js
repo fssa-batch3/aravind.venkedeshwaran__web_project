@@ -1,17 +1,17 @@
-let x = document.getElementById("login");
-let y = document.getElementById("register");
-let z = document.getElementById("btn");
+let loginForm = document.getElementById("login");
+let registerForm = document.getElementById("register");
+let btn = document.getElementById("btn");
 
 function register() {
-    x.style.left = "-400px";
-    y.style.left = "50px";
-    z.style.left = "110px";
+    loginForm.style.left = "-400px";
+    registerForm.style.left = "50px";
+    btn.style.left = "110px";
 }
 
 function login() {
-    x.style.left = "50px";
-    y.style.left = "450px";
-    z.style.left = "0";
+    loginForm.style.left = "50px";
+    registerForm.style.left = "450px";
+    btn.style.left = "0";
 }
 
 let registerform = document.getElementById("register");
