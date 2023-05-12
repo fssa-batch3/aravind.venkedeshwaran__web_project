@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,12 +24,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
     </style>
 
-
     <!-- bootstrap for adding icon  -->
     <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
     </script>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,12 +38,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
     </style>
 </head>
+
 <body>
     <div class="main">
         <div class="habit">
 
             <div class="greeting">
-                <p class="wish">Good Morning, <span id="username"></span><span class="dot">.</span></p>
+                <p class="wish">
+                    Good Morning, <span id="username"></span>
+                    <span class="dot">.</span>
+                </p>
                 <input type="text" id="bedtime" placeholder="Add Your Bedtime">
             </div>
 
@@ -72,7 +77,6 @@
                 <button id="starternext">Next</button>
         </div> -->
 
-
         <div class="addhabitpopup">
             <div class="habitheader">
                 <div class="design">
@@ -84,56 +88,60 @@
                 </div>
             </div>
 
-
             <form id="habitpopupform">
-            <div class="habitnamepopup">
-                <label for="habitname" id="habitnamelabel">Habit: </label>
-                <input type="text" id="habitname" placeholder="Add Habit"  required><br>
-                <div class="iconcolor">
-                    <div class="icon">
-                        <input type="text" id="emojitextarea" class="habiticon">
-                        <p>Emoji</p>
-                    </div>
+                <div class="habitnamepopup">
+                    <label for="habitname" id="habitnamelabel">Habit: </label>
+                    <input type="text" id="habitname" placeholder="Add Habit" required>
+                    <br>
+                    <div class="iconcolor">
+                        <div class="icon">
+                            <input type="text" id="emojitextarea" class="habiticon">
+                            <p>Emoji</p>
+                        </div>
 
-                    <div class="color">
-                        <p class="habitcolor"></p>
-                        <p class="habitcolorspan">Color</p>
+                        <div class="color">
+                            <p class="habitcolor"></p>
+                            <p class="habitcolorspan">Color</p>
+                        </div>
+                    </div>
+                    <div class="habittype">
+                        <label for="habittype" id="habittypelabel" name="habittype" required>Habit Type: </label>
+                        <input type="radio" name="habittype" id="todo">
+                        <label for="habittype" id="habittypelabel" name="habittype">To Do </label>
+                        <input type="radio" name="habittype" id="nottodo">
+                        <label for="habittype" id="habittypelabel" name="habittype">Not To Do</label>
+                    </div>
+                    <div class="weeklyfreq" required>
+                        <p>Weekly Frequency: </p>
+                        <button>Mon</button>
+                        <button>Tue</button>
+                        <button>Wed</button>
+                        <button>Thu</button>
+                        <button>Fri</button>
+                        <button>Sat</button>
+                        <button>Sun</button>
+                        <button>Week Days </button>
+                        <button>Every Day</button>
+                    </div>
+                    <label for="reminder" id="reminderlabel">Reminder: </label>
+                    <input type="time" id="reminder">
+                    <div class="savediv">
+                        <button id="cancel">Cancel</button>
+                        <button id="savehabit">Save Habit</button>
                     </div>
                 </div>
-                <div class="habittype">
-                    <label for="habittype" id="habittypelabel" name="habittype" required>Habit Type: </label>
-                    <input type="radio" name="habittype" id="todo">
-                    <label for="habittype" id="habittypelabel" name="habittype">To Do </label>
-                    <input type="radio" name="habittype" id="nottodo">
-                    <label for="habittype" id="habittypelabel" name="habittype">Not To Do</label>
-                </div>
-                <div class="weeklyfreq" required>
-                    <p>Weekly Frequency: </p>
-                    <button>Mon</button>
-                    <button>Tue</button>
-                    <button>Wed</button>
-                    <button>Thu</button>
-                    <button>Fri</button>
-                    <button>Sat</button>
-                    <button>Sun</button>
-                    <button>Week Days </button>
-                    <button>Every Day</button>
-                </div>
-                <label for="reminder" id="reminderlabel">Reminder: </label>
-                <input type="time" id="reminder">
-                <div class="savediv">
-                    <button id="cancel">Cancel</button>
-                    <button id="savehabit">Save Habit</button>
-                </div>
-            </div>
             </form>
         </div>
 
         <div class="habitstreak">
             <div class="habitstreakheader">
                 <p class="habitname">Habit Name</p>
-                <p class="edithabit"><i class='fa fa-edit'></i></p>
-                <p id="deletehabit"><i class="fa fa-trash-o"></i><p>
+                <p class="edithabit">
+                    <i class="fa fa-edit"></i>
+                </p>
+                <p id="deletehabit">
+                    <i class="fa fa-trash-o"></i>
+                <p>
             </div>
             <hr>
 
@@ -146,45 +154,52 @@
                 <p id="streakfrom">From May 01 2023</p>
             </div>
 
-
             <div class="streak">
                 <div class="streakcardrow1">
                     <div class="streakcard" id="donecard">
                         <p class="statushabit">&#10004; COMPLETE</p>
                         <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                        <p class="streaktill">
+                            <i class="fa fa-arrow-up"></i>7 Days
+                        </p>
                     </div>
                     <div class="streakcard" id="failcard">
                         <p class="statushabit">&#10004; SKIP</p>
                         <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                        <p class="streaktill">
+                            <i class="fa fa-arrow-up"></i>7 Days
+                        </p>
                     </div>
                 </div>
                 <div class="streakcardrow2">
                     <div class="streakcard" id="skipcard">
                         <p class="statushabit">&#10004; FAIL</p>
                         <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                        <p class="streaktill">
+                            <i class="fa fa-arrow-up"></i>7 Days
+                        </p>
                     </div>
                     <div class="streakcard" id="totalcard">
                         <p class="statushabit">&#10004; TOTAL</p>
                         <p class="totaldays">10 Days</p>
-                        <p class="streaktill"><i class="fa fa-arrow-up"></i>7 Days</p>
+                        <p class="streaktill">
+                            <i class="fa fa-arrow-up"></i>7 Days
+                        </p>
                     </div>
                 </div>
             </div>
 
             <div class="calender">
-                    <div class="wrapper">
-                        <header>
-                            <p class="current-date"></p>
-                            <div class="icons">
+                <div class="wrapper">
+                    <header>
+                        <p class="current-date"></p>
+                        <div class="icons">
                             <span id="prev" class="material-symbols-rounded">chevron_left</span>
                             <span id="next" class="material-symbols-rounded">chevron_right</span>
-                            </div>
-                        </header>
-                        <div class="calendar">
-                            <ul class="weeks">
+                        </div>
+                    </header>
+                    <div class="calendar">
+                        <ul class="weeks">
                             <li>Sun</li>
                             <li>Mon</li>
                             <li>Tue</li>
@@ -192,10 +207,10 @@
                             <li>Thu</li>
                             <li>Fri</li>
                             <li>Sat</li>
-                            </ul>
-                            <ul class="days"></ul>
-                        </div>
+                        </ul>
+                        <ul class="days"></ul>
                     </div>
+                </div>
             </div>
             <!-- <div class="higheststreak">
                 <p class="startingdate">Apr 01</p>
@@ -207,7 +222,6 @@
 
             </div>
         </div>
-
 
         <div class="notes">
             <section>
@@ -231,7 +245,9 @@
                         <div class="second box">
                             <button class="btn" data-type="heading">H</button>
                             <button class="btn" data-type="bold">B</button>
-                            <button class="btn" data-type="italic"><i>i</i></button>
+                            <button class="btn" data-type="italic">
+                                <i>i</i>
+                            </button>
                         </div>
                         <div class="third box">
                             <button type="button" onclick="leftalign(this)">
@@ -245,9 +261,15 @@
                             </button>
                         </div>
                         <div class="fourth box">
-                            <button class="btn" data-type="underline"><u>U</u></button>
-                            <button class="btn" data-type="ordered-list"><i class="fa-solid fa-list"></i></button>
-                            <button class="btn" data-type="unordered-list"><i class="fa-solid fa-list-ol"></i></button>
+                            <button class="btn" data-type="underline">
+                                <u>U</u>
+                            </button>
+                            <button class="btn" data-type="ordered-list">
+                                <i class="fa-solid fa-list"></i>
+                            </button>
+                            <button class="btn" data-type="unordered-list">
+                                <i class="fa-solid fa-list-ol"></i>
+                            </button>
                             <input type="color" onchange="fontcolor(this)">
                         </div>
                     </div>
@@ -267,7 +289,7 @@
         </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.6.4.js" ></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
 <script>
     $('#emojitextarea').emojioneArea({

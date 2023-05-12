@@ -129,41 +129,34 @@ sidepanelDiv.appendChild(toggleDiv);
 // document.body.appendChild(circle5);
 
 // toggle sidebar
-let sidepanel = document.querySelector('.sidepanel');
-let toggle = document.querySelector('.toggle');
-toggle.onclick = function(){
-    sidepanel.classList.toggle('active')
-}
-
-
-
+const sidepanel = document.querySelector(".sidepanel");
+const toggle = document.querySelector(".toggle");
+toggle.onclick = function () {
+  sidepanel.classList.toggle("active");
+};
 
 // Display Username
-let signedupusers = JSON.parse(localStorage.getItem("userdata"));
-let loggedinuser = JSON.parse(localStorage.getItem("userlogin"));
+const signedupusers = JSON.parse(localStorage.getItem("userdata"));
+const loggedinuser = JSON.parse(localStorage.getItem("userlogin"));
 
-for(let i = 0; i < signedupusers.length; i++){
-    if(loggedinuser == signedupusers[i]["email"]){
-        document.getElementById("username").innerText = signedupusers[i]["name"]
-    }
+for (let i = 0; i < signedupusers.length; i++) {
+  if (loggedinuser == signedupusers[i].email) {
+    document.getElementById("username").innerText = signedupusers[i].name;
+  }
 }
 
-
-
 // preloader
-let loaderDiv = document.createElement("div")
+const loaderDiv = document.createElement("div");
 loaderDiv.classList.add("loader-wrapper");
-loaderDiv.id = "loader"
+loaderDiv.id = "loader";
 document.body.appendChild(loaderDiv);
 document.querySelector(".main").append(loaderDiv);
 
-window.addEventListener("load", ()=>{
-    let loader = document.querySelector("#loader") ;
-    loader.classList.add("loaderHidden");
-    loader.addEventListener("transitionend", () => {
-        loader.style.display = "none"
-        document.querySelector("body").style.display = "block"
-    })
-    
-})
-
+window.addEventListener("load", () => {
+  const loader = document.querySelector("#loader");
+  loader.classList.add("loaderHidden");
+  loader.addEventListener("transitionend", () => {
+    loader.style.display = "none";
+    document.querySelector("body").style.display = "block";
+  });
+});

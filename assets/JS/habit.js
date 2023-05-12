@@ -1,10 +1,10 @@
-/*-----------------------------------------------date slider-----------------------------------------------*/
+/* -----------------------------------------------date slider----------------------------------------------- */
 const daystimelineDiv = document.querySelector(".daystimeline");
 const year = 2023;
 const month = 4; // May
 const day = 1; // Starting day of the month
 const getDate = new Date(year, month, day);
-let maytodec = []
+const maytodec = [];
 
 while (getDate.getFullYear() === year) {
   if (getDate.getDay() <= 6) {
@@ -27,18 +27,16 @@ for (let i = 6; i <= 91; i++) {
 
   const MonthOf2023 = document.createElement("p");
   MonthOf2023.id = "MonthOf2023";
-  MonthOf2023.innerText = maytodec[i].slice(3, 7)
+  MonthOf2023.innerText = maytodec[i].slice(3, 7);
 
   datedayDiv.appendChild(dayOfWeek);
   datedayDiv.appendChild(dateOfMonth);
   datedayDiv.appendChild(MonthOf2023);
   daystimelineDiv.appendChild(datedayDiv);
-
 }
 
-
 // drag dates
-daystimelineDiv.addEventListener("wheel", e => {
+daystimelineDiv.addEventListener("wheel", (e) => {
   e.preventDefault();
   daystimelineDiv.scrollLeft += e.deltaY;
 });
@@ -47,9 +45,9 @@ let isDragging = false;
 let startPosition = 0;
 let currentTranslate = 0;
 let previousTranslate = 0;
-let animationId = 0;
+const animationId = 0;
 
-daystimelineDiv.addEventListener("mousedown", e => {
+daystimelineDiv.addEventListener("mousedown", (e) => {
   isDragging = true;
   startPosition = e.clientX;
   daystimelineDiv.style.cursor = "grabbing";
@@ -59,7 +57,7 @@ daystimelineDiv.addEventListener("mousedown", e => {
   cancelAnimationFrame(animationId);
 });
 
-daystimelineDiv.addEventListener("mousemove", e => {
+daystimelineDiv.addEventListener("mousemove", (e) => {
   if (isDragging) {
     const currentPosition = e.clientX;
     const distance = currentPosition - startPosition;
@@ -85,7 +83,6 @@ function getTranslateX() {
   return matrix.m41;
 }
 
-
 // showing today's date first
 // let today = Date().slice(0,15);
 // for(let i = 6; i <= 91; i++){
@@ -95,28 +92,25 @@ function getTranslateX() {
 //   }
 // }
 
-
-/*-----------------------------------------------Add Habit Function-----------------------------------------------*/
-let habitPage = document.querySelector(".habit");
-let addHabitInput = document.getElementById("addhabit");
-let habitpopup = document.querySelector(".addhabitpopup");
-let habitList = document.querySelector(".habitlist");
-let habitName = document.getElementById("habitname");
-let saveHabit = document.getElementById("savehabit");
-let habitDetail = document.querySelector(".habitdetails");
-let habiticon = document.querySelector(".habiticon");
+/* -----------------------------------------------Add Habit Function----------------------------------------------- */
+const habitPage = document.querySelector(".habit");
+const addHabitInput = document.getElementById("addhabit");
+const habitpopup = document.querySelector(".addhabitpopup");
+const habitList = document.querySelector(".habitlist");
+const habitNameInput = document.getElementById("habitname");
+const saveHabit = document.getElementById("savehabit");
+const habitDetail = document.querySelector(".habitdetails");
+const habiticon = document.querySelector(".habiticon");
 
 // habiticon.addEventListener("change",()=>{
 //   let emojiDiv = document.querySelector(".emojioneemoji");
 // })
 
-
-
 // let habitstarter = document.querySelector(".habitstarter");
 // addHabitInput.addEventListener("change", () => {
 //   habitstarter.style.display = "block";
 //   habitPage.style.filter = "blur(3px)";
-//   habitName.value = addHabitInput.value
+//   habitNameInput.value = addHabitInput.value
 // });
 
 // let habitstarterCancel = document.getElementById("startercancel");
@@ -130,59 +124,57 @@ addHabitInput.addEventListener("change", () => {
   // habitstarter.style.display = "none";
   habitpopup.style.display = "block";
   habitPage.style.filter = "blur(3px)";
-  habitName.value = addHabitInput.value;
+  habitNameInput.value = addHabitInput.value;
 });
 
-let cancelHabit = document.getElementById("cancel");
+const cancelHabit = document.getElementById("cancel");
 
 cancelHabit.onclick = function () {
   habitpopup.style.display = "none";
-  habitPage.style.filter = "none"
-}
+  habitPage.style.filter = "none";
+};
 
-let cancelnotes = document.getElementById("cancelnotes");
-let notespopup = document.querySelector(".notes");
+const cancelnotes = document.getElementById("cancelnotes");
+const notespopup = document.querySelector(".notes");
 
 cancelnotes.onclick = function () {
   notespopup.style.display = "none";
-  habitPage.style.filter = "none"
-}
+  habitPage.style.filter = "none";
+};
 
+const existinghabit = JSON.parse(localStorage.getItem("userhabits")) ?? [];
 
+let isEditingHabit = false;
+if(!isEditingHabit){
+  existinghabit.forEach((habit) => renderhabit(habit));
 
-
-let existinghabit = JSON.parse(localStorage.getItem("userhabits")) ?? [];
-existinghabit.forEach(habit => renderhabit(habit))
-
-saveHabit.addEventListener('click',
-  function addhabit() {
-    let newhabit = {
-      habitId: Math.floor(Math.random() * Date.now()),
-      habitName: habitName.value,
-      createddate: Date().slice(4, 16),
-      createdtime: Date().slice(16, 25),
-      habitType: "To Do",
-      habitRepeat: "everyday",
-      habitRemainder: "",
-      habitActive: [],
-      currentStreak: "",
-      streakHistory: [],
-      status: ""
-    }
-    existinghabit.push(newhabit);
-    localStorage.setItem("userhabits", JSON.stringify(existinghabit))
-    renderhabit(newhabit);
-    addHabitInput.value = ""
-    habitpopup.style.display = "none";
-    habitPage.style.filter = "none"
-    Notify.success(`${habitName.value} Habit Added`);
-  });
+saveHabit.addEventListener("click", () => {
+  const newhabit = {
+    habitId: Math.floor(Math.random() * Date.now()),
+    habitName: habitNameInput.value,
+    createddate: Date().slice(4, 16),
+    createdtime: Date().slice(16, 25),
+    habitType: "To Do",
+    habitRepeat: "everyday",
+    habitRemainder: "",
+    habitActive: [],
+    currentStreak: "",
+    streakHistory: [],
+    status: "",
+  };
+  existinghabit.push(newhabit);
+  localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+  renderhabit(newhabit);
+  addHabitInput.value = "";
+  habitpopup.style.display = "none";
+  habitPage.style.filter = "none";
+  Notify.success(`${habitName.value} Habit Added`);
+});}
 
 // render habit in habit page
 
 function renderhabit(habit) {
-
-  let li = document.createElement('li');
+  const li = document.createElement("li");
   li.innerHTML = `<div id="habitcard">
                         <div id="habitnamecard">
                           
@@ -217,55 +209,51 @@ function renderhabit(habit) {
                             <p id="notes"  onclick="revealnotes() "><i class='fas fa-book'></i> Notes</p>
                       </div>
                       
-                      `
-  habitList.append(li)
+                      `;
+  habitList.append(li);
 }
 
 // saveHabit.addEventListener('click', addhabit())
 
-let habitnamecard = document.querySelectorAll("#habitnamecard");
-let habittimes = document.querySelectorAll("#habittimes");
+const habitnamecard = document.querySelectorAll("#habitnamecard");
+const habittimes = document.querySelectorAll("#habittimes");
 
 for (let i = 0; i < habittimes.length; i++) {
-  habittimes[i].addEventListener('click', () => {
+  habittimes[i].addEventListener("click", () => {
     habittimes[i].style.transform = "translateX(-200px)";
-  })
+  });
 }
 
 for (let i = 0; i < habitnamecard.length; i++) {
-  habitnamecard[i].addEventListener('click', () => {
+  habitnamecard[i].addEventListener("click", () => {
     habitnamecard[i].style.transform = "translateX(180px)";
-
-  })
+  });
 }
 
-
-let streakbtn = document.querySelectorAll("#streak");
-let habitstreakDiv = document.querySelector(".habitstreak");
+const streakbtn = document.querySelectorAll("#streak");
+const habitstreakDiv = document.querySelector(".habitstreak");
 function revealstreak() {
-  habitstreakDiv.style.display = 'block';
+  habitstreakDiv.style.display = "block";
 }
 
-let notesbtn = document.querySelectorAll("#notes");
-let notesDiv = document.querySelector(".notes");
+const notesbtn = document.querySelectorAll("#notes");
+const notesDiv = document.querySelector(".notes");
 function revealnotes() {
   notesDiv.style.display = "block";
   habitPage.style.filter = "blur(3px)";
 }
 
+/* -------------------------------------------------STREAK SCRIPT-------------------------------------------------- */
 
-/*-------------------------------------------------STREAK SCRIPT--------------------------------------------------*/
-
-
-let habitcheck = document.querySelectorAll("#check-5");
+const habitcheck = document.querySelectorAll("#check-5");
 for (let i = 0; i < habitcheck.length; i++) {
   habitcheck[i].onclick = function () {
     if (habitcheck[i].checked) {
-      let gettoday = Date().slice(0, 15);
-      existinghabit[i]["habitActive"].push(gettoday);
-      localStorage.setItem("userhabits", JSON.stringify(existinghabit))
+      const gettoday = Date().slice(0, 15);
+      existinghabit[i].habitActive.push(gettoday);
+      localStorage.setItem("userhabits", JSON.stringify(existinghabit));
     }
-  }
+  };
 }
 
 // function streak() {
@@ -276,7 +264,7 @@ for (let i = 0; i < habitcheck.length; i++) {
 //     let firstIndex = existinghabit[i].habitActive[j];
 //     let secondIndex = existinghabit[i].habitActive[j + 1];
 //     if (secondIndex) {
-//       if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check 
+//       if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check
 //         let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
 //         if (datedifference == 1) {
 //           streakcount++
@@ -296,92 +284,123 @@ for (let i = 0; i < habitcheck.length; i++) {
 
 // }
 
-let streakhabitname = document.querySelector(".habitname");
-let deletehabit = document.querySelector("#deletehabit");
-let edithabit = document.querySelector(".edithabit");
-let habitpopupform = document.getElementById("habitpopupform");
+const streakhabitname = document.querySelector(".habitname");
+const deletehabit = document.querySelector("#deletehabit");
+const edithabit = document.querySelector(".edithabit");
+const habitpopupform = document.getElementById("habitpopupform");
 
-streakbtn.forEach((item,index)=>{
+streakbtn.forEach((item, index) => {
   // habit name
-  item.addEventListener('click', ()=>{
-
+  item.addEventListener("click", () => {
     streakhabitname.innerText = existinghabit[index].habitName;
     deletehabit.setAttribute("onclick", `deleteexistinghabit(${index})`);
-    edithabit.setAttribute('onclick', `editinghabit(${index})`)
-
-
+    edithabit.setAttribute("onclick", `editinghabit(${index})`);
   });
-
 });
 
-
-function deleteexistinghabit(index){
+function deleteexistinghabit(index) {
   // Notify.error("Habit Deleted");
   existinghabit.splice(index, 1);
   localStorage.setItem("userhabits", JSON.stringify(existinghabit));
   location.reload();
 }
 
-function editinghabit(index) {
-  habitpopup.style.display = "block";
-  habitPage.style.filter = "blur(3px)";
+// edithabit.onclick = ()=>{
+//   isEditingHabit = true;
 
-  habitName.value = existinghabit[index]["habitName"];
-  habitpopupform.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    existinghabit[index].habitName = habitName.value;
-    localStorage.setItem("userhabits", JSON.stringify(existinghabit));
-  });
-};
+  // if(isEditingHabit == true){
+  
+    function editinghabit(index) {
+      habitpopup.style.display = "block";
+      habitPage.style.filter = "blur(3px)";
+    
+      habitNameInput.value = existinghabit[index].habitName;
+    
+      
+      habitNameInput.addEventListener("change", (e) => {
+        // e.preventDefault();
+        existinghabit[index].habitName = habitNameInput.value;
+        localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+      });
+      }
+    // }
+// }
+
+console.log(isEditingHabit);
 
 
-
-/*-------------------------------------------------CALENDAR SCRIPT-----------------------------------------------*/
-const daysTag = document.querySelector(".days"),
-  currentDate = document.querySelector(".current-date"),
-  prevNextIcon = document.querySelectorAll(".icons span");
+/* -------------------------------------------------CALENDAR SCRIPT----------------------------------------------- */
+const daysTag = document.querySelector(".days");
+const currentDate = document.querySelector(".current-date");
+const prevNextIcon = document.querySelectorAll(".icons span");
 
 // getting new date, current year and month
-let date = new Date(),
-  currYear = date.getFullYear(),
-  currMonth = date.getMonth();
+let date = new Date();
+let currYear = date.getFullYear();
+let currMonth = date.getMonth();
 
 // storing full name of all months in array
-const months = ["January", "February", "March", "April", "May", "June", "July",
-  "August", "September", "October", "November", "December"];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const renderCalendar = () => {
-  let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
-    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
-    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+  const firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // getting first day of month
+  const lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // getting last date of month
+  const lastDayofMonth = new Date(
+    currYear,
+    currMonth,
+    lastDateofMonth
+  ).getDay(); // getting last day of month
+  const lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
   let liTag = "";
 
-  for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+  for (let i = firstDayofMonth; i > 0; i--) {
+    // creating li of previous month last days
     liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
   }
 
-  for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
+  for (let i = 1; i <= lastDateofMonth; i++) {
+    // creating li of all days of current month
     // adding active class to li if the current day, month, and year matched
-    let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-      && currYear === new Date().getFullYear() ? "active" : "";
+    const isToday =
+      i === date.getDate() &&
+      currMonth === new Date().getMonth() &&
+      currYear === new Date().getFullYear()
+        ? "active"
+        : "";
     liTag += `<li class="${isToday}">${i}</li>`;
   }
 
-  for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+  for (let i = lastDayofMonth; i < 6; i++) {
+    // creating li of next month first days
+    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
   currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
   daysTag.innerHTML = liTag;
-}
+};
 renderCalendar();
 
-prevNextIcon.forEach(icon => { // getting prev and next icons
-  icon.addEventListener("click", () => { // adding click event on both icons
+prevNextIcon.forEach((icon) => {
+  // getting prev and next icons
+  icon.addEventListener("click", () => {
+    // adding click event on both icons
     // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
     currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
 
-    if (currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
+    if (currMonth < 0 || currMonth > 11) {
+      // if current month is less than 0 or greater than 11
       // creating a new date of current year & month and pass it as date value
       date = new Date(currYear, currMonth, new Date().getDate());
       currYear = date.getFullYear(); // updating current year with new date year
@@ -393,16 +412,12 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
   });
 });
 
-
-
-
-
-/*-----------------------------------------------NOTES SCRIPT-----------------------------------------------*/
+/* -----------------------------------------------NOTES SCRIPT----------------------------------------------- */
 const notesarea = document.querySelector(".notes-editor");
 
 function fontsize(e) {
-  let value = e.value;
-  notesarea.style.fontSize = value + "px";
+  const { value } = e;
+  notesarea.style.fontSize = `${value}px`;
   // console.log(e);
 }
 
@@ -410,8 +425,7 @@ function bold(e) {
   if (notesarea.style.fontWeight == "bold") {
     notesarea.style.fontWeight = "normal";
     e.classList.remove("active");
-  }
-  else {
+  } else {
     notesarea.style.fontWeight = "bold";
     e.classList.add("active");
   }
@@ -421,8 +435,7 @@ function italic(e) {
   if (notesarea.style.fontStyle == "italic") {
     notesarea.style.fontStyle = "normal";
     e.classList.remove("active");
-  }
-  else {
+  } else {
     notesarea.style.fontStyle = "italic";
     e.classList.add("active");
   }
@@ -432,8 +445,7 @@ function underline(e) {
   if (notesarea.style.textDecoration == "underline") {
     notesarea.style.textDecoration = "none";
     e.classList.remove("active");
-  }
-  else {
+  } else {
     notesarea.style.textDecoration = "underline";
     e.classList.add("active");
   }
@@ -455,8 +467,7 @@ function uppercase(e) {
   if (notesarea.style.textTransform == "uppercase") {
     notesarea.style.textTransform = "none";
     e.classList.remove("active");
-  }
-  else {
+  } else {
     notesarea.style.textTransform = "uppercase";
     e.classList.add("active");
   }
@@ -472,7 +483,7 @@ function normalizenotes() {
 }
 
 function fontcolor(e) {
-  let value = e.value;
+  const { value } = e;
   notesarea.style.color = value;
 }
 
@@ -481,38 +492,37 @@ function fontcolor(e) {
 // });
 
 // const toolbar = document.querySelector('.notes-toolbar');
-const buttons = document.querySelectorAll('.btn');
-const editor = document.querySelector('.notes-editor');
+const buttons = document.querySelectorAll(".btn");
+const editor = document.querySelector(".notes-editor");
 
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    const type = button.getAttribute('data-type');
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const type = button.getAttribute("data-type");
 
     switch (type) {
-      case 'heading':
-        document.execCommand('formatBlock', false, '<h2>');
+      case "heading":
+        document.execCommand("formatBlock", false, "<h2>");
         break;
-      case 'bold':
-        document.execCommand('bold', false, null);
+      case "bold":
+        document.execCommand("bold", false, null);
         break;
-      case 'italic':
-        document.execCommand('italic', false, null);
+      case "italic":
+        document.execCommand("italic", false, null);
         break;
-      case 'underline':
-        document.execCommand('underline', false, null);
+      case "underline":
+        document.execCommand("underline", false, null);
         break;
-      case 'ordered-list':
-        document.execCommand('insertOrderedList', false, null);
+      case "ordered-list":
+        document.execCommand("insertOrderedList", false, null);
         break;
-      case 'unordered-list':
-        document.execCommand('insertUnorderedList', false, null);
+      case "unordered-list":
+        document.execCommand("insertUnorderedList", false, null);
         break;
       default:
         break;
     }
 
-    button.classList.toggle('active');
+    button.classList.toggle("active");
     editor.focus();
   });
 });
-

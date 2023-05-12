@@ -15,7 +15,8 @@
         <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
 
        <!-- Nunito Font Link -->
-       <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
        <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); </style>
     
@@ -32,11 +33,16 @@
 
 </head>
 <body>
-    <div class="main"> <!--The Total Page starts-->
+    <div class="main">
+ <!--The Total Page starts-->
         <!-- journal page starts -->
         <div class="journal">
-            <a href="/"><button>All Notes</button></a>
-            <a href="/"><button>Folder</button></a>
+            <a href="/">
+<button>All Notes</button>
+</a>
+            <a href="/">
+<button>Folder</button>
+</a>
 
             <h1>Journal</h1>
             <h3 id="date"></h3>
@@ -81,8 +87,6 @@
                         </div>
                      </div> -->
 
-                     
-
                    <!--  <div class="main_notes">
                         <div class="date">25 Mar</div>
                         <div class="heading">What is Database?</div>
@@ -99,7 +103,11 @@
             <!-- each section of journal ends -->
 
             <div class="addnotes">
-                <p><a href="notescreate.html"><i class="fa fa-plus"></i>Add New Notes</a></p>
+                <p>
+<a href="notescreate.html">
+<i class="fa fa-plus"></i>Add New Notes
+</a>
+</p>
                 
             </div>
 
@@ -107,10 +115,8 @@
        
     </div>
 
-
-
 <script>
-    let currentDate = new Date().toJSON().slice(0, 10)
+    const currentDate = new Date().toJSON().slice(0, 10)
     document.querySelector("#date").innerHTML = `<h3>Today | ${currentDate}</h3>`;
 
     // let dot = document.querySelector(".dot");

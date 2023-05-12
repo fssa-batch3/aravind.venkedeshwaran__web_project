@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../assets/css/animedoro.css">
     <link rel="stylesheet" href="../assets/css/common.css">
 
-
     <!-- ubuntu font added -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,22 +35,38 @@
 <div class="main">
   <div class="timer">
       <div class="timer-top">
-          <a href="timer.html"><button><img src="../assets/Images/tomato-icon.svg" alt="tomoto" width="30px"> Pomodoro</button></a>
-          <a href="#"><button><img src="../assets/Images/icons8-naruto.svg" alt="naruto" width="30px"> Animedoro</button></a>
+          <a href="timer.html">
+<button>
+<img src="../assets/Images/tomato-icon.svg" alt="tomoto" width="30px"> Pomodoro
+</button>
+</a>
+          <a href="#">
+<button>
+<img src="../assets/Images/icons8-naruto.svg" alt="naruto" width="30px"> Animedoro
+</button>
+</a>
       </div>
   
       <br>
   
       <div class="timer-mid">
-          <button><img src="../assets/Images/work.png" alt="timer" width="24px"> Work</button>
-          <button><img src="../assets/Images/movie.png" alt="long break" width="24px"> Movies</button>
+          <button>
+<img src="../assets/Images/work.png" alt="timer" width="24px"> Work
+</button>
+          <button>
+<img src="../assets/Images/movie.png" alt="long break" width="24px"> Movies
+</button>
       </div>
   
       <p>50:00</p>
   
       <div class="timer-end">
-          <button ><img src="../assets/Images/start.gif" alt="start" width="20px"> Start</button>
-          <button><img src="../assets/Images/PAUSE.gif" alt="" width="20px"> Pause</button>
+          <button >
+<img src="../assets/Images/start.gif" alt="start" width="20px"> Start
+</button>
+          <button>
+<img src="../assets/Images/PAUSE.gif" alt="" width="20px"> Pause
+</button>
           <i class="fa fa-repeat"></i>
       </div>
   
@@ -65,16 +80,20 @@
           allowfullscreen=""
           frameBorder="0"
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy" >
+          loading="lazy">
           </iframe>
           <!-- spotify playlist script ends -->
   
           <!-- Full/ close screen Script starts -->
-          <button onclick="closeFullscreen();" id="fullscreen" aria-label="fullscreen"><img src="../assets/Images/exit fullscreen.png" alt="" width="50px"></button>
-          <button onclick="openFullscreen();" id="fullscreen" aria-label="closescreen"> <img src="../assets/Images/fullscreen.png" alt=""></button>
+          <button onclick="closeFullscreen();" id="fullscreen" aria-label="fullscreen">
+<img src="../assets/Images/exit fullscreen.png" alt="" width="50px">
+</button>
+          <button onclick="openFullscreen();" id="fullscreen" aria-label="closescreen">
+ <img src="../assets/Images/fullscreen.png" alt="">
+</button>
   
           <script>
-          var elem = document.querySelector('.timer');
+          const elem = document.querySelector('.timer');
           function openFullscreen() {
             if (elem.requestFullscreen) {
               elem.requestFullscreen();
@@ -97,7 +116,8 @@
           </script>
   
           <!-- Full/close screen script ends -->
-  </div><!-- timer ends -->
+  </div>
+<!-- timer ends -->
 </div>
 <script src="../assets/JS/template.js"></script>
 </body>

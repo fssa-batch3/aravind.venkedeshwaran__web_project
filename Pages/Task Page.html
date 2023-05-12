@@ -26,7 +26,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
     </style>
 
-
     <!-- bootstrap for adding icon  -->
     <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
     </script>
@@ -49,16 +48,25 @@
         <!-- Header -->
         <div class="task-page">
             <div class="top">
-                <p class="top-1">Good Morning, <span id="username"></span><span class="dot">.</span></p>
+                <p class="top-1">
+Good Morning, <span id="username"></span>
+<span class="dot">.</span>
+</p>
                 <p class="top-2">If not now. When?</p>
                 <div class="date-task">
-                    <p><span id="digitaltime"></span> <br> <span class="day"></span> <br> <span class="date"></span> <br> <span class="month"></span>
+                    <p>
+<span id="digitaltime"></span>
+ <br>
+ <span class="day"></span>
+ <br>
+ <span class="date"></span>
+ <br>
+ <span class="month"></span>
                     </p>
                     <input for="taskinput" type="text" name="addtask" id="add-task" placeholder="+  Add Task..." autofocus>
                     <button id="addbtn">ADD</button>
                 </div>
             </div>
-
 
             <!-- Task List -->
             <div class="addtasks">
@@ -68,19 +76,31 @@
 
         </div>
 
-
         <!-- Task Details -->
         <div class="taskDetails">
-            <h2 id="taskName"><span id="close">&times;</span></h2>
+            <h2 id="taskName">
+<span id="close">&times;</span>
+</h2>
 
-            <button><i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me</button>
-            <Button><i class="fa fa-hashtag" style="color:violet"></i>Tags</Button>
-            <button><i class="fa fa-user"></i>Personal</button>
-            <button><i class="fa fa-suitcase" style="color:skyblue"></i>Work</button> <br>
+            <button>
+<i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me
+</button>
+            <Button>
+<i class="fa fa-hashtag" style="color:violet"></i>Tags
+</Button>
+            <button>
+<i class="fa fa-user"></i>Personal
+</button>
+            <button>
+<i class="fa fa-suitcase" style="color:skyblue"></i>Work
+</button>
+ <br>
             <label for="time">Due Time: </label>
-            <input type="time" id="duetime"> <br>
+            <input type="time" id="duetime">
+ <br>
             <label for="date">Due Date: </label>
-            <input type="date" id="duedate"> <br>
+            <input type="date" id="duedate">
+ <br>
 
             <label for="Priority">Priority Of Your Task: </label>
             <select name="Priority" id="Priority">
@@ -90,7 +110,7 @@
                 <option value="Waste Of Time">Waste Of Time</option>
             </select>
             <h3>Notes:</h3>
-            <textarea placeholder="Insert Your Notes Here" id="notes" rows="6" cols="45" ></textarea>
+            <textarea placeholder="Insert Your Notes Here" id="notes" rows="6" cols="45"></textarea>
             <div class="subtask">
                 <h3>Sub Task:</h3>
                 <!-- <button id="subtaskbtn"><i class="fa fa-square-o"></i> Add Sub Task</button> <br>-->
@@ -101,7 +121,6 @@
             <p class="files">Click here to add / drop your files here</p>
         </div>
         <!-- task details ends -->
-
 
         <!-- Suggestion Task -->
         <!-- <div class="suggestiontask">
@@ -115,13 +134,11 @@
             </div>
         </div>
 
-
          Suggestion Bar -->
        <!-- <div class="sidebaractivator">
             <div id="bulb"><i class="fa fa-lightbulb-o"></i></div>
             <div id="arrow"><i class='fas fa-arrow-right'></i></div>
         </div> -->
-
         
     </div>
 </body>

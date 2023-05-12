@@ -11,13 +11,13 @@
 
 // // intializing connection to MySQL Database
 // const connection = mysql.createConnection({
-//     // define mysql confrigation in json format 
+//     // define mysql confrigation in json format
 //     host: "localhost",
 //     user: "root",
 //     password: "password",
 //     database:"freshbase"
 // })
-// //connecting to mysql 
+// //connecting to mysql
 // connection.connect(error => {
 //     if(error){
 //         throw error;
@@ -27,7 +27,7 @@
 //     }
 // })
 
-// // geting neccesary html files 
+// // geting neccesary html files
 // app.get('/',(request, response) => {
 //     response.sendFile(__dirname + "/index.html")
 // })
@@ -68,14 +68,14 @@
 //     response.sendFile(__dirname + "/Pages/leaderboard.html")
 // })
 
-// //  LOGIN CHECK 
+// //  LOGIN CHECK
 // app.post('/',encoder, (request, response) => {
 //     let loginname = request.body.emaillogin;
 //     let loginemail = request.body.emaillogin;
 //     let loginpassword = request.body.passwordlogin;
 //     let loginCheck  = `SELECT * FROM users `;
 //     connection.query(loginCheck, (err, result) => {
-//     let j = 0;  
+//     let j = 0;
 //     for(let i =0; i < result.length; i++){
 //         if(result[i]["useremail"] === loginemail || result[i]["username"] === loginname && result[i]["userpassword"] == loginpassword){
 //             j = 1;
@@ -95,14 +95,12 @@
 //     })
 // })
 
-
-// //  SINGUP STORE 
+// //  SINGUP STORE
 // app.post('/',encoder, (request, response) => {
 //     let username = request.body.name;
 //     let useremail = request.body.email;
 //     let userpassword = request.body.password;
 
-    
 //     let sql = "INSERT INTO users (username, useremail, userpassword) VALUES ('"+username+ "', '"+useremail+"','"+userpassword+"')";
 //     connection.query(sql, function (err, result) {
 //     if (result.length > 0 ) {
@@ -117,8 +115,7 @@
 //   });
 // });
 
-
-// // Task Store 
+// // Task Store
 // app.post('/task',encoder, (request, response) => {
 //     let taskinput = request.body.addtask;
 //     let sql = `INSERT INTO user_task (task) VALUES (${taskinput})`;
@@ -130,6 +127,5 @@
 //     })
 // });
 
-
-// // PORT NUMBER 
+// // PORT NUMBER
 // app.listen(3300)

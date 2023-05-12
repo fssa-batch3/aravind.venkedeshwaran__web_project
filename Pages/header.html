@@ -25,7 +25,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
     </style>
 
-
     <!-- bootstrap for adding icon  -->
     <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
     </script>
@@ -66,10 +65,10 @@
 </body>
 <script>
     // Display today date, day and month
-    let day = document.querySelector(".day")
-    let date = document.querySelector(".date");
-    let month = document.querySelector(".month");
-    let currentDate = Date();
+    const day = document.querySelector(".day")
+    const date = document.querySelector(".date");
+    const month = document.querySelector(".month");
+    const currentDate = Date();
     day.innerText = currentDate.slice(0,4);
     date.innerText = currentDate.slice(8,10);
     month.innerText = currentDate.slice(4,7);
