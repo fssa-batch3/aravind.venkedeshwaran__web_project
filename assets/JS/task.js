@@ -38,43 +38,67 @@ function addtask() {
 }
 
 // render task in local storage function
+// function rendertask(task) {
+//   const li = document.createElement("li");
+//   const indexStatus = existingtask.findIndex(
+//     (t) => t.taskname == task.taskname
+//   );
+//   if (existingtask[indexStatus].status == "completed") {
+//     li.innerHTML = `<span id="taskspan" onclick="popup()">
+//                     <span id="taskHeading"> <s>${task.taskname}</s></span>
+//                     <span id="todosdescrip">Project Description</span>
+//                     </span>
+//                     <button id="checkmark" >&#10004;</button>
+//                     <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
+//                     `;
+//   } else {
+//     li.innerHTML = `<span id="taskspan" onclick="popup()">
+//                         <span id="taskHeading">${task.taskname}</span>
+//                         <span id="todosdescrip">Project Description</span>
+//                         </span>
+
+//                     <button id="checkmark" >&#10004;</button>
+//                     <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
+//                     `;
+//   }
+//   li.querySelector("#checkmark").addEventListener("click", () => {
+//     const indexDone = existingtask.findIndex(
+//       (t) => t.taskname == task.taskname
+//     );
+//     li.innerHTML = `<span id="taskspan" onclick="popup()">
+//                         <span id="taskHeading"> <s>${task.taskname}</s></span>
+//                         <span id="todosdescrip">Project Description</span>
+//                         </span>
+//                         <button id="checkmark" >&#10004;</button>
+//                         <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`;
+//     existingtask[indexDone].status = "completed";
+//     localStorage.setItem("usertasks", JSON.stringify(existingtask));
+//     Notify.success(`${task.taskname} Task Completed`);
+//   });
+//   li.querySelector("#deletebtn").addEventListener("click", () => {
+//     const indexDel = existingtask.findIndex((t) => t.taskname == task.taskname);
+//     existingtask.splice(indexDel, 1);
+//     localStorage.setItem("usertasks", JSON.stringify(existingtask));
+//     Notify.error(`${task.taskname} Task Removed`);
+//     li.remove();
+//   });
+//   tasklist.append(li);
+// }
+
+// Task Details
+
 function rendertask(task) {
   const li = document.createElement("li");
-  const indexStatus = existingtask.findIndex(
-    (t) => t.taskname == task.taskname
-  );
-  if (existingtask[indexStatus].status == "completed") {
-    li.innerHTML = `<span id="taskspan" onclick="popup()">
-                    <span id="taskHeading"> <s>${task.taskname}</s></span>
-                    <span id="todosdescrip">Project Description</span>
-                    </span>
+
+  li.innerHTML = `<div class="taskname">
+                    <input id="02-11" type="checkbox" name="r" value="2">
+                    <label for="02-11" onclick="popup()">${task.taskname}</</label>
+                  </div>
                     <button id="checkmark" >&#10004;</button>
-                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
-                    `;
-  } else {
-    li.innerHTML = `<span id="taskspan" onclick="popup()">
-                        <span id="taskHeading">${task.taskname}</span>
-                        <span id="todosdescrip">Project Description</span>
-                        </span>
-                    
-                    <button id="checkmark" >&#10004;</button>
-                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>
-                    `;
-  }
-  li.querySelector("#checkmark").addEventListener("click", () => {
-    const indexDone = existingtask.findIndex(
-      (t) => t.taskname == task.taskname
-    );
-    li.innerHTML = `<span id="taskspan" onclick="popup()">
-                        <span id="taskHeading"> <s>${task.taskname}</s></span>
-                        <span id="todosdescrip">Project Description</span>
-                        </span>
-                        <button id="checkmark" >&#10004;</button>
-                        <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`;
-    existingtask[indexDone].status = "completed";
-    localStorage.setItem("usertasks", JSON.stringify(existingtask));
-    Notify.success(`${task.taskname} Task Completed`);
-  });
+                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`;
+
+
+
   li.querySelector("#deletebtn").addEventListener("click", () => {
     const indexDel = existingtask.findIndex((t) => t.taskname == task.taskname);
     existingtask.splice(indexDel, 1);
@@ -85,7 +109,6 @@ function rendertask(task) {
   tasklist.append(li);
 }
 
-// Task Details
 const taskTitle = document.getElementById("taskName");
 const taskspanlist = document.querySelectorAll("li");
 taskspanlist.forEach((task, index) => {
@@ -221,91 +244,4 @@ window.onclick = function (event) {
   if (event.target == taskPage) {
     taskDetails.style.display = "none";
   }
-};
-
-// Digital Clock
-// let digitaltime = document.getElementById("digitaltime")
-// let thishour = displayClock().slice(16,21);
-// window.onload = displayClock();
-// function displayClock(){
-//     let display = Date();
-//     document.querySelector("#digitaltime").innerHTML = display.slice(16,25);
-//     setTimeout(displayClock, 1000);
-//     return display
-// }
-// digitaltime.style.display = "none";
-
-// Task suggestion
-
-// function tasksuggestion(task) {
-//     if(thishour == "20:40" && task.status == "not completed" && (task.loc == "myday" || task.loc == "suggestion")){
-//         let indexlocation = existingtask.findIndex(t => t.taskId == task.taskId)
-//         existingtask[indexlocation]["loc"] = "suggestion";
-//         let weekday = "Yesterday";
-//         let li = document.createElement('li')
-//         li.innerHTML = `<span id="suggestionspan"><i class="fa fa-plus"></i> ${task.todos}</span> <br> <br>
-//                         <span id="sugduedate">From ${weekday}</span>
-//                         `
-
-//         suggestiontask.append(li)
-//         tasklist.remove(li)
-//         localStorage.setItem("usertasks", JSON.stringify(existingtask));
-//     }
-// }
-
-// let j = 0;
-// for(let i = 0; i < existingtask.length; i++){
-//     if(existingtask[i]["loc"] == "myday")
-//         j = 1;
-//     else if(existingtask[i]["loc"] == "suggestion"){
-//         j = 0;
-//     }
-// }
-// if(j == 1){
-//     existingtask.forEach(task => rendertask(task))
-// }
-// else{
-//     existingtask.forEach(task => tasksuggestion(task))
-// }
-
-// let arrowicon = document.getElementById("arrow");
-// let bulbicon = document.getElementById("bulb");
-// let suggestions = document.querySelector(".suggestiontask")
-
-// arrowicon.style.display = "none";
-// bulbicon.style.display = "block";
-// suggestions.style.display = "none"
-
-// bulbicon.onclick = ()=>{
-//     arrowicon.style.display = "block";
-//     bulbicon.style.display = "none";
-//     suggestions.style.display = "block"
-
-// }
-// arrowicon.onclick = ()=>{
-//     arrowicon.style.display = "none";
-//     bulbicon.style.display = "block";
-//     suggestions.style.display = "none"
-// }
-
-// let subTaskBtn = document.getElementById("subtaskbtn");
-// subTaskBtn.onclick = () =>{
-//     // Get the subtask div
-//     const subtaskDiv = document.querySelector(".subtask");
-
-//     // Create the input elements
-//     const checkboxInput = document.createElement("input");
-//     checkboxInput.type = "checkbox";
-//     checkboxInput.id = "subtaskcheck";
-
-//     const textInput = document.createElement("input");
-//     textInput.type = "text";
-//     textInput.setAttribute("for", "subtaskcheck");
-//     textInput.id = "subtask";
-//     textInput.placeholder = "Add Task Sub";
-
-//     // Append the input elements to the subtask div
-//     subtaskDiv.appendChild(checkboxInput);
-//     subtaskDiv.appendChild(textInput);
-
-// }
+}; 2

@@ -1,32 +1,66 @@
-const currentDate = new Date().toJSON().slice(0, 10);
-document.querySelector(
-  ".welcome"
-).innerHTML = `<h3>Today | ${currentDate}</h3>`;
-
-const notesheading = document.getElementById("headline");
-const notescreated = document.getElementById("lastmodified");
-const notes_se = document.getElementById("notesinput");
-
-notescreated.value = currentDate;
-
-const existingnotes = JSON.parse(localStorage.getItem("usernotes")) ?? [];
-
-function addnotes() {
-  const newnotes = {
-    notes_id: Math.floor(Math.random() * Date.now()),
-    heading: notesheading.value,
-    createdOn: notescreated.value,
-    notes: notes_se.value,
-  };
-  existingnotes.push(newnotes);
-  localStorage.setItem("usernotes", JSON.stringify(existingnotes));
+function formatDoc(cmd, value=null) {
+	if(value) {
+		document.execCommand(cmd, false, value);
+	} else {
+		document.execCommand(cmd);
+	}
 }
 
-const savenotes = document.getElementById("savenotes");
-savenotes.addEventListener("click", (e) => {
-  e.preventDefault();
-  addnotes();
-  // alert("Your Notes are Saved")
-  Notify.success("Your Notes are Saved");
-  window.location.href = "notesall.html";
-});
+function addLink() {
+	const url = prompt('Insert url');
+	formatDoc('createLink', url);
+}
+
+
+
+
+const content = document.getElementById('content');
+
+content.addEventListener('mouseenter', function () {
+	const a = content.querySelectorAll('a');
+	a.forEach(item=> {
+		item.addEventListener('mouseenter', function () {
+			content.setAttribute('contenteditable', false);
+			item.target = '_blank';
+		})
+		item.addEventListener('mouseleave', function () {
+			content.setAttribute('contenteditable', true);
+		})
+	})
+})
+
+
+const showCode = document.getElementById('show-code');
+let active = false;
+
+showCode.addEventListener('click', function () {
+	showCode.dataset.active = !active;
+	active = !active
+	if(active) {
+		content.textContent = content.innerHTML;
+		content.setAttribute('contenteditable', false);
+	} else {
+		content.innerHTML = content.textContent;
+		content.setAttribute('contenteditable', true);
+	}
+})
+
+
+
+const filename = document.getElementById('filename');
+
+function fileHandle(value) {
+	if(value === 'new') {
+		content.innerHTML = '';
+		filename.value = 'untitled';
+	} else if(value === 'txt') {
+		const blob = new Blob([content.innerText])
+		const url = URL.createObjectURL(blob)
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = `${filename.value}.txt`;
+		link.click();
+	} else if(value === 'pdf') {
+		html2pdf(content).save(filename.value);
+	}
+}
