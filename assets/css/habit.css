@@ -329,14 +329,14 @@
 /* .habitcheck input[type="checkbox"]:focus {
   outline: 0;
 } */
-.habitcheck .cbx {
+.habitcheck .check {
   width: 24px;
   height: 24px;
   position: relative;
   top: 35px;
   left: 300px;
 }
-.habitcheck .cbx input {
+.habitcheck .check input {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -345,7 +345,7 @@
   border: 2px solid #bfbfc0;
   border-radius: 50%;
 }
-.habitcheck .cbx label {
+.habitcheck .check label {
   width: 24px;
   height: 24px;
   background: none;
@@ -358,14 +358,14 @@
   transform: trasnlate3d(0, 0, 0);
   pointer-events: none;
 }
-.habitcheck .cbx svg {
+.habitcheck .check svg {
   position: absolute;
   top: 5px;
   left: 4px;
   z-index: 1;
   pointer-events: none;
 }
-.habitcheck .cbx svg path {
+.habitcheck .check svg path {
   stroke: #fff;
   stroke-width: 3;
   stroke-linecap: round;
@@ -375,10 +375,10 @@
   transition: stroke-dashoffset 0.3s ease;
   transition-delay: 0.2s;
 }
-.habitcheck .cbx input:checked + label {
+.habitcheck .check input:checked + label {
   animation: splash-12 0.6s ease forwards;
 }
-.habitcheck .cbx input:checked + label + svg path {
+.habitcheck .check input:checked + label + svg path {
   stroke-dashoffset: 0;
 }
 @-moz-keyframes splash-12 {
@@ -598,7 +598,7 @@
   font-weight: 600;
   color: #7b7c7c;;
 }
-.totaldays{
+.totaldays, .faildays{
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 13px;
@@ -661,7 +661,7 @@ header .current-date{
   margin-bottom: 20px;
 }
 .calendar li{
-  color: #333;
+  /* color: #333; */
   width: calc(100% / 7);
   font-size: 1.07rem;
 }
@@ -697,6 +697,12 @@ header .current-date{
 }
 .days li:not(.active):hover::before{
   background: #f2f2f2;
+}
+.active-day{
+  color: #fff;
+}
+.active-day::before {
+  background-color: #0083FF;
 }
 
 

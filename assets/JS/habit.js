@@ -143,16 +143,13 @@ cancelnotes.onclick = function () {
 };
 
 const existinghabit = JSON.parse(localStorage.getItem("userhabits")) ?? [];
-
-let isEditingHabit = false;
-if(!isEditingHabit){
-  existinghabit.forEach((habit) => renderhabit(habit));
+existinghabit.forEach((habit) => renderhabit(habit));
 
 saveHabit.addEventListener("click", () => {
   const newhabit = {
     habitId: Math.floor(Math.random() * Date.now()),
     habitName: habitNameInput.value,
-    createddate: Date().slice(4, 16),
+    createddate: Date().slice(0, 15),
     createdtime: Date().slice(16, 25),
     habitType: "To Do",
     habitRepeat: "everyday",
@@ -169,7 +166,7 @@ saveHabit.addEventListener("click", () => {
   habitpopup.style.display = "none";
   habitPage.style.filter = "none";
   Notify.success(`${habitName.value} Habit Added`);
-});}
+});
 
 // render habit in habit page
 
@@ -183,9 +180,9 @@ function renderhabit(habit) {
                         </div>
 
                         <div class="habitcheck">
-                        <div class="cbx">
-                          <input id="cbx-12" type="checkbox"/>
-                          <label for="cbx-12"></label>
+                        <div class="check">
+                          <input id="habitcheckbox" type="checkbox"/>
+                          <label for="habitcheckbox"></label>
                           <svg width="15" height="14" viewbox="0 0 15 14" fill="none">
                             <path d="M2 8.36364L6.23077 12L13 2"></path>
                           </svg>
@@ -218,12 +215,6 @@ function renderhabit(habit) {
 const habitnamecard = document.querySelectorAll("#habitnamecard");
 const habittimes = document.querySelectorAll("#habittimes");
 
-for (let i = 0; i < habittimes.length; i++) {
-  habittimes[i].addEventListener("click", () => {
-    habittimes[i].style.transform = "translateX(-200px)";
-  });
-}
-
 for (let i = 0; i < habitnamecard.length; i++) {
   habitnamecard[i].addEventListener("click", () => {
     habitnamecard[i].style.transform = "translateX(180px)";
@@ -245,91 +236,187 @@ function revealnotes() {
 
 /* -------------------------------------------------STREAK SCRIPT-------------------------------------------------- */
 
-const habitcheck = document.querySelectorAll("#check-5");
-for (let i = 0; i < habitcheck.length; i++) {
-  habitcheck[i].onclick = function () {
-    if (habitcheck[i].checked) {
-      const gettoday = Date().slice(0, 15);
-      existinghabit[i].habitActive.push(gettoday);
-      localStorage.setItem("userhabits", JSON.stringify(existinghabit));
-    }
-  };
-}
-
-// function streak() {
-// let streakcount;
-
-// for (let i = 0; i < existinghabit.length; i++) {
-//   for (let j = 0; j < existinghabit[i].habitActive.length; j++) {
-//     let firstIndex = existinghabit[i].habitActive[j];
-//     let secondIndex = existinghabit[i].habitActive[j + 1];
-//     if (secondIndex) {
-//       if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check
-//         let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
-//         if (datedifference == 1) {
-//           streakcount++
-//         }
-//         else {
-//           streakcount = 0;
-//         }
-//       }
-//     }
-//     else {
-//       streakcount = 1
-//     }
-//   }
-// }
-//   existinghabit[i]["habitActive"].push(gettoday);
-//   localStorage.setItem("userhabits", JSON.stringify(existinghabit))
-
-// }
-
 const streakhabitname = document.querySelector(".habitname");
-const deletehabit = document.querySelector("#deletehabit");
-const edithabit = document.querySelector(".edithabit");
+const deletehabitbtn = document.querySelector("#deletehabit");
+const edithabitbtn = document.querySelector(".edithabit");
 const habitpopupform = document.getElementById("habitpopupform");
 
+
+// transfer the index for functions
 streakbtn.forEach((item, index) => {
   // habit name
   item.addEventListener("click", () => {
     streakhabitname.innerText = existinghabit[index].habitName;
-    deletehabit.setAttribute("onclick", `deleteexistinghabit(${index})`);
-    edithabit.setAttribute("onclick", `editinghabit(${index})`);
+    deletehabitbtn.setAttribute("onclick", `deletehabit(${index})`);
+    edithabitbtn.setAttribute("onclick", `edithabit(${index})`);
+    streak(index);
+    streakstatus(index);
+    habitCalendar(index);
   });
 });
 
-function deleteexistinghabit(index) {
+function deletehabit(index) {
   // Notify.error("Habit Deleted");
   existinghabit.splice(index, 1);
   localStorage.setItem("userhabits", JSON.stringify(existinghabit));
   location.reload();
 }
 
-// edithabit.onclick = ()=>{
-//   isEditingHabit = true;
 
-  // if(isEditingHabit == true){
-  
-    function editinghabit(index) {
-      habitpopup.style.display = "block";
-      habitPage.style.filter = "blur(3px)";
-    
-      habitNameInput.value = existinghabit[index].habitName;
-    
-      
-      habitNameInput.addEventListener("change", (e) => {
-        // e.preventDefault();
-        existinghabit[index].habitName = habitNameInput.value;
-        localStorage.setItem("userhabits", JSON.stringify(existinghabit));
-      });
+function edithabit(index) {
+  // add habit popup
+  habitpopup.style.display = "block";
+  habitPage.style.filter = "blur(3px)";
+
+  // fill the clicked habit's name
+  habitNameInput.value = existinghabit[index].habitName;
+
+  // change the name
+  habitNameInput.addEventListener("change", (e) => {
+    // e.preventDefault();
+    existinghabit[index].habitName = habitNameInput.value;
+    localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+  });
+}
+
+
+// saving active habit dates in local storage
+const habitcheck = document.querySelectorAll("#habitcheckbox");
+const gettoday = Date().slice(0, 15);
+// const gettoday = "Thu May 18 2023" ;
+
+for (let i = 0; i < habitcheck.length; i++) {
+  habitcheck[i].onclick = function () {
+    if (habitcheck[i].checked) {
+      let dateexist = false;
+      let habitactivelen = existinghabit[i]["habitActive"].length;
+      if (habitactivelen > 0) {
+        for (let j = 0; j < habitactivelen; j++) {
+          if (gettoday === existinghabit[i]["habitActive"][j]) {
+            dateexist = true;
+          }
+        }
+        if (!dateexist) {
+          existinghabit[i].habitActive.push(gettoday);
+          localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+        }
       }
-    // }
-// }
+      else {
+        existinghabit[i].habitActive.push(gettoday);
+        localStorage.setItem("userhabits", JSON.stringify(existinghabit));
+      }
+    }
+  };
+}
 
-console.log(isEditingHabit);
 
+// current streak
+function streak(index) {
+  let habitactivelen = existinghabit[index]["habitActive"].length;
+  let streakcount;
+  let lastIndex;
+
+  if (habitactivelen >= 2) {
+    streakcount = 1;
+    for (let i = 0; i < habitactivelen; i++) {
+      let firstIndex = existinghabit[index].habitActive[i];
+      let secondIndex = existinghabit[index].habitActive[i + 1];
+      if (secondIndex) {
+        if (firstIndex.slice(4, 7) == secondIndex.slice(4, 7)) { //Month Check 
+          let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
+          if (datedifference == 1) {
+            streakcount++;
+            lastIndex = i + 1;
+            console.log(lastIndex)
+          }
+          else {
+            streakcount = 0;
+          }
+        }
+      }
+    }
+    if (streakcount > 1) {
+      document.getElementById("streakfrom").innerText = existinghabit[index]["habitActive"][Math.abs(lastIndex - streakcount) - 1];
+    }
+  }
+  else if (habitactivelen == 1) {
+    streakcount = 1
+    document.getElementById("streakfrom").innerText = gettoday
+  }
+  else if (habitactivelen == 0) {
+    streakcount = 0
+    document.getElementById("streakfrom").innerText = "Start From Today"
+  }
+  if(streakcount == 0){
+    document.getElementById("streakfrom").innerText = "Start From Today"
+  }
+  // save streakcount in local Storage
+  existinghabit[index]["currentStreak"] = `${streakcount} Days`
+  localStorage.setItem("userhabits", JSON.stringify(existinghabit))
+
+  // read and show
+  document.getElementById("currentstreak").innerText = existinghabit[index]["currentStreak"];
+}
+
+
+function streakstatus(index) {
+
+  // total completion of habit
+  document.querySelector(".totaldays").innerText = `${existinghabit[index]["habitActive"].length} Times`;
+
+  // total times failed to do habit
+
+  // creating an array from starting date to today
+
+  let starttotodayarr = [];
+
+  const createdOn = existinghabit[index]["createddate"]
+  const startOn = new Date(createdOn);
+  
+  const today = new Date();
+  
+  let currentDate = startOn;
+  
+  while (currentDate <= today) {
+  
+      starttotodayarr.push(startOn.toDateString());
+      currentDate.setDate(currentDate.getDate() + 1);
+  
+  }
+  
+  console.log(starttotodayarr);
+
+  // check each date is present in habitactive array
+  let failcount;
+  let successcount;
+  if(existinghabit[index]["habitActive"].length > 0){
+    failcount = 0;
+    successcount = 0;
+    let successstatus = false;
+    let failstatus = 0;
+    for(let date of starttotodayarr){
+      for(let i = 0; i < existinghabit[index]["habitActive"].length; i++){
+          if(date != existinghabit[index]["habitActive"][i]){
+            failstatus = 1; 
+          }
+      }
+      if(failstatus == 1){
+        failcount++
+      }
+    }
+  }
+  else{
+    failcount = starttotodayarr.length;
+  }
+  document.querySelector(".faildays").innerText = `${failcount} Days`
+  // console.log(starttotodayarr);
+  console.log("successcount",successcount);
+  console.log("failcount",failcount);
+
+}
 
 /* -------------------------------------------------CALENDAR SCRIPT----------------------------------------------- */
+function habitCalendar(index){
 const daysTag = document.querySelector(".days");
 const currentDate = document.querySelector(".current-date");
 const prevNextIcon = document.querySelectorAll(".icons span");
@@ -355,22 +442,21 @@ const months = [
   "December",
 ];
 
+let activedays = existinghabit[index]["habitActive"];
+
 const renderCalendar = () => {
   const firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // getting first day of month
   const lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // getting last date of month
-  const lastDayofMonth = new Date(
-    currYear,
-    currMonth,
-    lastDateofMonth
-  ).getDay(); // getting last day of month
+  const lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); // getting last day of month
   const lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
   let liTag = "";
+
 
   for (let i = firstDayofMonth; i > 0; i--) {
     // creating li of previous month last days
     liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
   }
-
+  
   for (let i = 1; i <= lastDateofMonth; i++) {
     // creating li of all days of current month
     // adding active class to li if the current day, month, and year matched
@@ -380,17 +466,22 @@ const renderCalendar = () => {
       currYear === new Date().getFullYear()
         ? "active"
         : "";
-    liTag += `<li class="${isToday}">${i}</li>`;
+    const isActiveDay = activedays.includes(
+      new Date(currYear, currMonth, i).toDateString()
+    );
+    const colorClass = isActiveDay ? "active-day" : "";
+    liTag += `<li class="${isToday} ${colorClass}">${i}</li>`;
   }
-
+  
   for (let i = lastDayofMonth; i < 6; i++) {
     // creating li of next month first days
     liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
   }
   currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
   daysTag.innerHTML = liTag;
-};
-renderCalendar();
+}
+renderCalendar()  
+
 
 prevNextIcon.forEach((icon) => {
   // getting prev and next icons
@@ -411,6 +502,9 @@ prevNextIcon.forEach((icon) => {
     renderCalendar(); // calling renderCalendar function
   });
 });
+
+}
+
 
 /* -----------------------------------------------NOTES SCRIPT----------------------------------------------- */
 const notesarea = document.querySelector(".notes-editor");
@@ -526,3 +620,24 @@ buttons.forEach((button) => {
     editor.focus();
   });
 });
+
+
+let savenotes = document.getElementById("savenotes");
+let title = document.getElementById("title");
+let existingNotes = JSON.parse(localStorage.getItem('habitNotes')) ?? [];
+
+
+savenotes.addEventListener('click', ()=>{
+  let habitNotes = [];
+  let notes = {
+    notesId: Math.floor(Math.random() * Date.now()),
+    notesHeading : title.value,
+    notes: notesarea.innerHTML
+  }
+  existingNotes.push(notes);
+  localStorage.setItem("habitNotes", JSON.stringify(existingNotes));
+
+  notespopup.style.display = "none";
+  habitPage.style.filter = "none";
+  alert("notes saved")
+})
