@@ -2,9 +2,9 @@
     display: none;
 }
 .journal{
-    margin-left: 350px;
+    margin-left: 300px;
     padding-top: 20px;
-    position: fixed;
+    /* position: fixed; */
 }
 .journal button{
     padding: 10px;
@@ -26,6 +26,15 @@
     margin-top: 50px;
     flex-wrap: wrap;
     width: 1150px;
+}
+.allnotes a{
+    color: black;
+    text-decoration: none;
+    /* padding: 15px; */
+}
+#notesPara{
+    padding: 10px;
+    margin-top: -35px;
 }
 .main_notes{
     height: 400px;
@@ -104,42 +113,33 @@
 /* Create Notes CSS */
 
 
-/* * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
-}
-
-body {
-	background: #ddd;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-} */
-
-li {
+.container li {
 	margin-left: 16px;
 }
 
-a {
+.container a {
 	cursor: pointer;
 }
 
 .container {
-	height: 720px;
-    width: 1150px;
+	height: 880px;
+    width: 1000px;
 	border-radius: 8px;
 	overflow: hidden;
-    margin-left: 200px;
+    /* margin-left: 200px; */
+    margin-top: -20px;
+    /* margin-right: 200px; */
+
 }
 .toolbar {
 	padding: 16px;
 	background: white;
     height: 150px;
     border-radius: 15px;
-    padding-left: 280px;
+    /* width: 100%; */
+    padding-left:  70px;
+    /* margin-left: 300px; */
+    
 }
 .toolbar .head {
 	display: flex;
@@ -213,11 +213,12 @@ a {
 	background: #f3f3f3;
 }
 #content {
-    margin-left: 200px;
+    /* margin-left: 300px; */
+    margin-right: 300px;
 	padding: 16px;
 	outline: none;
-	height: 720px;
-    width: 1150px;
+	height: 800px;
+    width: 1000px;
 	overflow: auto;
     margin-top: 10px;
     /* margin-bottom: 10px; */
@@ -226,4 +227,20 @@ a {
 }
 #show-code[data-active="true"] {
 	background: #eee;
+}
+
+#savenotes, #deletenotes{
+    position: absolute;
+    top: 40px;
+    left: 1100px;
+    padding: 5px 15px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#deletenotes{
+    left: 1180px;
+    background-color:black;
 }

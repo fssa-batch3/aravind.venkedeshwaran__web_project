@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,45 +12,45 @@
     <link rel="stylesheet" href="../assets/css/notes.css">
     <link rel="stylesheet" href="../assets/css/common.css">
 
-        <!-- adding favicon -->
-        <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
+    <!-- adding favicon -->
+    <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
 
-       <!-- Nunito Font Link -->
-       <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-       <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-       <style> @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); </style>
-    
-        <!-- bootstrap for adding icon  -->
-      <script
-      src="https://kit.fontawesome.com/ee40c53027.js"
-      crossorigin="anonymous"
-      integrity="">
-      </script>
+    <!-- Nunito Font Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+    </style>
 
-      <!-- notify css -->
+    <!-- bootstrap for adding icon  -->
+    <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
+    </script>
 
-      <link href="../assets/css/notify.css">
+    <!-- notify css -->
+
+    <link href="../assets/css/notify.css">
 
 </head>
+
 <body>
     <div class="main">
- <!--The Total Page starts-->
+        <!--The Total Page starts-->
         <!-- journal page starts -->
         <div class="journal">
             <a href="/">
-<button>All Notes</button>
-</a>
+                <button>All Notes</button>
+            </a>
             <a href="/">
-<button>Folder</button>
-</a>
+                <button>Folder</button>
+            </a>
 
             <h1>Journal</h1>
             <h3 id="date"></h3>
 
             <!-- each section of journal starts -->
             <div class="allnotes">
-                    <!-- <a href="notes.html" id="noteslink">
+                <!-- <a href="notes.html" id="noteslink">
                         <div class="main_notes">
                             <div class="date">25 Mar</div>
                             <div class="heading">What is Database?</div>
@@ -64,7 +65,7 @@
                         </div> 
                     </a> -->
 
-                     <!-- <div class="eachnotes">
+                <!-- <div class="eachnotes">
                          <div class="main_notes">
                             <div class="date">
                                 <p>25 Mar</p>
@@ -87,7 +88,7 @@
                         </div>
                      </div> -->
 
-                   <!--  <div class="main_notes">
+                <!--  <div class="main_notes">
                         <div class="date">25 Mar</div>
                         <div class="heading">What is Database?</div>
                         <div class="tags">
@@ -102,31 +103,33 @@
             </div>
             <!-- each section of journal ends -->
 
-            <div class="addnotes">
-                <p>
-<a href="notescreate.html">
-<i class="fa fa-plus"></i>Add New Notes
-</a>
-</p>
-                
+                <div class="addnotes" onclick="">
+                    <p>
+                        <a href="notescreate.html">
+                            <i class="fa fa-plus"></i>Add New Notes
+                        </a>
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
-       
-    </div>
 
-<script>
-    const currentDate = new Date().toJSON().slice(0, 10)
-    document.querySelector("#date").innerHTML = `<h3>Today | ${currentDate}</h3>`;
+        <script>
+            const currentDate = new Date().toJSON().slice(0, 10)
+            document.querySelector("#date").innerHTML = `<h3>Today | ${currentDate}</h3>`;
 
     // let dot = document.querySelector(".dot");
     // let viewnotes = document.querySelector(".viewnotes")
     // dot.onclick = function () {
     //     viewnotes.style.display = "block"
     // }
-</script>
+        </script>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
 <script src="../assets/JS/notesall.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
+
 </html>

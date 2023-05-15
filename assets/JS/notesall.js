@@ -3,7 +3,7 @@ const notes = JSON.parse(localStorage.getItem("usernotes"));
 for (let i = 0; i < notes.length; i++) {
   // Notes Card
   const notesLink = document.createElement("a");
-  notesLink.href = `notes.html?notes_id=${notes[i].notes_id}&heading=${notes[i].heading}&createdOn=${notes[i].createdOn}&notes=${notes[i].notes}`;
+  notesLink.href = `notescreate.html?notesId=${notes[i].notesId}&heading=${notes[i].heading}`;
   notesLink.id = "noteslink";
   document.querySelector(".allnotes").append(notesLink);
 
@@ -46,8 +46,12 @@ for (let i = 0; i < notes.length; i++) {
   notesDiv.classList.add("notes");
   mainNotesDiv.appendChild(notesDiv);
 
-  const notesParagraph = document.createElement("p");
-  notesParagraph.innerText = notes[i].notes;
+  const notesParagraph = document.createElement("div");
+  notesParagraph.id = "notesPara"
+  notesParagraph.setAttribute('contenteditable', true)
+  const storedString = notes[i]["notes"];
+  const sanitizedString = DOMPurify.sanitize(storedString);
+  notesParagraph.innerHTML = sanitizedString
   notesDiv.appendChild(notesParagraph);
 }
 

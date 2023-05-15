@@ -2,10 +2,10 @@
     position: fixed;
 }
 .task-page{
-    margin-left: 450px;
+    margin-left: 280px;
 }
 .top{
-    margin: 10px 0px 80px -90px;
+    margin: 10px 0px 40px 40px;
 }
 .top-1{
     font-size: 36px;
@@ -22,6 +22,7 @@
 .date-task{
     display: flex;
     font-size: 26px;
+    margin-top: -30px;
 }
 .date{
     margin-left: 5px;
@@ -30,6 +31,9 @@
 }
 .day,.month{
     font-size: 22px;
+}
+.date-task p{
+    margin-top: -20px;
 }
 #add-task{
     width: 455px;
@@ -54,25 +58,34 @@
     margin-top: 28px;
     margin-left: 20px;
 }
-/* .taskDetails{
-    position: relative;
-    left: 480px;
-    bottom: 800px;
-    height: 700px;
-    width: 500px;
-    padding: 20px;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-    background-color:white;
-    display: none;
-    animation-name: down;
-    animation-duration: 3s;
+.taskcategory{
+    display: flex;
 }
-@keyframes down{
-    0%{transform: translateY(-1200px);}
-    50%{transform: translateY(-10px);}
-} */
+.taskcategory h3{
+    margin-right: 40px;
+    margin-left: 40px;
+    padding-bottom: 30px;
+
+}
+#openTask{
+    margin-left: 50px;
+    /* border: 1px solid #6e6e6e; */
+}
+#cathr{
+    width: 750px;
+    margin-left: 40px;
+}
+.tasktablehead{
+    width: 750px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
 .taskDetails{
+    display: none;
     background-color: white;
     width: 500px;
     height: 100vh;
@@ -82,7 +95,6 @@
     padding: 30px;
     border-radius: 50px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-    display: none;
     animation-name: out;
     animation-duration: 1.25s;
 }
@@ -100,7 +112,7 @@
     border-radius: 15px;
     margin-bottom: 40px;
     margin-right: 10px;
-    margin-top: 40px;
+    margin-top: 10px;
     border: none;
     background-color: white;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
@@ -114,9 +126,13 @@
     padding: 8px;
     font-size: 16px;
 }
-#duedate, #duetime{
-    margin-left: 100px;
+#duedate, #startingtime, #endingtime{
+    margin-left: 60px;
     margin-top: 20px;
+}
+#timeneeded{
+    margin-left: 70px;
+    width: 100px;
 }
 #notes{
     border: none;
@@ -175,120 +191,59 @@
     list-style: none;
     background-color: white;
     margin: 30px;
-    width: 55%;
-    height: 100px;
+    width: 730px;
+    height: 80px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    margin-left: -5px;
+    /* font-weight: 900; */
     box-shadow: 0 1px 4px rgba(0,0,0,0.02),0 2px 18px rgba(0,0,0,0.05);
 }
 
-#tasklist span{
-    padding-top: 10px;
-    width: 250px;
-    color: black;
+#habitpriority{
+   position: relative;
+   left: -110px;
 }
-#suggestionlist li{
-    list-style: none;
-    width: 325px;
-    height: 90px;
-    margin-top: 20px;
-    padding: 15px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    border-radius: 15px;
-    font-size: 16px;   
-    font-weight: 600; 
+#timeleft{
+    position: relative;
+    left: -50px;
 }
-#suggestionlist span{
-    margin-left: 40px;
+#Due{
+    position: relative;
+    left: 40px;
 }
-#sugduedate{
-    color: #0083ff;
-    font-size: 16px;
+#play{
+    position: relative;
+    left: 120px;
+    /* color: #0083FF; */
+    /* font-size: 22px; */
 }
-#suggestionlist li:hover{
-    background-color: #EDEDED;
-}
-.fa-plus{
-    color: #0083ff;
-    position: absolute;
-    right: 310px;
-    font-size: 24px;
+
+#cancel, #savetask{
+    color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    position: relative;
+    /* top: 150px; */
+    left: 220px;
     cursor: pointer;
 }
-#todosdescrip{
-    color: #0083FF;
+#cancel{
+    background-color: black;
+}
+#savetask{
+    background-color: #0083FF;
+}
+#tasknamedetails{
     display: block;
-    font-weight: 500;
-    padding-top: 10px;
-}
-#taskspan{
-    margin-left: -90px;
-    /* margin-right: 10px; */
-    cursor: pointer;
-    /* display: flex; */
-}
-.addtasks{
-    height: 600px;
-    overflow: scroll;
-}
-.suggestiontask{
-    background-color: white;
-    width: 378px;
-    height: 100vh;
-    position: absolute;
-    bottom: 1px;
-    left: 1125px;
-    padding: 30px;
-    border-radius: 50px;
-    animation-name: out;
-    animation-duration: 1.25s;
-}
-@keyframes out{
-    0%{transform: translateX(1200px);}
-}
-.fa-search{
-    margin-left: -20px;
-    font-size: 18px;
-}
-#searchinput{
-    height: 40px;
-    width: 300px;
-    padding: 10px;
     border: none;
-    border-bottom: #676262 1px solid;
-    font-size: 18px;
-    outline: none;
+    height: 50px;
+    width: 400px;
+    padding: 15px;
+    font-size: 22px;
+    font-weight: 900;
 }
-.sidebaractivator{
-    position: absolute;
-    top: 440px;
-    left: 1415px;
-    font-size: 30px;
-    text-align: center;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 0 18px rgba(0,0,0,.08);
-    width: 100px;
-    cursor: pointer;
-}
-#subtask{
-    font-size: 16px;
-    outline: none;
-    border: none;
-}
-#subtaskbtn{
-    margin-top: -10px;
-    margin-left: -12px;
-    box-shadow: none;
-}
-
-
-
-
 /* to do button css*/
 .taskname {
     --text: #414856;
@@ -297,7 +252,7 @@
     --border-radius: 10px;
     border-radius: var(--border-radius);
     position: relative;
-    left: -150px;
+    left: -200px;
     padding: 5px;
     display: grid;
     grid-template-columns: 30px auto;
@@ -545,3 +500,104 @@
       box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
     }
   }
+
+
+
+
+  /* timer css */
+
+/* .timer{
+    margin-top: 30px;
+  } */
+.btn-group {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  height: 10%;
+  /* margin: 35px 0; */
+  margin-left: 130px;
+}
+.btn-group button {
+  border-radius: 8px;
+  
+}
+/* label {
+  font-size: 12px;
+}
+form {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  max-width: 370px;
+  margin: 5px auto;
+}
+form button {
+  background: rgb(25, 67, 255);
+  width: 100%;
+  margin: 5px 0;
+  color: white;
+} */
+/* .start {
+  background: rgb(48, 33, 253);
+  color: black;
+} */
+.break {
+  background: rgb(0, 199, 116);
+  color: #000000;
+}
+.reset {
+  background: rgb(250, 69, 109);
+  color: #000000;
+}
+.pause {
+  background: rgb(253, 143, 17);
+}
+.resume {
+  background: rgb(131, 10, 252);
+  color: white;
+}
+.clock {
+  padding: 3px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 30%;
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-ring__circle {
+  transition: 0.5s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: rgb(51, 65, 255);
+}
+
+
+.danger {
+  stroke: rgb(243, 17, 28);
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: rotate(-90deg) scale(1);
+  }
+  50% {
+    transform: rotate(-90deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(-90deg) scale(0.8);
+  }
+}
+

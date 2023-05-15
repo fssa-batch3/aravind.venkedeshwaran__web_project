@@ -43,9 +43,6 @@
 
     <!-- main container of task starts  -->
     <div class="main">
-
-        <!-- task section starts -->
-        <!-- Header -->
         <div class="task-page">
             <div class="top">
                 <p class="top-1">
@@ -69,6 +66,22 @@
                 </div>
             </div>
 
+
+            <div class="taskcategory">
+                <h3 id="openTask">Open Task</h3>
+                <h3 id="doneTask">Done Task</h3>
+            </div>
+
+            <hr id="cathr">
+
+            <!-- Table Name -->
+            <div class="tasktablehead">
+                <p>Task Name</p>
+                <p>Priority</p>
+                <p>Time Left</p>
+                <p>Due</p>
+                <p>Start</p>
+            </div>
             <!-- Task List -->
             <div class="addtasks">
                 <ul id="tasklist"></ul>
@@ -79,9 +92,7 @@
 
         <!-- Task Details -->
         <div class="taskDetails">
-            <h2 id="taskName">
-                <span id="close">&times;</span>
-            </h2>
+            <input type="text" id="tasknamedetails" placeholder="Task Name">
 
             <button>
                 <i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me
@@ -95,9 +106,14 @@
             <button>
                 <i class="fa fa-suitcase" style="color:skyblue"></i>Work
             </button>
+            <label for="timeneeded">Time Needed:</label>
+            <input type="text" id="timeneeded" placeholder="60 Min">
             <br>
-            <label for="time">Due Time: </label>
-            <input type="time" id="duetime">
+            <label for="time">Starting Time: </label>
+            <input type="time" id="startingtime">
+            <br>
+            <label for="time">Ending Time: </label>
+            <input type="time" id="endingtime">
             <br>
             <label for="date">Due Date: </label>
             <input type="date" id="duedate">
@@ -110,16 +126,35 @@
                 <option value="High Priority">High Priority</option>
                 <option value="Waste Of Time">Waste Of Time</option>
             </select>
+
+            <div class="timer">
+                <h3>Timer: </h3>
+                <div class="clock">
+                    <div class="mins">0</div>
+                    <div>:</div>
+                    <div class="secs">00</div>
+                    <audio src="http://soundbible.com/mp3/service-bell_daniel_simion.mp3"></audio>
+                    <svg class="progress-ring" height="120" width="120">
+                      <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="50" cx="60" cy="60" />
+                    </svg>
+                  </div>
+                
+                  <div class="btn-group">
+                    <button class="reset"><i class="fa fa-undo"></i> reset</button>
+                    <button class="pause"><i class="fa fa-pause"></i> pause</button>
+                  </div>
+            </div>
+
             <h3>Notes:</h3>
-            <textarea placeholder="Insert Your Notes Here" id="notes" rows="6" cols="45"></textarea>
-            <div class="subtask">
+            <textarea placeholder="Insert Your Notes Here" id="notes" rows="3" cols="45"></textarea>
+            <!-- <div class="subtask">
                 <h3>Sub Task:</h3>
-                <!-- <button id="subtaskbtn"><i class="fa fa-square-o"></i> Add Sub Task</button> <br>-->
+                <button id="subtaskbtn"><i class="fa fa-square-o"></i> Add Sub Task</button> <br>
                 <input type="checkbox" id="subtaskcheck">
                 <input type="text" for="subtaskcheck" id="subtask" placeholder="Add Task Sub">
-            </div>
-            <h3>Attachment:</h3>
-            <p class="files">Click here to add / drop your files here</p>
+            </div>-->
+            <button id="cancel">Cancel</button>
+            <button id="savetask">Save</button>
         </div>
         <!-- task details ends -->
 
@@ -144,6 +179,7 @@
     </div>
 </body>
 <script src="../assets/JS/task.js"> </script>
+<script src="../assets/JS/tasktimer.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
 

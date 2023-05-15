@@ -1,8 +1,12 @@
 const taskinput = document.getElementById("add-task");
 const addbtn = document.getElementById("addbtn");
 const tasklist = document.getElementById("tasklist");
-const suggestiontask = document.querySelector("#suggestionlist");
-
+const startingTime = document.getElementById("startingtime");
+const endingTime = document.getElementById("endingtime");
+const dueDate = document.getElementById("duedate");
+const PriorityTask = document.getElementById("Priority");
+const timeNeeded = document.getElementById("timeneeded");
+let taskLi = document.querySelectorAll("li")
 // Display today date, day and month
 const day = document.querySelector(".day");
 const date = document.querySelector(".date");
@@ -22,13 +26,13 @@ function addtask() {
     taskname: taskinput.value,
     createddate: Date().slice(4, 16),
     createdtime: Date().slice(16, 25),
-    duedate: "",
-    duetime: "",
-    priority: "",
-    notes: "",
-    subtask: "",
-    attachment: "",
-    status: "not completed",
+    duedate: dueDate.value,
+    timeneeded: timeNeeded.value,
+    startingtime : startingTime.value,
+    endingtime: endingTime.value,
+    priority: PriorityTask.value,
+    notes: notes.value,
+    status: "not completed"
   };
   existingtask.push(newtask);
   localStorage.setItem("usertasks", JSON.stringify(existingtask));
@@ -90,31 +94,40 @@ function addtask() {
 function rendertask(task) {
   const li = document.createElement("li");
 
-  li.innerHTML = `<div class="taskname">
-                    <input id="02-11" type="checkbox" name="r" value="2">
-                    <label for="02-11" onclick="popup()">${task.taskname}</</label>
-                  </div>
-                    <button id="checkmark" >&#10004;</button>
-                    <button id="deletebtn"><i class='fas fa-trash' style='color:white'></i></button>`;
+  li.innerHTML = `
+                    <div class="taskname">
+                      <input id="02-11" type="checkbox" name="r" value="2">
+                      <label for="02-11" onclick="popup()">${task.taskname}</</label>
+                    </div>
+                    <p id="habitpriority">${task.priority}</p>
+                    <p id="timeleft">${task.timeneeded}</p>
+                    <p id="Due">${task.duedate}</p>
+                    <p id="play" class="start"><i class="fa fa-play-circle-o"></i></p>
+                  
+                  `
 
 
 
-  li.querySelector("#deletebtn").addEventListener("click", () => {
-    const indexDel = existingtask.findIndex((t) => t.taskname == task.taskname);
-    existingtask.splice(indexDel, 1);
-    localStorage.setItem("usertasks", JSON.stringify(existingtask));
-    Notify.error(`${task.taskname} Task Removed`);
-    li.remove();
-  });
+
+  // li.querySelector("#deletebtn").addEventListener("click", () => {
+  //   const indexDel = existingtask.findIndex((t) => t.taskname == task.taskname);
+  //   existingtask.splice(indexDel, 1);
+  //   localStorage.setItem("usertasks", JSON.stringify(existingtask));
+  //   Notify.error(`${task.taskname} Task Removed`);
+  //   li.remove();
+  // });
   tasklist.append(li);
 }
 
+
+
 const taskTitle = document.getElementById("taskName");
 const taskspanlist = document.querySelectorAll("li");
-taskspanlist.forEach((task, index) => {
-  task.onclick = () => {
-    const clickedTask = task.querySelector("#taskHeading").textContent;
-    taskTitle.innerText = clickedTask;
+taskspanlist.forEach((item, index) => {
+  item.onclick = () => {
+    tasknamedetails.value = existingtask[index].taskname;
+
+    revealtaskdetails();
 
     // get value from dues and save in local storage
     savedues(index);
@@ -122,19 +135,23 @@ taskspanlist.forEach((task, index) => {
     // get value from local storage and display it in value task details
     displaydues(index);
 
-    subtask(index);
+    // subtask(index);
   };
 });
 
-const dueTime = document.getElementById("duetime");
-const dueDate = document.getElementById("duedate");
-const PriorityTask = document.getElementById("Priority");
+
 function savedues(index) {
   // setting duetime in local storage
-  dueTime.onchange = () => {
-    existingtask[index].duetime = dueTime.value;
+  startingTime.onchange = () => {
+    existingtask[index].startingtime = startingTime.value;
     localStorage.setItem("usertasks", JSON.stringify(existingtask));
-    alert("Duetime Changed");
+    alert("starting time Changed");
+  };
+
+  endingTime.onchange = () => {
+    existingtask[index].endingtime = endingTime.value;
+    localStorage.setItem("usertasks", JSON.stringify(existingtask));
+    alert("ending time Changed");
   };
 
   // setting duedate in local storage
@@ -155,10 +172,21 @@ function savedues(index) {
 function displaydues(index) {
   // Display current or saved time in task details
   const currentTime = Date().slice(16, 21);
-  if (existingtask[index].duetime == "") {
-    dueTime.value = currentTime;
+
+  if (existingtask[index].timeneeded) {
+    timeNeeded.value = existingtask[index].timeneeded;
+  } 
+
+  if (existingtask[index].startingtime == "") {
+    startingTime.value = currentTime;
   } else {
-    dueTime.value = existingtask[index].duetime;
+    startingTime.value = existingtask[index].startingtime;
+  }
+
+  if (existingtask[index].endingtime == "") {
+    endingTime.value = currentTime;
+  } else {
+    endingTime.value = existingtask[index].endingtime;
   }
 
   // Display current date in task details
@@ -174,43 +202,63 @@ function displaydues(index) {
   }
 }
 
-const subTaskCheck = document.getElementById("subtaskcheck");
-const subTask = document.getElementById("subtask");
-function subtask(index) {
-  subTask.onchange = () => {
-    const existingsubtask =
-      existingtask[index].subtask == "" ? [] : existingtask[index].subtask;
-    const newsubtask = {
-      task: subTask.value,
-      status: subTaskCheck.checked ? "done" : "not done",
-    };
-    existingsubtask.push(newsubtask);
-    existingtask[index].subtask = existingsubtask;
-    localStorage.setItem("usertasks", JSON.stringify(existingtask));
-    alert("subtask added");
-    rendersubtask(newsubtask);
-  };
-}
+// const subTaskCheck = document.getElementById("subtaskcheck");
+// const subTask = document.getElementById("subtask");
+// function subtask(index) {
+//   subTask.onchange = () => {
+//     const existingsubtask =
+//       existingtask[index].subtask == "" ? [] : existingtask[index].subtask;
+//     const newsubtask = {
+//       task: subTask.value,
+//       status: subTaskCheck.checked ? "done" : "not done",
+//     };
+//     existingsubtask.push(newsubtask);
+//     existingtask[index].subtask = existingsubtask;
+//     localStorage.setItem("usertasks", JSON.stringify(existingtask));
+//     alert("subtask added");
+//     rendersubtask(newsubtask);
+//   };
+// }
 
-function rendersubtask() {
-  const subtaskDiv = document.querySelector(".subtask");
+// function rendersubtask() {
+//   const subtaskDiv = document.querySelector(".subtask");
 
-  existingtask.forEach((item) => {
-    for (let i = 0; i < item.subtask; i++) {
-      const taskli = document.createElement("li");
-      taskli.innerHTML = `<input type="checkbox" id="subtaskstatus">
-                              <label id="subtaskstatus">${item.subtask[i]}</label>`;
+//   existingtask.forEach((item) => {
+//     for (let i = 0; i < item.subtask; i++) {
+//       const taskli = document.createElement("li");
+//       taskli.innerHTML = `<input type="checkbox" id="subtaskstatus">
+//                               <label id="subtaskstatus">${item.subtask[i]}</label>`;
 
-      subtaskDiv.append(taskli);
-    }
-  });
+//       subtaskDiv.append(taskli);
+//     }
+//   });
+// }
+
+
+const saveTask = document.getElementById("savetask");
+const tasknamedetails = document.getElementById("tasknamedetails");
+saveTask.onclick = () => {
+  if (tasknamedetails.value.trim() != "") {
+    addtask();
+  } 
+  else {
+    Notify.error(`Type Any Task Name`);
+  }
+};
+
+// function for pop up window
+const taskDetails = document.querySelector(".taskDetails");
+function revealtaskdetails() {
+  taskDetails.style.display = "block";
 }
 
 // if taskinput is empty or space, task should not be added
 addbtn.onclick = () => {
   if (taskinput.value.trim() != "") {
-    addtask();
-  } else {
+    tasknamedetails.value = taskinput.value;
+    revealtaskdetails();
+  } 
+  else {
     Notify.error(`Type Any Task Name`);
   }
 };
@@ -219,21 +267,19 @@ addbtn.onclick = () => {
 taskinput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     if (taskinput.value != "") {
-      addtask();
-    } else {
+      tasknamedetails.value = taskinput.value;
+      revealtaskdetails();
+    } 
+    else {
       Notify.error(`Type Any Task Name`);
     }
   }
 });
 
-// function for pop up window
-const taskDetails = document.querySelector(".taskDetails");
-function popup() {
-  taskDetails.style.display = "block";
-}
+
 
 // function for close pop up window
-const close = document.getElementById("close");
+const close = document.getElementById("cancel");
 close.onclick = function () {
   taskDetails.style.display = "none";
 };
@@ -244,4 +290,4 @@ window.onclick = function (event) {
   if (event.target == taskPage) {
     taskDetails.style.display = "none";
   }
-}; 2
+}; 

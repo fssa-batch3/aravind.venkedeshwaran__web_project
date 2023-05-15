@@ -14,7 +14,7 @@ function addLink() {
 
 
 
-const content = document.getElementById('content');
+let content = document.getElementById('content');
 
 content.addEventListener('mouseenter', function () {
 	const a = content.querySelectorAll('a');
@@ -62,5 +62,73 @@ function fileHandle(value) {
 		link.click();
 	} else if(value === 'pdf') {
 		html2pdf(content).save(filename.value);
+	}
+}
+
+let savenotes = document.getElementById("savenotes");
+let notesform = document.getElementById("notesform");
+
+const existingNotes = JSON.parse(localStorage.getItem("usernotes")) ?? [];
+
+function saveNotes() {
+	let notes = {
+		createdOn: Date().slice(0,15),
+		notesId: Math.floor(Math.random() * Date.now()),
+		heading: filename.value,
+		notes: content.innerHTML
+	}
+	existingNotes.push(notes);
+	localStorage.setItem("usernotes", JSON.stringify(existingNotes));
+	alert("notes saved");
+	window.location.href = "notesall.html"
+}
+
+const url = window.location.search;
+const urlParams = new URLSearchParams(url);
+const notesId = urlParams.get("notesId");
+const heading = urlParams.get("heading");
+
+
+for(let i = 0; i < existingNotes.length; i++){
+	if(existingNotes[i].notesId == notesId){
+		filename.value = heading;
+		const storedString = existingNotes[i]["notes"];
+		const sanitizedString = DOMPurify.sanitize(storedString);
+		content.innerHTML = sanitizedString
+		console.log(sanitizedString);
+	}
+}
+
+
+
+
+notesform.addEventListener("submit", (e)=>{
+	e.preventDefault();
+	if(notesId){
+		for(let i = 0; i < existingNotes.length; i++){
+			if(existingNotes[i].notesId == notesId){
+				existingNotes[i]["notes"] = content.innerHTML;
+				localStorage.setItem("usernotes", JSON.stringify(existingNotes));
+				alert("notes saved");
+				window.location.href = "notesall.html"
+			}
+		}
+	}
+	else{
+		saveNotes();
+	}
+
+})
+
+const deletenotes = document.getElementById("deletenotes");
+
+deletenotes.onclick = ()=>{
+	for(let i = 0; i < existingNotes.length; i++){
+		if(existingNotes[i].notesId == notesId){
+			existingNotes.splice(i, 1);
+			localStorage.setItem("usernotes", JSON.stringify(existingNotes));
+			window.location.href = "notesall.html";
+			alert("notes deleted");
+		}
 	}
 }

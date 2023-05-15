@@ -37,10 +37,11 @@
     <div class="main">
         <!--The Total Page starts-->
         <!-- journal starts -->
+        <form id="notesform">
         <div class="journal container">
                 <div class="toolbar">
                     <div class="head">
-                        <input type="text" placeholder="Filename" value="untitled" id="filename">
+                        <input type="text" placeholder="Filename"  id="filename" required>
                         <select onchange="fileHandle(this.value); this.selectedIndex=0">
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
@@ -75,6 +76,7 @@
                             <span>Background</span>
                             <input type="color" oninput="formatDoc('hiliteColor', this.value); this.value='#000000';">
                         </div>
+
                     </div>
                     <div class="btn-toolbar">
                         <button onclick="formatDoc('undo')"><i class='bx bx-undo'></i></button>
@@ -94,16 +96,20 @@
                         <button id="show-code" data-active="false">&lt;/&gt;</button>
                     </div>
                 </div>
-                <hr>
+                <!-- <hr> -->
                 <div id="content" contenteditable="true" spellcheck="true">
                     Type Your Notes Here
                 </div>
             </div>
-
+            <button id="savenotes">Save</button>
+            <button id="deletenotes">Delete</button>
+        </form>
+    </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
                 integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
 <script src="../assets/JS/createnotes.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
