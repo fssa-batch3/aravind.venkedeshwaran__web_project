@@ -62,7 +62,7 @@ while ((m = regex.exec(location.href))) {
 if (Object.keys(params).length > 0) {
   localStorage.setItem("authInfo", JSON.stringify(params));
 }
-window.history.pushState({}, document.title, "/" +"pages"+"profile.html");
+window.history.pushState({}, document.title, "/" +"pages"+"/" + "profile.html");
 const info = JSON.parse(localStorage.getItem("authInfo"));
 console.log(info.access_token);
 console.log(info.expires_in);
