@@ -269,6 +269,7 @@
     width: fit-content;
     transition: color 0.3s ease;
     justify-content: flex-start;
+    font-weight: 900;
   }
   .taskname label::before,
   .taskname label::after {

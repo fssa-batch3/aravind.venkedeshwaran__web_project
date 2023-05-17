@@ -13,18 +13,18 @@ logoImg.width = "250";
 logoImg.alt = "logo";
 logoLinkA.appendChild(logoImg);
 
-const homeLinkA = document.createElement("a");
-homeLinkA.href = "dashboard.html";
-sidepanelDiv.appendChild(homeLinkA);
+// const homeLinkA = document.createElement("a");
+// homeLinkA.href = "dashboard.html";
+// sidepanelDiv.appendChild(homeLinkA);
 
-const homeIcon = document.createElement("i");
-homeIcon.classList.add("fas", "fa-home");
-homeLinkA.appendChild(homeIcon);
+// const homeIcon = document.createElement("i");
+// homeIcon.classList.add("fas", "fa-home");
+// homeLinkA.appendChild(homeIcon);
 
-const homeSpan = document.createElement("span");
-homeSpan.classList.add("title");
-homeSpan.innerText = "Home";
-homeLinkA.appendChild(homeSpan);
+// const homeSpan = document.createElement("span");
+// homeSpan.classList.add("title");
+// homeSpan.innerText = "Home";
+// homeLinkA.appendChild(homeSpan);
 
 const taskLinkA = document.createElement("a");
 taskLinkA.href = "Task Page.html";

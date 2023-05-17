@@ -1,94 +1,96 @@
-/* -----------------------------------------------date slider----------------------------------------------- */
-const daystimelineDiv = document.querySelector(".daystimeline");
-const year = 2023;
-const month = 4; // May
-const day = 1; // Starting day of the month
-const getDate = new Date(year, month, day);
-const maytodec = [];
+// /* -----------------------------------------------date slider----------------------------------------------- */
+// const daystimelineDiv = document.querySelector(".daystimeline");
+// const year = 2023;
+// const month = 4; // May
+// const day = 1; // Starting day of the month
+// const getDate = new Date(year, month, day);
+// const maytodec = [];
 
-while (getDate.getFullYear() === year) {
-  if (getDate.getDay() <= 6) {
-    maytodec.push(getDate.toDateString());
-  }
-  getDate.setDate(getDate.getDate() + 1);
-}
+// while (getDate.getFullYear() === year) {
+//   if (getDate.getDay() <= 6) {
+//     maytodec.push(getDate.toDateString());
+//   }
+//   getDate.setDate(getDate.getDate() + 1);
+// }
 
-for (let i = 6; i <= 91; i++) {
-  const datedayDiv = document.createElement("div");
-  datedayDiv.className = "dateday";
+// for (let i = 6; i <= 91; i++) {
+//   const datedayDiv = document.createElement("div");
+//   datedayDiv.className = "dateday";
 
-  const dayOfWeek = document.createElement("p");
-  dayOfWeek.id = "dayOfWeek";
-  dayOfWeek.innerText = maytodec[i].slice(0, 4);
+//   const dayOfWeek = document.createElement("p");
+//   dayOfWeek.id = "dayOfWeek";
+//   dayOfWeek.innerText = maytodec[i].slice(0, 4);
 
-  const dateOfMonth = document.createElement("p");
-  dateOfMonth.id = "dateOfMonth";
-  dateOfMonth.innerText = maytodec[i].slice(8, 10);
+//   const dateOfMonth = document.createElement("p");
+//   dateOfMonth.id = "dateOfMonth";
+//   dateOfMonth.innerText = maytodec[i].slice(8, 10);
 
-  const MonthOf2023 = document.createElement("p");
-  MonthOf2023.id = "MonthOf2023";
-  MonthOf2023.innerText = maytodec[i].slice(3, 7);
+//   const MonthOf2023 = document.createElement("p");
+//   MonthOf2023.id = "MonthOf2023";
+//   MonthOf2023.innerText = maytodec[i].slice(3, 7);
 
-  datedayDiv.appendChild(dayOfWeek);
-  datedayDiv.appendChild(dateOfMonth);
-  datedayDiv.appendChild(MonthOf2023);
-  daystimelineDiv.appendChild(datedayDiv);
-}
+//   datedayDiv.appendChild(dayOfWeek);
+//   datedayDiv.appendChild(dateOfMonth);
+//   datedayDiv.appendChild(MonthOf2023);
+//   daystimelineDiv.appendChild(datedayDiv);
+// }
 
-// drag dates
-daystimelineDiv.addEventListener("wheel", (e) => {
-  e.preventDefault();
-  daystimelineDiv.scrollLeft += e.deltaY;
-});
+// // drag dates
+// daystimelineDiv.addEventListener("wheel", (e) => {
+//   e.preventDefault();
+//   daystimelineDiv.scrollLeft += e.deltaY;
+// });
 
-let isDragging = false;
-let startPosition = 0;
-let currentTranslate = 0;
-let previousTranslate = 0;
-const animationId = 0;
+// let isDragging = false;
+// let startPosition = 0;
+// let currentTranslate = 0;
+// let previousTranslate = 0;
+// const animationId = 0;
 
-daystimelineDiv.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  startPosition = e.clientX;
-  daystimelineDiv.style.cursor = "grabbing";
-  currentTranslate = getTranslateX();
-  previousTranslate = currentTranslate;
+// daystimelineDiv.addEventListener("mousedown", (e) => {
+//   isDragging = true;
+//   startPosition = e.clientX;
+//   daystimelineDiv.style.cursor = "grabbing";
+//   currentTranslate = getTranslateX();
+//   previousTranslate = currentTranslate;
 
-  cancelAnimationFrame(animationId);
-});
+//   cancelAnimationFrame(animationId);
+// });
 
-daystimelineDiv.addEventListener("mousemove", (e) => {
-  if (isDragging) {
-    const currentPosition = e.clientX;
-    const distance = currentPosition - startPosition;
-    daystimelineDiv.scrollLeft = previousTranslate - distance;
-  }
-});
+// daystimelineDiv.addEventListener("mousemove", (e) => {
+//   if (isDragging) {
+//     const currentPosition = e.clientX;
+//     const distance = currentPosition - startPosition;
+//     daystimelineDiv.scrollLeft = previousTranslate - distance;
+//   }
+// });
 
-daystimelineDiv.addEventListener("mouseup", () => {
-  isDragging = false;
-  daystimelineDiv.style.cursor = "grab";
-  previousTranslate = getTranslateX();
-});
+// daystimelineDiv.addEventListener("mouseup", () => {
+//   isDragging = false;
+//   daystimelineDiv.style.cursor = "grab";
+//   previousTranslate = getTranslateX();
+// });
 
-daystimelineDiv.addEventListener("mouseleave", () => {
-  isDragging = false;
-  daystimelineDiv.style.cursor = "grab";
-  previousTranslate = getTranslateX();
-});
+// daystimelineDiv.addEventListener("mouseleave", () => {
+//   isDragging = false;
+//   daystimelineDiv.style.cursor = "grab";
+//   previousTranslate = getTranslateX();
+// });
 
-function getTranslateX() {
-  const style = window.getComputedStyle(daystimelineDiv);
-  const matrix = new DOMMatrixReadOnly(style.transform);
-  return matrix.m41;
-}
+// function getTranslateX() {
+//   const style = window.getComputedStyle(daystimelineDiv);
+//   const matrix = new DOMMatrixReadOnly(style.transform);
+//   return matrix.m41;
+// }
 
 // showing today's date first
 // let today = Date().slice(0,15);
+
 // for(let i = 6; i <= 91; i++){
 //   if(today == maytodec[i]){
-//     alert("todays date found")
-//     maytodec[i].style.transform = "translateX(40px)";
+//     alert(`${maytodec[i]}`)
+//     let todaydate = maytodec[i]
+//     todaydate.style.display = "none";
 //   }
 // }
 
@@ -145,6 +147,8 @@ cancelnotes.onclick = function () {
 const existinghabit = JSON.parse(localStorage.getItem("userhabits")) ?? [];
 existinghabit.forEach((habit) => renderhabit(habit));
 
+
+
 saveHabit.addEventListener("click", () => {
   const newhabit = {
     habitId: Math.floor(Math.random() * Date.now()),
@@ -172,10 +176,11 @@ saveHabit.addEventListener("click", () => {
 
 function renderhabit(habit) {
   const li = document.createElement("li");
+  li.id = "habitLi";
   li.innerHTML = `<div id="habitcard">
                         <div id="habitnamecard">
                           
-                          <div id="habicardname"> <p id="habitcolor"></p>  <p>${habit.habitName}</p></div>
+                          <div id="habicardname"> <p id="habitcolor"></p>  <p id="habitnametext">${habit.habitName}</p></div>
                           <p id="habitdescrip">✔ Great Start</p>
                         </div>
 
@@ -233,6 +238,46 @@ function revealnotes() {
   notesDiv.style.display = "block";
   habitPage.style.filter = "blur(3px)";
 }
+
+
+/* -----------------------------------------------Habit Header----------------------------------------------- */
+/* ----------------------------------------------- Search----------------------------------------------- */
+
+let searchInput = document.getElementById("habitsearch");
+let habitnametext = document.querySelectorAll("#habitnametext");
+let habitLi = document.querySelectorAll(".habitlist li");
+
+
+searchInput.addEventListener('keyup', ()=>{
+  habitLi.forEach((item,i)=> {
+
+    let search= searchInput.value.trim().toLowerCase();
+
+    if(habitnametext[i].innerHTML.includes(search)){
+      item.style.display = "flex"
+    }
+    else{
+      item.style.display = "none"
+    }
+
+  })
+})
+
+/* ----------------------------------------------- Filter ----------------------------------------------- */
+let habitFilter = document.getElementById("HabitFilter")
+habitFilter.onchange = () => {
+  if(habitFilter.value == "Alphabetic Order"){
+    Array.from(habitLi).sort((a, b) => a.textContent.localeCompare(b.textContent))
+    .forEach(li => habitList.appendChild(li));
+  }
+  else if(habitFilter.value == "My Habit Order"){
+    existinghabit.forEach((habit) => renderhabit(habit));
+    console.log(habitFilter.value);
+
+  }
+}
+
+
 
 /* -------------------------------------------------STREAK SCRIPT-------------------------------------------------- */
 
