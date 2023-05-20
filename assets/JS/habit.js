@@ -1,99 +1,3 @@
-// /* -----------------------------------------------date slider----------------------------------------------- */
-// const daystimelineDiv = document.querySelector(".daystimeline");
-// const year = 2023;
-// const month = 4; // May
-// const day = 1; // Starting day of the month
-// const getDate = new Date(year, month, day);
-// const maytodec = [];
-
-// while (getDate.getFullYear() === year) {
-//   if (getDate.getDay() <= 6) {
-//     maytodec.push(getDate.toDateString());
-//   }
-//   getDate.setDate(getDate.getDate() + 1);
-// }
-
-// for (let i = 6; i <= 91; i++) {
-//   const datedayDiv = document.createElement("div");
-//   datedayDiv.className = "dateday";
-
-//   const dayOfWeek = document.createElement("p");
-//   dayOfWeek.id = "dayOfWeek";
-//   dayOfWeek.innerText = maytodec[i].slice(0, 4);
-
-//   const dateOfMonth = document.createElement("p");
-//   dateOfMonth.id = "dateOfMonth";
-//   dateOfMonth.innerText = maytodec[i].slice(8, 10);
-
-//   const MonthOf2023 = document.createElement("p");
-//   MonthOf2023.id = "MonthOf2023";
-//   MonthOf2023.innerText = maytodec[i].slice(3, 7);
-
-//   datedayDiv.appendChild(dayOfWeek);
-//   datedayDiv.appendChild(dateOfMonth);
-//   datedayDiv.appendChild(MonthOf2023);
-//   daystimelineDiv.appendChild(datedayDiv);
-// }
-
-// // drag dates
-// daystimelineDiv.addEventListener("wheel", (e) => {
-//   e.preventDefault();
-//   daystimelineDiv.scrollLeft += e.deltaY;
-// });
-
-// let isDragging = false;
-// let startPosition = 0;
-// let currentTranslate = 0;
-// let previousTranslate = 0;
-// const animationId = 0;
-
-// daystimelineDiv.addEventListener("mousedown", (e) => {
-//   isDragging = true;
-//   startPosition = e.clientX;
-//   daystimelineDiv.style.cursor = "grabbing";
-//   currentTranslate = getTranslateX();
-//   previousTranslate = currentTranslate;
-
-//   cancelAnimationFrame(animationId);
-// });
-
-// daystimelineDiv.addEventListener("mousemove", (e) => {
-//   if (isDragging) {
-//     const currentPosition = e.clientX;
-//     const distance = currentPosition - startPosition;
-//     daystimelineDiv.scrollLeft = previousTranslate - distance;
-//   }
-// });
-
-// daystimelineDiv.addEventListener("mouseup", () => {
-//   isDragging = false;
-//   daystimelineDiv.style.cursor = "grab";
-//   previousTranslate = getTranslateX();
-// });
-
-// daystimelineDiv.addEventListener("mouseleave", () => {
-//   isDragging = false;
-//   daystimelineDiv.style.cursor = "grab";
-//   previousTranslate = getTranslateX();
-// });
-
-// function getTranslateX() {
-//   const style = window.getComputedStyle(daystimelineDiv);
-//   const matrix = new DOMMatrixReadOnly(style.transform);
-//   return matrix.m41;
-// }
-
-// showing today's date first
-// let today = Date().slice(0,15);
-
-// for(let i = 6; i <= 91; i++){
-//   if(today == maytodec[i]){
-//     alert(`${maytodec[i]}`)
-//     let todaydate = maytodec[i]
-//     todaydate.style.display = "none";
-//   }
-// }
-
 /* -----------------------------------------------Add Habit Function----------------------------------------------- */
 const habitPage = document.querySelector(".habit");
 const addHabitInput = document.getElementById("addhabit");
@@ -248,32 +152,77 @@ let habitnametext = document.querySelectorAll("#habitnametext");
 let habitLi = document.querySelectorAll(".habitlist li");
 
 
-searchInput.addEventListener('keyup', ()=>{
-  habitLi.forEach((item,i)=> {
+searchInput.addEventListener('keyup', () => {
+  habitLi.forEach((item, i) => {
 
-    let search= searchInput.value.trim().toLowerCase();
+    let search = searchInput.value.trim().toLowerCase();
 
-    if(habitnametext[i].innerHTML.includes(search)){
+    if (habitnametext[i].innerHTML.includes(search)) {
       item.style.display = "flex"
     }
-    else{
+    else {
       item.style.display = "none"
     }
 
   })
 })
 
+/* ----------------------------------------------- Date Filter ----------------------------------------------- */
+
+// Setting min and max date 
+const habitcheck = document.querySelectorAll("#habitcheckbox");
+let habitdate = document.getElementById("habitdate");
+
+function dateconvert(inputdate) {
+  let originalDate = inputdate;
+
+let date = new Date(originalDate);
+
+let year = date.getFullYear();
+let month = ("0" + (date.getMonth() + 1)).slice(-2); // Add leading zero if needed
+let day = ("0" + date.getDate()).slice(-2); // Add leading zero if needed
+
+let newFormat = year + "-" + month + "-" + day;
+return newFormat;
+}
+
+
+habitdate.min = dateconvert(existinghabit[0]["createddate"]) 
+habitdate.max = new Date().toISOString().split("T")[0];
+habitdate.value = new Date().toISOString().split("T")[0];
+
+
+
+// filter using dates
+
+
+habitdate.onchange = ()=>{
+  console.log("filter is working");
+  let selectedDate = habitdate.value;
+  for(let i = 0; i < existinghabit.length; i++){
+    for(let j = 0; j < existinghabit[i]["habitActive"].length; j++){
+      if(selectedDate == dateconvert(existinghabit[i]["habitActive"][j])){
+          habitcheck[i].checked = true;
+      }
+    }
+  }
+}
+
+
+
 /* ----------------------------------------------- Filter ----------------------------------------------- */
+
+
 let habitFilter = document.getElementById("HabitFilter")
 habitFilter.onchange = () => {
-  if(habitFilter.value == "Alphabetic Order"){
-    Array.from(habitLi).sort((a, b) => a.textContent.localeCompare(b.textContent))
-    .forEach(li => habitList.appendChild(li));
-  }
-  else if(habitFilter.value == "My Habit Order"){
-    existinghabit.forEach((habit) => renderhabit(habit));
-    console.log(habitFilter.value);
+  habitList.innerHTML = "";
 
+  if (habitFilter.value == "Alphabetic Order") {
+    Array.from(habitLi).sort((a, b) => a.textContent.localeCompare(b.textContent))
+      .forEach(li => habitList.appendChild(li));
+  }
+  else if (habitFilter.value == "My Habit Order") {
+    existinghabit.forEach((habit) => renderhabit(habit));
   }
 }
 
@@ -326,9 +275,8 @@ function edithabit(index) {
 
 
 // saving active habit dates in local storage
-const habitcheck = document.querySelectorAll("#habitcheckbox");
 const gettoday = Date().slice(0, 15);
-// const gettoday = "Thu May 18 2023" ;
+// const gettoday = 'Sun May 21 2023' ;
 
 for (let i = 0; i < habitcheck.length; i++) {
   habitcheck[i].onclick = function () {
@@ -360,10 +308,11 @@ function streak(index) {
   let habitactivelen = existinghabit[index]["habitActive"].length;
   let streakcount;
   let lastIndex;
+  let failures = false;
 
   if (habitactivelen >= 2) {
     streakcount = 1;
-    for (let i = 0; i < habitactivelen; i++) {
+    for (let i = 1; i <= habitactivelen; i++) {
       let firstIndex = existinghabit[index].habitActive[i];
       let secondIndex = existinghabit[index].habitActive[i + 1];
       if (secondIndex) {
@@ -371,17 +320,24 @@ function streak(index) {
           let datedifference = Math.abs(Number(firstIndex.slice(8, 10)) - Number(secondIndex.slice(8, 10)));
           if (datedifference == 1) {
             streakcount++;
-            lastIndex = i + 1;
-            console.log(lastIndex)
+            lastIndex = i;
           }
           else {
-            streakcount = 0;
+            streakcount = 1;
+            failures = true
           }
         }
       }
     }
-    if (streakcount > 1) {
-      document.getElementById("streakfrom").innerText = existinghabit[index]["habitActive"][Math.abs(lastIndex - streakcount) - 1];
+    if (failures) {
+      if (streakcount > 1) {
+        document.getElementById("streakfrom").innerText = existinghabit[index]["habitActive"][Math.abs(lastIndex - streakcount) + 2];
+      }
+    }
+    else if (!failures) {
+      if (streakcount > 1) {
+        document.getElementById("streakfrom").innerText = existinghabit[index]["habitActive"][Math.abs(lastIndex - streakcount) - 1];
+      }
     }
   }
   else if (habitactivelen == 1) {
@@ -392,7 +348,7 @@ function streak(index) {
     streakcount = 0
     document.getElementById("streakfrom").innerText = "Start From Today"
   }
-  if(streakcount == 0){
+  if (streakcount == 0) {
     document.getElementById("streakfrom").innerText = "Start From Today"
   }
   // save streakcount in local Storage
@@ -407,7 +363,8 @@ function streak(index) {
 function streakstatus(index) {
 
   // total completion of habit
-  document.querySelector(".totaldays").innerText = `${existinghabit[index]["habitActive"].length} Times`;
+  let totalTimes = existinghabit[index]["habitActive"].length;
+  document.querySelector(".totaldays").innerText = `${totalTimes} Times`;
 
   // total times failed to do habit
 
@@ -417,136 +374,145 @@ function streakstatus(index) {
 
   const createdOn = existinghabit[index]["createddate"]
   const startOn = new Date(createdOn);
-  
+
   const today = new Date();
-  
+
   let currentDate = startOn;
-  
+
   while (currentDate <= today) {
-  
-      starttotodayarr.push(startOn.toDateString());
-      currentDate.setDate(currentDate.getDate() + 1);
-  
+
+    starttotodayarr.push(startOn.toDateString());
+    currentDate.setDate(currentDate.getDate() + 1);
+
   }
-  
+
   console.log(starttotodayarr);
 
   // check each date is present in habitactive array
   let failcount;
   let successcount;
-  if(existinghabit[index]["habitActive"].length > 0){
+  if (existinghabit[index]["habitActive"].length) {
     failcount = 0;
     successcount = 0;
+
     let successstatus = false;
-    let failstatus = 0;
-    for(let date of starttotodayarr){
-      for(let i = 0; i < existinghabit[index]["habitActive"].length; i++){
-          if(date != existinghabit[index]["habitActive"][i]){
-            failstatus = 1; 
-          }
+    let failstatus = false;
+    for (let date of starttotodayarr) {
+      for (let i = 0; i < existinghabit[index]["habitActive"].length; i++) {
+        if (date == existinghabit[index]["habitActive"][i]) {
+          successstatus = true;
+          // console.log("failstatus becomes true");
+        }
       }
-      if(failstatus == 1){
-        failcount++
+      if (successstatus) {
+        successcount++
       }
     }
   }
-  else{
+  else {
     failcount = starttotodayarr.length;
   }
+  if (Math.abs(totalTimes - successcount)) {
+    failcount = Math.abs(totalTimes - successcount)
+  }
+  else {
+    failcount = 0
+  }
+
   document.querySelector(".faildays").innerText = `${failcount} Days`
   // console.log(starttotodayarr);
-  console.log("successcount",successcount);
-  console.log("failcount",failcount);
+  console.log("successcount", successcount);
+  console.log("failcount", failcount);
 
 }
 
 /* -------------------------------------------------CALENDAR SCRIPT----------------------------------------------- */
-function habitCalendar(index){
-const daysTag = document.querySelector(".days");
-const currentDate = document.querySelector(".current-date");
-const prevNextIcon = document.querySelectorAll(".icons span");
+function habitCalendar(index) {
+  const daysTag = document.querySelector(".days");
+  const currentDate = document.querySelector(".current-date");
+  const prevNextIcon = document.querySelectorAll(".icons span");
 
-// getting new date, current year and month
-let date = new Date();
-let currYear = date.getFullYear();
-let currMonth = date.getMonth();
+  // getting new date, current year and month
+  let date = new Date();
+  let currYear = date.getFullYear();
+  let currMonth = date.getMonth();
 
-// storing full name of all months in array
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+  // storing full name of all months in array
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-let activedays = existinghabit[index]["habitActive"];
+  let activedays = existinghabit[index]["habitActive"];
 
-const renderCalendar = () => {
-  const firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // getting first day of month
-  const lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // getting last date of month
-  const lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); // getting last day of month
-  const lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-  let liTag = "";
-
-
-  for (let i = firstDayofMonth; i > 0; i--) {
-    // creating li of previous month last days
-    liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-  }
-  
-  for (let i = 1; i <= lastDateofMonth; i++) {
-    // creating li of all days of current month
-    // adding active class to li if the current day, month, and year matched
-    const isToday =
-      i === date.getDate() &&
-      currMonth === new Date().getMonth() &&
-      currYear === new Date().getFullYear()
-        ? "active"
-        : "";
-    const isActiveDay = activedays.includes(
-      new Date(currYear, currMonth, i).toDateString()
-    );
-    const colorClass = isActiveDay ? "active-day" : "";
-    liTag += `<li class="${isToday} ${colorClass}">${i}</li>`;
-  }
-  
-  for (let i = lastDayofMonth; i < 6; i++) {
-    // creating li of next month first days
-    liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
-  }
-  currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-  daysTag.innerHTML = liTag;
-}
-renderCalendar()  
+  const renderCalendar = () => {
+    const firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); // getting first day of month
+    const lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); // getting last date of month
+    const lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); // getting last day of month
+    const lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+    let liTag = "";
 
 
-prevNextIcon.forEach((icon) => {
-  // getting prev and next icons
-  icon.addEventListener("click", () => {
-    // adding click event on both icons
-    // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
-    currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-
-    if (currMonth < 0 || currMonth > 11) {
-      // if current month is less than 0 or greater than 11
-      // creating a new date of current year & month and pass it as date value
-      date = new Date(currYear, currMonth, new Date().getDate());
-      currYear = date.getFullYear(); // updating current year with new date year
-      currMonth = date.getMonth(); // updating current month with new date month
-    } else {
-      date = new Date(); // pass the current date as date value
+    for (let i = firstDayofMonth; i > 0; i--) {
+      // creating li of previous month last days
+      liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
     }
-    renderCalendar(); // calling renderCalendar function
+
+    for (let i = 1; i <= lastDateofMonth; i++) {
+      // creating li of all days of current month
+      // adding active class to li if the current day, month, and year matched
+      const isToday =
+        i === date.getDate() &&
+          currMonth === new Date().getMonth() &&
+          currYear === new Date().getFullYear()
+          ? "active"
+          : "";
+      const isActiveDay = activedays.includes(
+        new Date(currYear, currMonth, i).toDateString()
+      );
+      const colorClass = isActiveDay ? "active-day" : "";
+      liTag += `<li class="${isToday} ${colorClass}">${i}</li>`;
+    }
+
+    for (let i = lastDayofMonth; i < 6; i++) {
+      // creating li of next month first days
+      liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
+    }
+    currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+    daysTag.innerHTML = liTag;
+  }
+  renderCalendar()
+
+
+  prevNextIcon.forEach((icon) => {
+    // getting prev and next icons
+    icon.addEventListener("click", () => {
+      // adding click event on both icons
+      // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
+      currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+      if (currMonth < 0 || currMonth > 11) {
+        // if current month is less than 0 or greater than 11
+        // creating a new date of current year & month and pass it as date value
+        date = new Date(currYear, currMonth, new Date().getDate());
+        currYear = date.getFullYear(); // updating current year with new date year
+        currMonth = date.getMonth(); // updating current month with new date month
+      } else {
+        date = new Date(); // pass the current date as date value
+      }
+      renderCalendar(); // calling renderCalendar function
+    });
   });
-});
 
 }
 
@@ -672,11 +638,11 @@ let title = document.getElementById("title");
 let existingNotes = JSON.parse(localStorage.getItem('habitNotes')) ?? [];
 
 
-savenotes.addEventListener('click', ()=>{
+savenotes.addEventListener('click', () => {
   let habitNotes = [];
   let notes = {
     notesId: Math.floor(Math.random() * Date.now()),
-    notesHeading : title.value,
+    notesHeading: title.value,
     notes: notesarea.innerHTML
   }
   existingNotes.push(notes);
@@ -685,4 +651,4 @@ savenotes.addEventListener('click', ()=>{
   notespopup.style.display = "none";
   habitPage.style.filter = "none";
   alert("notes saved")
-})
+}) 
