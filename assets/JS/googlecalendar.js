@@ -12,11 +12,11 @@ function handleFormSubmission(event) {
       summary: eventName,
       start: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       },
       end: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       }
     };
   
@@ -27,7 +27,7 @@ function handleFormSubmission(event) {
   // Function to add an event to Google Calendar
   function addEventToGoogleCalendar(event) {
     gapi.client.init({
-      apiKey: 'YOUR_API_KEY' // Replace with your Google API key
+      apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY' // Replace with your Google API key
     }).then(function() {
       return gapi.client.request({
         path: 'https://www.googleapis.com/calendar/v3/calendars/primary/events',
@@ -71,11 +71,11 @@ function loadCalendarAPI() {
       summary: eventName,
       start: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       },
       end: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       }
     };
   
@@ -100,7 +100,7 @@ function loadCalendarAPI() {
   
   // Initialize Google API client library and set up the API key
   gapi.client.init({
-    apiKey: 'YOUR_API_KEY' // Replace with your Google API key
+    apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY' // Replace with your Google API key
   }).then(function() {
     loadCalendarAPI();
   }, function(error) {
