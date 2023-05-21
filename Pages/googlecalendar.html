@@ -21,6 +21,7 @@
         const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
         const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
+        let tokenClient;
         let gapiInited = false;
         let gisInited = false;
 
@@ -42,9 +43,15 @@
         }
 
         function gisLoaded() {
+            tokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: '', // defined later
+            });
             gisInited = true;
-            maybeEnableButton();
+            maybeEnableButtons();
         }
+
 
         function maybeEnableButton() {
             if (gapiInited && gisInited) {
@@ -53,12 +60,22 @@
         }
 
         function handleAuthClick() {
-            google.accounts.id.initialize({
-                client_id: CLIENT_ID,
-                callback: handleAuthorization,
-                cancel_on_tap_outside: false,
-            });
-            google.accounts.id.prompt();
+            tokenClient.callback = async (resp) => {
+                if (resp.error !== undefined) {
+                    throw (resp);
+                }
+                // document.getElementById('signout_button').style.visibility = 'visible';
+                document.getElementById('authorize_button').innerText = 'Added';
+            };
+
+            if (gapi.client.getToken() === null) {
+                // Prompt the user to select a Google Account and ask for consent to share their data
+                // when establishing a new session.
+                tokenClient.requestAccessToken({ prompt: 'consent' });
+            } else {
+                // Skip display of account chooser and consent dialog for an existing session.
+                tokenClient.requestAccessToken({ prompt: '' });
+            }
         }
 
         async function handleAuthorization(response) {
