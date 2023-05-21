@@ -156,11 +156,16 @@
             // https://developers.google.com/calendar/quickstart/js
             // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
             // stored credentials.
+        }
 
+        function appendPre(message) {
+            const pre = document.getElementById('content');
+            const textContent = document.createTextNode(message + '\n');
+            pre.appendChild(textContent);
+        }
 
-    }
-    function freshtimeEvent(){
-                const event = {
+        function freshtimeEvent() {
+            const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
                 'start': {
