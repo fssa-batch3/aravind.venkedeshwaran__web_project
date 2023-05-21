@@ -12,7 +12,6 @@
     <!-- Add button to initiate auth sequence -->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize and Create Event</button>
 
-    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
     <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
 
     <script type="text/javascript">
@@ -22,15 +21,6 @@
         const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
         let gapiInited = false;
-        let gisInited = false;
-
-        /**
-         * Callback after Google Identity Services are loaded.
-         */
-        function gisLoaded() {
-            gisInited = true;
-            maybeEnableButton();
-        }
 
         /**
          * Callback after api.js is loaded.
@@ -47,31 +37,11 @@
                 scope: SCOPES,
             });
             gapiInited = true;
-            maybeEnableButton();
-        }
-
-        function maybeEnableButton() {
-            if (gapiInited && gisInited) {
-                document.getElementById('authorize_button').style.visibility = 'visible';
-            }
+            document.getElementById('authorize_button').style.visibility = 'visible';
         }
 
         function handleAuthClick() {
-            google.accounts.id.initialize({
-                client_id: CLIENT_ID,
-                callback: handleAuthorization,
-                cancel_on_tap_outside: false,
-            });
-            google.accounts.id.prompt();
-        }
-
-        async function handleAuthorization(response) {
-            if (response.error) {
-                console.error('Authorization error:', response.error);
-                return;
-            }
-
-            await createEvent();
+            gapi.auth2.getAuthInstance().signIn().then(createEvent);
         }
 
         async function createEvent() {
