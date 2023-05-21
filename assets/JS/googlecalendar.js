@@ -6,7 +6,9 @@ function loadCalendarAPI() {
   // Initialize Google API client library and set up the API credentials
   function initClient() {
     gapi.client.init({
+      apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY', // Replace with your Google API key
       clientId: '879687241176-kh9udu4dc6at9jqlmfohlrs0ovi01pms.apps.googleusercontent.com', // Replace with your own client ID
+      discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
       scope: 'https://www.googleapis.com/auth/calendar'
     }).then(function() {
       console.log('Google API client initialized successfully!');
