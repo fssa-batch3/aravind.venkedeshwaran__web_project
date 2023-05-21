@@ -11,7 +11,7 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" onclick="handleAuthClick()">Show Event</button>
-    <button id="createEvents" onclick="creteTaskEvent()">Create Event</button>
+    <button id="createEvents" onclick="freshtimeEvent()">Create Event</button>
     <!-- <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button> -->
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
@@ -157,7 +157,7 @@
             // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
             // stored credentials.
 
-            function creteTaskEvent(){
+            function freshtimeEvent(){
                 const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
