@@ -12,38 +12,24 @@
     <!-- Add button to initiate auth sequence -->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize and Create Event</button>
 
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/api.js" async defer></script>
+
     <script type="text/javascript">
-        /* exported gapiLoaded */
-        /* exported gisLoaded */
-        /* exported handleAuthClick */
-
-        // TODO: Set to client ID and API key from the Developer Console
-        const CLIENT_ID = '879687241176-kh9udu4dc6at9jqlmfohlrs0ovi01pms.apps.googleusercontent.com';
-        const API_KEY = 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY';
-
-        // Discovery doc URL for APIs used by the quickstart
+        const CLIENT_ID = 'YOUR_CLIENT_ID'; // Replace with your actual Client ID
+        const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API Key
         const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
-
-        // Authorization scope required by the API
         const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
-        let tokenClient;
         let gapiInited = false;
         let gisInited = false;
 
         document.getElementById('authorize_button').style.visibility = 'hidden';
 
-        /**
-         * Callback after api.js is loaded.
-         */
         function gapiLoaded() {
             gapi.load('client', initializeGapiClient);
         }
 
-        /**
-         * Callback after the API client is loaded. Loads the
-         * discovery doc to initialize the API.
-         */
         async function initializeGapiClient() {
             await gapi.client.init({
                 apiKey: API_KEY,
@@ -55,52 +41,35 @@
             maybeEnableButton();
         }
 
-        /**
-         * Callback after Google Identity Services are loaded.
-         */
         function gisLoaded() {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-                client_id: CLIENT_ID,
-                scope: SCOPES,
-                callback: '', // defined later
-            });
             gisInited = true;
             maybeEnableButton();
         }
 
-        /**
-         * Enables user interaction after all libraries are loaded.
-         */
         function maybeEnableButton() {
             if (gapiInited && gisInited) {
                 document.getElementById('authorize_button').style.visibility = 'visible';
             }
         }
 
-        /**
-         * Sign in the user upon button click and create an event.
-         */
         function handleAuthClick() {
-            tokenClient.callback = async (resp) => {
-                if (resp.error !== undefined) {
-                    throw (resp);
-                }
-                await createEvent();
-            };
-
-            if (gapi.client.getToken() === null) {
-                // Prompt the user to select a Google Account and ask for consent to share their data
-                // when establishing a new session.
-                tokenClient.requestAccessToken({ prompt: 'consent' });
-            } else {
-                // Skip display of account chooser and consent dialog for an existing session.
-                tokenClient.requestAccessToken({ prompt: '' });
-            }
+            google.accounts.id.initialize({
+                client_id: CLIENT_ID,
+                callback: handleAuthorization,
+                cancel_on_tap_outside: false,
+            });
+            google.accounts.id.prompt();
         }
 
-        /**
-         * Create a new event in the user's primary calendar.
-         */
+        async function handleAuthorization(response) {
+            if (response.error) {
+                console.error('Authorization error:', response.error);
+                return;
+            }
+
+            await createEvent();
+        }
+
         async function createEvent() {
             const event = {
                 'summary': 'Test Event',
@@ -132,8 +101,6 @@
             }
         }
     </script>
-    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
-    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
 </body>
 
 </html>
