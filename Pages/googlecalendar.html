@@ -101,7 +101,7 @@
          * Create a new event in the user's Google Calendar.
          */
         async function createEvent() {
-            
+
             const duedateevent = existingtask[0]["duedate"]
             const startevent = existingtask[0]["startingtime"]
             const endevent = existingtask[0]['endingtime']
@@ -136,6 +136,7 @@
                 appendPre('Event created: ' + response.result.htmlLink);
             } catch (error) {
                 appendPre('Error creating event: ' + error.message);
+                console.log('Error:', error);
             }
         }
 
