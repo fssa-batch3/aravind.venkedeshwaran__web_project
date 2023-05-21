@@ -10,11 +10,7 @@
     <p>Google Calendar API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Show Event</button>
-    <input type="date" id="date_input" placeholder="Date" required>
-    <input type="time" id="start_time_input" placeholder="Start Time" required>
-    <input type="time" id="end_time_input" placeholder="End Time" required>
-    <button id="createEvents" onclick="createEvent()">Create Event</button>
+    <button id="authorize_button" onclick="handleAuthClick()">Add Event</button>
     <!-- <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button> -->
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
@@ -34,7 +30,7 @@
 
         // Authorization scopes required by the API; multiple scopes can be
         // included, separated by spaces.
-        const SCOPES = 'https://www.googleapis.com/auth/calendar';
+        const SCOPES = 'https://www.googleapis.com/auth/calendar.readonly';
 
         let tokenClient;
         let gapiInited = false;
@@ -94,7 +90,7 @@
                     throw (resp);
                 }
                 // document.getElementById('signout_button').style.visibility = 'visible';
-                document.getElementById('authorize_button').innerText = 'Refresh';
+                document.getElementById('authorize_button').innerText = 'Event Added';
                 await listUpcomingEvents();
             };
 
@@ -111,16 +107,16 @@
         /**
          *  Sign out the user upon button click.
          */
-        function handleSignoutClick() {
-            const token = gapi.client.getToken();
-            if (token !== null) {
-                google.accounts.oauth2.revoke(token.access_token);
-                gapi.client.setToken('');
-                document.getElementById('content').innerText = '';
-                document.getElementById('authorize_button').innerText = 'Authorize';
-                // document.getElementById('signout_button').style.visibility = 'hidden';
-            }
-        }
+        // function handleSignoutClick() {
+        //     const token = gapi.client.getToken();
+        //     if (token !== null) {
+        //         google.accounts.oauth2.revoke(token.access_token);
+        //         gapi.client.setToken('');
+        //         document.getElementById('content').innerText = '';
+        //         document.getElementById('authorize_button').innerText = 'Authorize';
+        //         document.getElementById('signout_button').style.visibility = 'hidden';
+        //     }
+        // }
 
         /**
          * Print the summary and start datetime/date of the next ten events in
@@ -159,28 +155,16 @@
             // https://developers.google.com/calendar/quickstart/js
             // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
             // stored credentials.
-        }
-
-        function appendPre(message) {
-            const pre = document.getElementById('content');
-            const textContent = document.createTextNode(message + '\n');
-            pre.appendChild(textContent);
-        }
-
-        function createEvent() {
-            const date = document.getElementById('date_input').value;
-            const startTime = document.getElementById('start_time_input').value;
-            const endTime = document.getElementById('end_time_input').value;
 
             const event = {
-                'summary': 'FreshTime test event',
-                'description': 'Freshtime test event',
+                'summary': 'Test Event',
+                'description': 'This is a test event.',
                 'start': {
-                    'dateTime': `${date}T${startTime}:00`,
+                    'dateTime': '2023-05-21T22:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'end': {
-                    'dateTime': `${date}T${endTime}:00`,
+                    'dateTime': '2023-05-21T23:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'recurrence': [
@@ -202,10 +186,11 @@
             request.execute(function (event) {
                 appendPre('Event created: ' + event.htmlLink);
             });
+
         }
     </script>
-    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
-    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 </body>
 
 </html>
