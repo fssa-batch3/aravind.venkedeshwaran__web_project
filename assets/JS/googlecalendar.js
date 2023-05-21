@@ -6,7 +6,7 @@ function loadCalendarAPI() {
   // Initialize Google API client library and set up the API credentials
   function initClient() {
     gapi.client.init({
-      clientId: 'YOUR_CLIENT_ID', // Replace with your own client ID
+      clientId: '879687241176-kh9udu4dc6at9jqlmfohlrs0ovi01pms.apps.googleusercontent.com', // Replace with your own client ID
       scope: 'https://www.googleapis.com/auth/calendar'
     }).then(function() {
       console.log('Google API client initialized successfully!');
@@ -31,11 +31,11 @@ function loadCalendarAPI() {
       summary: eventName,
       start: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       },
       end: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
+        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
       }
     };
   
