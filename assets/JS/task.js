@@ -41,7 +41,6 @@ function addtask() {
     startingtime : startingTime.value,
     endingtime: endingTime.value,
     priority: PriorityTask.value,
-    notes: notes.value,
     status: "not completed"
   };
   existingtask.push(newtask);
