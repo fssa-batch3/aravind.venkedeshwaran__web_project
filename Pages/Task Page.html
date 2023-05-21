@@ -44,6 +44,8 @@
     <!-- main container of task starts  -->
     <div class="main">
         <div class="task-page">
+            <!-- Add button to authorize and create an event -->
+            <pre id="content" style="white-space: pre-wrap;"></pre>
             <div class="top">
                 <p class="top-1">
                     Good Morning, <span id="username"></span>
@@ -184,7 +186,10 @@
     </div>
 </body>
 <script src="../assets/JS/task.js"> </script>
-<!-- <script src="../assets/JS/tasktimer.js"></script> -->
+<script src="../assets/JS/googlecalendar.js"></script>
+<script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
+<script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
+<script src="../assets/JS/tasktimer.js"></script>
 <script src="../assets/JS/template.js"></script>
 <script src="../assets/JS/notify.js"></script>
 

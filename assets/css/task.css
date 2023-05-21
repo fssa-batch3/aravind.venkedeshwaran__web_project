@@ -213,7 +213,7 @@
   list-style: none;
   background-color: white;
   margin: 30px;
-  width: 730px;
+  width: 850px;
   height: 80px;
   border-radius: 20px;
   display: flex;
@@ -222,7 +222,18 @@
   /* font-weight: 900; */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 2px 18px rgba(0, 0, 0, 0.05);
 }
-
+#authorize_button{
+  background-color: #0083ff;
+  color: white;
+  border: none;
+  padding:5px;
+  border-radius: 5px;
+  position: relative;
+  left: 200px;
+}
+#content{
+  display: none;
+}
 #habitpriority {
   position: relative;
   left: -110px;
@@ -455,7 +466,7 @@
   --border-radius: 10px;
   border-radius: var(--border-radius);
   position: relative;
-  left: -200px;
+  left: -180px;
   padding: 5px;
   display: grid;
   grid-template-columns: 30px auto;

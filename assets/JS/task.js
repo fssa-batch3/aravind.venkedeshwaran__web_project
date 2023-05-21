@@ -65,7 +65,7 @@ function rendertask(task) {
                     <p id="timeleft">${task.timeneeded}</p>
                     <p id="Due">${task.duedate}</p>
                     <p id="play" class="start"><i class="fa fa-play-circle-o"></i></p>
-                  
+                    <button id="authorize_button" onclick="handleAuthClick()">Create Event</button>
                   `
   tasklist.append(li);
 }
@@ -140,6 +140,7 @@ let taskLi = document.querySelectorAll("li");
 
 taskLi.forEach((item, index)=>{
   item.addEventListener('click',()=>{
+    setindex(index);
     taskdetailsdiv.style.display = "block";
     tasknamedetails.value = existingtask[index]["taskname"]
     timeNeededtd.value = existingtask[index]["timeneeded"]
