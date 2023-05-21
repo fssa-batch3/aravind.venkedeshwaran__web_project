@@ -9,11 +9,6 @@
 <body>
     <p>Google Calendar API Quickstart</p>
 
-    <!-- Input fields for date, starting time, and ending time -->
-    <input type="date" id="event_date">
-    <input type="time" id="start_time">
-    <input type="time" id="end_time">
-
     <!-- Add button to authorize and create an event -->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize and Create Event</button>
 
@@ -105,19 +100,19 @@
          * Create a new event in the user's Google Calendar.
          */
         async function createEvent() {
-            const eventDate = document.getElementById('event_date').value;
-            const startTime = document.getElementById('start_time').value;
-            const endTime = document.getElementById('end_time').value;
+            const duedateevent = existingtask[0]["duedate"]
+            const startevent = existingtask[0]["startingtime"]
+            const endevent = existingtask[0]['endingtime']
 
             const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
                 'start': {
-                    'dateTime': eventDate + 'T' + startTime + '+05:30',
+                    'dateTime': duedateevent + 'T' + startevent + '+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'end': {
-                    'dateTime': eventDate + 'T' + endTime + '+05:30',
+                    'dateTime': duedateevent + 'T' + endevent + '+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'recurrence': [
