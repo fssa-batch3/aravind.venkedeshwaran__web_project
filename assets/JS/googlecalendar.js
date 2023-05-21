@@ -21,7 +21,7 @@ function loadCalendarAPI() {
     const eventTime = document.getElementById('eventTime').value;
   
     // Create an event object
-    const eventObj = {
+    const event = {
       summary: eventName,
       start: {
         dateTime: `${eventDate}T${eventTime}:00`,
@@ -34,7 +34,7 @@ function loadCalendarAPI() {
     };
   
     // Call the function to add the event to Google Calendar
-    addEventToGoogleCalendar(eventObj);
+    addEventToGoogleCalendar(event);
   }
   
   // Function to add an event to Google Calendar
@@ -53,10 +53,16 @@ function loadCalendarAPI() {
   }
   
   // Initialize Google API client library and set up the API key
-  gapi.client.init({
-    apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY' // Replace with your Google API key
-  }).then(function() {
-    loadCalendarAPI();
-  }, function(error) {
-    console.error('Error initializing Google API client:', error);
-  });
+  function initClient() {
+    gapi.client.init({
+      apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY' // Replace with your Google API key
+    }).then(function() {
+      loadCalendarAPI();
+    }, function(error) {
+      console.error('Error initializing Google API client:', error);
+    });
+  }
+  
+  // Load Google API client library
+  gapi.load('client', initClient);
+  
