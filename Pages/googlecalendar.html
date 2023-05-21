@@ -16,20 +16,10 @@
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
-        /* exported gapiLoaded */
-        /* exported gisLoaded */
-        /* exported handleAuthClick */
-        /* exported handleSignoutClick */
 
-        // TODO(developer): Set to client ID and API key from the Developer Console
         const CLIENT_ID = '879687241176-kh9udu4dc6at9jqlmfohlrs0ovi01pms.apps.googleusercontent.com';
         const API_KEY = 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY';
-
-        // Discovery doc URL for APIs used by the quickstart
         const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
-
-        // Authorization scopes required by the API; multiple scopes can be
-        // included, separated by spaces.
         const SCOPES = 'https://www.googleapis.com/auth/calendar';
 
         let tokenClient;
@@ -160,16 +150,13 @@
                 'summary': 'Test Event',
                 'description': 'This is a test event.',
                 'start': {
-                    'dateTime': '2023-05-21T22:00:00+05:30',
+                    'dateTime': '2023-05-21T20:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'end': {
-                    'dateTime': '2023-05-21T23:00:00+05:30',
+                    'dateTime': '2023-05-21T21:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
-                'recurrence': [
-                    'RRULE:FREQ=DAILY;COUNT=1'
-                ],
                 'reminders': {
                     'useDefault': false,
                     'overrides': [
@@ -189,8 +176,8 @@
 
         }
     </script>
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
 </body>
 
 </html>
