@@ -15,6 +15,7 @@
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script type="text/javascript">
+        let existingtask = JSON.parse(localStorage.getItem("usertasks"));
         /* exported gapiLoaded */
         /* exported gisLoaded */
 
@@ -100,7 +101,7 @@
          * Create a new event in the user's Google Calendar.
          */
         async function createEvent() {
-            const existingtask = JSON.parse(localStorage.getItem("usertasks"));
+            
             const duedateevent = existingtask[0]["duedate"]
             const startevent = existingtask[0]["startingtime"]
             const endevent = existingtask[0]['endingtime']
