@@ -10,8 +10,9 @@
     <p>Google Calendar API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <button id="authorize_button" onclick="handleAuthClick()">Show Event</button>
+    <button id="createEvents" onclick="createEvent()">Create Event</button>
+    <!-- <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button> -->
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
@@ -156,15 +157,16 @@
             // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
             // stored credentials.
 
-            const event = {
+            function createEvent(){
+                const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
                 'start': {
-                    'dateTime': '2023-05-21T14:00:00+05:30',
+                    'dateTime': '2023-05-21T20:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'end': {
-                    'dateTime': '2023-05-21T15:00:00+05:30',
+                    'dateTime': '2023-05-21T21:00:00+05:30',
                     'timeZone': 'Asia/Kolkata'
                 },
                 'recurrence': [
@@ -186,8 +188,9 @@
             request.execute(function (event) {
                 appendPre('Event created: ' + event.htmlLink);
             });
-
         }
+
+    }
     </script>
     <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
     <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
