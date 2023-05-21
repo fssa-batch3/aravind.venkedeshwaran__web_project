@@ -1,6 +1,6 @@
 // Load the Google Calendar API
 function loadCalendarAPI() {
-    gapi.load('client:auth2', initClient);
+    gapi.load('client', { callback: initClient });
   }
   
   // Initialize Google API client library and set up the API credentials
@@ -62,4 +62,5 @@ function loadCalendarAPI() {
   
   // Load Google API client library
   gapi.load('client', loadCalendarAPI);
+
   
