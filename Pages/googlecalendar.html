@@ -157,7 +157,9 @@
             // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
             // stored credentials.
 
-            function freshtimeEvent(){
+
+    }
+    function freshtimeEvent(){
                 const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
@@ -189,8 +191,6 @@
                 appendPre('Event created: ' + event.htmlLink);
             });
         }
-
-    }
     </script>
     <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>
     <script src="https://accounts.google.com/gsi/client" onload="gisLoaded()" async defer></script>
