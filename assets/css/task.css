@@ -2,7 +2,7 @@
     position: fixed;
 }
 .task-page{
-    margin-left: 280px;
+    margin-left: 350px;
 }
 .top{
     margin: 10px 0px 40px 40px;
@@ -88,12 +88,12 @@
     display: none;
     background-color: white;
     width: 500px;
-    height: 100vh;
+    height: 350px;
     position: absolute;
-    bottom: 1px;
-    left: 1050px;
+    top: 200px;
+    left: 400px;
     padding: 30px;
-    border-radius: 50px;
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     animation-name: out;
     animation-duration: 1.25s;
@@ -120,19 +120,27 @@
 .taskDetails button:hover{
     background-color:aliceblue;
 }
-#Priority, #duedate{
+/* #Priority, #duedate{
     margin-bottom: 30px;
     margin-left: 20px;
     padding: 8px;
     font-size: 16px;
-}
-#duedate, #startingtime, #endingtime{
+} */
+/* #duedate, #startingtime, #endingtime{
     margin-left: 60px;
     margin-top: 20px;
+}  */
+.taskDetails input{
+  margin-left: 10px;
+  width: 100px;
+  font-size: 18px;
+  border: none;
+  margin-bottom: 20px;
 }
-#timeneeded{
-    margin-left: 70px;
-    width: 100px;
+#Priority{
+  border: none;
+  outline: none;
+  font-size: 18px;
 }
 #notes{
     border: none;
@@ -224,13 +232,15 @@
     color: white;
     border-radius: 5px;
     padding: 10px 15px;
-    position: relative;
-    /* top: 150px; */
+    position: absolute;
+    top: 280px;
     left: 220px;
     cursor: pointer;
+    
 }
 #cancel{
     background-color: black;
+    margin-left: 80px;
 }
 #savetask{
     background-color: #0083FF;
