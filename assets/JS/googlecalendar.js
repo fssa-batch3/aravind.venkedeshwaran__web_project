@@ -1,13 +1,19 @@
 // Load the Google Calendar API
 function loadCalendarAPI() {
-    gapi.load('client', function() {
-      gapi.client.load('calendar', 'v3', function() {
-        console.log('Google Calendar API loaded successfully!');
-        // Enable the form submission once the API is loaded
-        document.getElementById('eventForm').addEventListener('submit', handleFormSubmission);
-      }, function(error) {
-        console.error('Error loading Google Calendar API:', error);
-      });
+    gapi.load('client:auth2', initClient);
+  }
+  
+  // Initialize Google API client library and set up the API credentials
+  function initClient() {
+    gapi.client.init({
+      clientId: 'YOUR_CLIENT_ID', // Replace with your own client ID
+      scope: 'https://www.googleapis.com/auth/calendar'
+    }).then(function() {
+      console.log('Google API client initialized successfully!');
+      // Enable the form submission once the API is initialized
+      document.getElementById('eventForm').addEventListener('submit', handleFormSubmission);
+    }, function(error) {
+      console.error('Error initializing Google API client:', error);
     });
   }
   
@@ -25,11 +31,11 @@ function loadCalendarAPI() {
       summary: eventName,
       start: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
+        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
       },
       end: {
         dateTime: `${eventDate}T${eventTime}:00`,
-        timeZone: 'Asia/Kolkata' // Replace with your desired time zone
+        timeZone: 'YOUR_TIME_ZONE' // Replace with your desired time zone
       }
     };
   
@@ -52,17 +58,6 @@ function loadCalendarAPI() {
     });
   }
   
-  // Initialize Google API client library and set up the API key
-  function initClient() {
-    gapi.client.init({
-      apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY' // Replace with your Google API key
-    }).then(function() {
-      loadCalendarAPI();
-    }, function(error) {
-      console.error('Error initializing Google API client:', error);
-    });
-  }
-  
   // Load Google API client library
-  gapi.load('client', initClient);
+  gapi.load('client', loadCalendarAPI);
   
