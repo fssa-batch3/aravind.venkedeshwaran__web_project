@@ -6,8 +6,8 @@ function handleClientLoad() {
   // Initialize the Google Calendar API client
   function initClient() {
     gapi.client.init({
-      apiKey: 'YOUR_API_KEY',
-      clientId: 'YOUR_CLIENT_ID',
+      apiKey: 'AIzaSyB-KNY4pNja2u2dh317PINNA2i0ZhJnJLY',
+      clientId: '879687241176-kh9udu4dc6at9jqlmfohlrs0ovi01pms.apps.googleusercontent.com',
       discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
       scope: 'https://www.googleapis.com/auth/calendar.events'
     }).then(() => {
