@@ -1,17 +1,21 @@
+// -----------------------------------------------Required Variables----------------------------------------------
 const taskinput = document.getElementById("add-task");
 const addbtn = document.getElementById("addbtn");
 const tasklist = document.getElementById("tasklist");
+const detailsCard = document.querySelector(".detailsCard");
 const startingTime = document.getElementById("startingtime");
 const endingTime = document.getElementById("endingtime");
 const dueDate = document.getElementById("duedate");
 const PriorityTask = document.getElementById("Priority");
 const timeNeeded = document.getElementById("timeneeded");
-let taskLi = document.querySelectorAll("li")
+const notes = document.getElementById("notes");
+const saveTask = document.getElementById("savetask");
 
 
 
 
-// Display today date, day and month
+
+// -----------------------------------------------Display Date----------------------------------------------
 const day = document.querySelector(".day");
 const date = document.querySelector(".date");
 const month = document.querySelector(".month");
@@ -22,8 +26,8 @@ month.innerText = currentDate.slice(4, 7);
 
 
 
-// add and save task in local storage
-const existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
+// -----------------------------------------------Store Task----------------------------------------------
+let existingtask = JSON.parse(localStorage.getItem("usertasks")) ?? [];
 existingtask.forEach((task) => rendertask(task));
 // add task function
 function addtask() {
@@ -37,6 +41,7 @@ function addtask() {
     startingtime : startingTime.value,
     endingtime: endingTime.value,
     priority: PriorityTask.value,
+    notes: notes.value,
     status: "not completed"
   };
   existingtask.push(newtask);
@@ -47,13 +52,15 @@ function addtask() {
 }
 
 
+
+// -----------------------------------------------Render Task----------------------------------------------
 function rendertask(task) {
   const li = document.createElement("li");
 
   li.innerHTML = `
                     <div class="taskname">
                       <input id="02-11" type="checkbox" name="r" value="2">
-                      <label for="02-11">${task.taskname}</</label>
+                      <label for="02-11" >${task.taskname}</</label>
                     </div>
                     <p id="habitpriority">${task.priority}</p>
                     <p id="timeleft">${task.timeneeded}</p>
@@ -65,35 +72,35 @@ function rendertask(task) {
 }
 
 
-const saveTask = document.getElementById("savetask");
+// -----------------------------------------------Add Task----------------------------------------------
+
 saveTask.onclick = () => {
     addtask();
-    taskDetails.style.display = "block";
+    detailsCard.style.display = "block";
 };
 
-// function for pop up window
-const taskDetails = document.querySelector(".taskDetails");
-function revealtaskdetails() {
-  taskDetails.style.display = "block";
+// -----------------------------------------------Details Card----------------------------------------------
+function revealdetailsCard() {
+  detailsCard.style.display = "block";
 }
 
 // if taskinput is empty or space, task should not be added
 addbtn.onclick = () => {
   if (taskinput.value.trim() != "") {
     // tasknamedetails.value = taskinput.value;
-    revealtaskdetails();
+    revealdetailsCard();
   } 
   else {
     Notify.error(`Type Any Task Name`);
   }
 };
 
-// function for add task when enter press key is pressed
+// -----------------------------------------------Enter Add Task----------------------------------------------
 taskinput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
     if (taskinput.value != "") {
       // tasknamedetails.value = taskinput.value;
-      revealtaskdetails();
+      revealdetailsCard();
     } 
     else {
       Notify.error(`Type Any Task Name`);
@@ -103,16 +110,59 @@ taskinput.addEventListener("keypress", (e) => {
 
 
 
-// function for close pop up window
+// -----------------------------------------------Close Window----------------------------------------------
 const close = document.getElementById("cancel");
 close.onclick = function () {
-  taskDetails.style.display = "none";
+  detailsCard.style.display = "none";
 };
 
 // When the user clicks anywhere outside of the modal, close it
 const taskPage = document.querySelector(".task-page");
 window.onclick = function (event) {
   if (event.target == taskPage) {
-    taskDetails.style.display = "none";
+    detailsCard.style.display = "none";
   }
 }; 
+
+
+
+// -----------------------------------------------Task Details Div----------------------------------------------
+const taskdetailsdiv = document.querySelector(".taskdetailsdiv");
+const tasknamedetails = document.querySelector("#tasknamedetails")
+const startingTimetd = document.getElementById("startingtimetd");
+const endingTimetd = document.getElementById("endingtimetd");
+const dueDatetd = document.getElementById("duedatetd");
+const PriorityTasktd = document.getElementById("Prioritytd");
+const timeNeededtd = document.getElementById("timeneededtd");
+const notestd = document.getElementById("notestd");
+const savedetailsdiv = document.getElementById("savedetailsdiv");
+let taskLi = document.querySelectorAll("li");
+
+
+taskLi.forEach((item, index)=>{
+  item.addEventListener('click',()=>{
+    taskdetailsdiv.style.display = "block";
+    tasknamedetails.value = existingtask[index]["taskname"]
+    timeNeededtd.value = existingtask[index]["timeneeded"]
+    dueDatetd.value = existingtask[index]["duedate"]
+    startingTimetd.value = existingtask[index]["startingtime"]
+    endingTimetd.value = existingtask[index]['endingtime']
+    PriorityTasktd.value = existingtask[index]['priority']
+    // notestd.value = existingtask[index]["notes"]
+    savedetailsdiv.setAttribute("onclick", `savedetails(${index})`);
+  })
+})
+
+function savedetails(index){
+   existingtask[index]["taskname"] =  tasknamedetails.value
+   existingtask[index]["timeneeded"] =  timeNeededtd.value
+   existingtask[index]["duedate"] =  dueDatetd.value
+   existingtask[index]["startingtime"] =  startingTimetd.value
+   existingtask[index]['endingtime'] =  endingTimetd.value
+   existingtask[index]['priority'] =  PriorityTasktd.value
+   existingtask[index]["notes"]  = notestd.value
+   localStorage.setItem("usertasks", JSON.stringify(existingtask));
+   Notify.success("Task Details Edited");
+   taskdetailsdiv.style.display = "none";
+   location.reload();
+}

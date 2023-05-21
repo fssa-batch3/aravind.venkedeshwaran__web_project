@@ -91,8 +91,37 @@
         </div>
 
         <!-- Task Details -->
-        <div class="taskDetails">
-            <!-- <input type="text" id="tasknamedetails" placeholder="Task Name">
+        <div class="detailsCard">
+            <label for="timeneeded"><i class="fa fa-clock-o"></i> I Need:</label>
+            <input type="text" id="timeneeded" placeholder="60 Min">
+            <br>
+            <label for="date"><i class='far fa-calendar-check'></i> Date: </label>
+            <input type="date" id="duedate">
+            <br>
+            <label for="time"><i class='fas fa-hourglass-start'></i> Between: </label>
+            <input type="time" id="startingtime">
+            <br>
+            <label for="time"><i class='fas fa-hourglass-end'></i> To: </label>
+            <input type="time" id="endingtime">
+            <br>
+
+            <label for="Priority"><i class="fa fa-warning"></i> This Task is: </label>
+            <select name="Priority" id="Priority">
+                <option value="Less Priority">Less Priority</option>
+                <option value="Mid Priority">Mid Priority</option>
+                <option value="High Priority">High Priority</option>
+                <option value="Waste Of Time">Waste Of Time</option>
+            </select>
+
+            <button id="cancel">Cancel</button>
+            <button id="savetask">Save</button>
+        </div>
+
+
+
+        <div class="taskdetailsdiv">
+            <!-- <p id="breadcrums">FreshTime/Tasks <span>Close</span></p> -->
+            <input type="text" id="tasknamedetails" placeholder="Task Name">
 
             <button>
                 <i class="fa fa-bell" style="color:#f7bb07"></i>Remind Me
@@ -102,32 +131,32 @@
             </Button>
             <button>
                 <i class="fa fa-user"></i>Personal
-            </button>
-            <button>
-                <i class="fa fa-suitcase" style="color:skyblue"></i>Work
-            </button> -->
-            <label for="timeneeded">I Need:</label>
-            <input type="text" id="timeneeded" placeholder="60 Min">
+            </button> <br>
+            <label for="timeneeded"><i class="fa fa-clock-o"></i> Time Need:</label>
+            <input type="text" id="timeneededtd" placeholder="60 Min">
             <br>
-            <label for="date">Date: </label>
-            <input type="date" id="duedate">
+            <label for="date"><i class='far fa-calendar-check'></i> Due Date: </label>
+            <input type="date" id="duedatetd">
             <br>
-            <label for="time">Between: </label>
-            <input type="time" id="startingtime">
+            <label for="time"><i class='fas fa-hourglass-start'></i> Starting Time: </label>
+            <input type="time" id="startingtimetd">
             <br>
-            <label for="time">To: </label>
-            <input type="time" id="endingtime">
+            <label for="time"><i class='fas fa-hourglass-end'></i> Ending Time: </label>
+            <input type="time" id="endingtimetd">
             <br>
-            
-            <label for="Priority">This Task is: </label>
-            <select name="Priority" id="Priority">
+
+            <label for="Priority"><i class="fa fa-warning"></i> Priority: </label>
+            <select name="Priority" id="Prioritytd">
                 <option value="Less Priority">Less Priority</option>
                 <option value="Mid Priority">Mid Priority</option>
                 <option value="High Priority">High Priority</option>
                 <option value="Waste Of Time">Waste Of Time</option>
             </select>
 
-            <!-- <div class="timer">
+            <h3 id="notesh3">Notes:</h3>
+            <textarea placeholder="Insert Your Notes Here" id="notestd" rows="3" cols="45"></textarea>
+
+            <div class="timer">
                 <h3>Timer: </h3>
                 <div class="clock">
                     <div class="mins">0</div>
@@ -135,46 +164,22 @@
                     <div class="secs">00</div>
                     <audio src="http://soundbible.com/mp3/service-bell_daniel_simion.mp3"></audio>
                     <svg class="progress-ring" height="120" width="120">
-                      <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="50" cx="60" cy="60" />
+                        <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="50" cx="60"
+                            cy="60" />
                     </svg>
-                  </div>
-                
-                  <div class="btn-group">
-                    <button class="reset"><i class="fa fa-undo"></i> reset</button>
-                    <button class="pause"><i class="fa fa-pause"></i> pause</button>
-                  </div>
-            </div>
-                     
-            <h3>Notes:</h3>
-            <textarea placeholder="Insert Your Notes Here" id="notes" rows="3" cols="45"></textarea> -->
-            <!-- <div class="subtask">
-                <h3>Sub Task:</h3>
-                <button id="subtaskbtn"><i class="fa fa-square-o"></i> Add Sub Task</button> <br>
-                <input type="checkbox" id="subtaskcheck">
-                <input type="text" for="subtaskcheck" id="subtask" placeholder="Add Task Sub">
-            </div>-->
-            <button id="cancel">Cancel</button>
-            <button id="savetask">Save</button>
-        </div>
-        <!-- task details ends -->
+                </div>
 
-        <!-- Suggestion Task -->
-        <!-- <div class="suggestiontask">
-            <div class="suggestionheader">
-                <h3><i class="fa fa-lightbulb-o"></i> Suggested Task</h3> <br>
-                <input  id="searchinput" type="search" placeholder="search"><i class="fa fa-search"></i></input>
+                <div class="btn-group">
+                        <button class="start"><i class="fa fa-play"></i>  Start</button>
+                        <button class="pause"><i class="fa fa-pause"></i>  Pause</button>
+                        <button class="reset"><i class="fa fa-undo"></i>  Reset</button>
+                </div>
             </div>
-            <div class="suggestiontasklist">
-                <ul id="suggestionlist">
-                </ul>
-            </div>
-        </div>
 
-         Suggestion Bar -->
-        <!-- <div class="sidebaractivator">
-            <div id="bulb"><i class="fa fa-lightbulb-o"></i></div>
-            <div id="arrow"><i class='fas fa-arrow-right'></i></div>
-        </div> -->
+
+            <button id="canceldetailsdiv">Cancel</button>
+            <button id="savedetailsdiv">Save</button>
+        </div>
 
     </div>
 </body>
