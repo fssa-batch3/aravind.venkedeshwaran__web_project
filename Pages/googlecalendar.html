@@ -11,7 +11,10 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" onclick="handleAuthClick()">Show Event</button>
-    <button id="createEvents" onclick="freshtimeEvent()">Create Event</button>
+    <input type="date" id="date_input" placeholder="Date" required>
+    <input type="time" id="start_time_input" placeholder="Start Time" required>
+    <input type="time" id="end_time_input" placeholder="End Time" required>
+    <button id="createEvents" onclick="createEvent()">Create Event</button>
     <!-- <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button> -->
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
@@ -164,16 +167,20 @@
             pre.appendChild(textContent);
         }
 
-        function freshtimeEvent() {
+        function createEvent() {
+            const date = document.getElementById('date_input').value;
+            const startTime = document.getElementById('start_time_input').value;
+            const endTime = document.getElementById('end_time_input').value;
+
             const event = {
                 'summary': 'FreshTime test event',
                 'description': 'Freshtime test event',
                 'start': {
-                    'dateTime': '2023-05-21T20:00:00+05:30',
+                    'dateTime': `${date}T${startTime}:00`,
                     'timeZone': 'Asia/Kolkata'
                 },
                 'end': {
-                    'dateTime': '2023-05-21T21:00:00+05:30',
+                    'dateTime': `${date}T${endTime}:00`,
                     'timeZone': 'Asia/Kolkata'
                 },
                 'recurrence': [
