@@ -127,13 +127,11 @@
                 response = await gapi.client.calendar.events.list(request);
             } catch (err) {
                 document.getElementById('content').innerText = err.message;
-                return;
             }
 
             const events = response.result.items;
             if (!events || events.length == 0) {
                 document.getElementById('content').innerText = 'No events found.';
-                return;
             }
             // Flatten to string to display
             const output = events.reduce(
