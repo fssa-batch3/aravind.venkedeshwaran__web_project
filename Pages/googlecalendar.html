@@ -38,7 +38,7 @@
         let gisInited = false;
 
         document.getElementById('authorize_button').style.visibility = 'hidden';
-        document.getElementById('signout_button').style.visibility = 'hidden';
+        // document.getElementById('signout_button').style.visibility = 'hidden';
 
         /**
          * Callback after api.js is loaded.
@@ -90,7 +90,7 @@
                 if (resp.error !== undefined) {
                     throw (resp);
                 }
-                document.getElementById('signout_button').style.visibility = 'visible';
+                // document.getElementById('signout_button').style.visibility = 'visible';
                 document.getElementById('authorize_button').innerText = 'Refresh';
                 await listUpcomingEvents();
             };
@@ -115,7 +115,7 @@
                 gapi.client.setToken('');
                 document.getElementById('content').innerText = '';
                 document.getElementById('authorize_button').innerText = 'Authorize';
-                document.getElementById('signout_button').style.visibility = 'hidden';
+                // document.getElementById('signout_button').style.visibility = 'hidden';
             }
         }
 
