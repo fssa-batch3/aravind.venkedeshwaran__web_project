@@ -1,10 +1,7 @@
-.circle3, .circle5{
-    display: none;
-}
+
 .journal{
     margin-left: 300px;
     padding-top: 20px;
-    /* position: fixed; */
 }
 .journal button{
     padding: 10px;
@@ -14,6 +11,23 @@
     border-radius: 15px;
     margin: 5px 5px 40px 5px ;
     background-color: white;
+}
+.wish{
+    font-size: 36px;
+}
+.dot{
+    color: #0083ff;
+    font-size: 48px;
+}
+#bedtime{
+    font-size: 28px;
+    /* width: 250px; */
+    background-color: transparent;
+    color: #d8d8d8;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-weight: 700;
 }
  .welcome{
     font-size: 18px;
@@ -25,7 +39,7 @@
     display:flex;
     margin-top: 50px;
     flex-wrap: wrap;
-    width: 1150px;
+    /* width: 1150px; */
 }
 .allnotes a{
     color: black;
@@ -53,10 +67,6 @@
     font-weight: bold;
     margin-top: 10px;
     display: flex;   
-}
-.dot{
-    margin-left: 150px;
-    margin-top: -5px;
 }
 .heading{
     font-size: 24px;
@@ -100,12 +110,13 @@
     cursor: pointer;
     padding: 15px;
 }
-.journal h1, .journal h3{
-    padding: 15px;
-    margin-top: 5px;
-}
+
 .journal h3{
-    display: inline;
+    padding-top: 5px;
+    
+}
+.journal h1{
+    margin-top: 15px;
 }
 
 

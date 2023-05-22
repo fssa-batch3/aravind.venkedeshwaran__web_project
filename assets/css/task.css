@@ -3,7 +3,7 @@
 }
 
 .task-page {
-  margin-left: 350px;
+  margin-left: 360px;
 }
 
 .top {
@@ -12,6 +12,7 @@
 
 .top-1 {
   font-size: 36px;
+  font-weight: 900;
 }
 
 .dot {
@@ -20,9 +21,10 @@
 }
 
 .top-2 {
-  color: #676262;
+  color: #d8d8d8;
   margin-bottom: 50px;
-  font-size: 26px;
+  font-size: 28px;
+  font-weight: 900;
 }
 
 .date-task {
@@ -32,9 +34,9 @@
 }
 
 .date {
-  margin-left: 5px;
+  /* margin-left: 5px; */
   font-weight: 900;
-  font-size: 26px;
+  font-size: 41.31px;
 }
 
 .day,
@@ -51,7 +53,7 @@
   height: 45px;
   border-radius: 5px;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px 0px, rgba(0, 0, 0, 0.08) 0px 2px 18px 0px;
   font-size: 16px;
   margin-left: 40px;
   margin-top: 25px;
@@ -93,7 +95,7 @@
 }
 
 .tasktablehead {
-  width: 750px;
+  width: 935px;
   display: flex;
   justify-content: space-evenly;
   margin-top: 50px;
@@ -220,7 +222,8 @@
   align-items: center;
   justify-content: center;
   /* font-weight: 900; */
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02), 0 2px 18px rgba(0, 0, 0, 0.05);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 4px 0px, rgba(0, 0, 0, 0.05) 0px 2px 18px 0px;
+
 }
 #authorize_button{
   background-color: #0083ff;
@@ -251,9 +254,9 @@
 
 #play {
   position: relative;
-  left: 120px;
-  /* color: #0083FF; */
-  /* font-size: 22px; */
+  left: 95px;
+  color: #5050f8;;
+  font-size: 22px;
 }
 
 #cancel,

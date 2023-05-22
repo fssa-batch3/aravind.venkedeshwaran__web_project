@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../assets/css/common.css">
     <link rel="stylesheet" href="../assets/css/notify.css">
 
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
     <!-- adding favicon -->
     <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="../assets/Images/favicon.png">
 
@@ -30,13 +32,6 @@
     <script src="https://kit.fontawesome.com/ee40c53027.js" crossorigin="anonymous" integrity="">
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
-    </style>
-
 </head>
 
 <body>
@@ -51,7 +46,7 @@
                     Good Morning, <span id="username"></span>
                     <span class="dot">.</span>
                 </p>
-                <p class="top-2">If not now. When?</p>
+                <p class="top-2">What will you accomplish today?<p>
                 <div class="date-task">
                     <p>
                         <span id="digitaltime"></span>
@@ -71,7 +66,7 @@
 
             <div class="taskcategory">
                 <h3 id="openTask">Open Task</h3>
-                <h3 id="doneTask">Done Task</h3>
+                <!-- <h3 id="doneTask">Done Task</h3> -->
             </div>
 
             <hr id="cathr">
@@ -83,6 +78,7 @@
                 <p>Time Left</p>
                 <p>Due</p>
                 <p>Start</p>
+                <p>Create Event</p>
             </div>
             <!-- Task List -->
             <div class="addtasks">
@@ -172,7 +168,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <button class="start"><i class="fa fa-play"></i> Start</button>
+                    <button class="start"><i class="fa-solid fa-play"></i>Start</button>
                     <button class="pause"><i class="fa fa-pause"></i> Pause</button>
                     <button class="reset"><i class="fa fa-undo"></i> Reset</button>
                 </div>

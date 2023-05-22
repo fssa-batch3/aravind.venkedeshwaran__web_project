@@ -1,139 +1,227 @@
-const sidepanelDiv = document.createElement("div");
-sidepanelDiv.classList.add("sidepanel");
-document.querySelector(".main").prepend(sidepanelDiv);
+// Create main container element
+const sidebarDiv = document.createElement('div');
+sidebarDiv.classList.add('sidebar');
 
-const logoLinkA = document.createElement("a");
-logoLinkA.href = "../index.html";
-sidepanelDiv.appendChild(logoLinkA);
+// Create sidebar navigation element
+const nav = document.createElement('nav');
+nav.classList.add('sidebar');
 
-const logoImg = document.createElement("img");
-logoImg.src = "../assets/Images/FRESHTIME LOGO NEW.png";
-// logoImg.classList.add("logo");
-logoImg.width = "250";
-logoImg.alt = "logo";
-logoLinkA.appendChild(logoImg);
+// Create header element
+const header = document.createElement('header');
 
-// const homeLinkA = document.createElement("a");
-// homeLinkA.href = "dashboard.html";
-// sidepanelDiv.appendChild(homeLinkA);
+const link = document.createElement('a');
+link.id = "indexlink"
+link.setAttribute('href', '../index.html');
+// Create image-text container element
+const imageTextDiv = document.createElement('div');
+imageTextDiv.classList.add('image-text');
 
-// const homeIcon = document.createElement("i");
-// homeIcon.classList.add("fas", "fa-home");
-// homeLinkA.appendChild(homeIcon);
+// Create image element
+const imageSpan = document.createElement('span');
+imageSpan.classList.add('image');
+const image = document.createElement('img');
+image.setAttribute('src', '../assets/Images/FreshTimeLogo.png');
+image.setAttribute('alt', '');
+imageSpan.appendChild(image);
 
-// const homeSpan = document.createElement("span");
-// homeSpan.classList.add("title");
-// homeSpan.innerText = "Home";
-// homeLinkA.appendChild(homeSpan);
+// Create logo-text container element
+const logoTextDiv = document.createElement('div');
+logoTextDiv.classList.add('text', 'logo-text');
 
-const taskLinkA = document.createElement("a");
-taskLinkA.href = "Task Page.html";
-sidepanelDiv.appendChild(taskLinkA);
+// Create name and profession spans
+const nameSpan = document.createElement('span');
+nameSpan.classList.add('name');
+nameSpan.textContent = 'FreshTime';
 
-const taskIcon = document.createElement("i");
-taskIcon.classList.add("fas", "fa-tasks");
-taskLinkA.appendChild(taskIcon);
+const professionSpan = document.createElement('span');
+professionSpan.classList.add('profession');
+professionSpan.textContent = 'Be Productive';
 
-const taskSpan = document.createElement("span");
-taskSpan.classList.add("title");
-taskSpan.innerText = "Task";
-taskLinkA.appendChild(taskSpan);
+logoTextDiv.appendChild(nameSpan);
+logoTextDiv.appendChild(professionSpan);
 
-const timerLinkA = document.createElement("a");
-timerLinkA.href = "timer.html";
-sidepanelDiv.appendChild(timerLinkA);
+link.appendChild(imageSpan);
+link.appendChild(logoTextDiv);
 
-const timerIcon = document.createElement("i");
-timerIcon.classList.add("far", "fa-hourglass");
-timerLinkA.appendChild(timerIcon);
+// Create toggle icon element
+// const toggleIcon = document.createElement('i');
+// toggleIcon.classList.add('bx', 'bx-chevron-right', 'toggle');
 
-const timerSpan = document.createElement("span");
-timerSpan.classList.add("title");
-timerSpan.innerText = "Timer";
-timerLinkA.appendChild(timerSpan);
+link.appendChild(imageTextDiv);
+header.appendChild(link)
+// header.appendChild(toggleIcon);
 
-const habitLinkA = document.createElement("a");
-habitLinkA.href = "habit.html";
-sidepanelDiv.appendChild(habitLinkA);
+// Create menu-bar element
+const menuBarDiv = document.createElement('div');
+menuBarDiv.classList.add('menu-bar');
 
-const habitIcon = document.createElement("i");
-habitIcon.classList.add("fas", "fa-spa");
-habitLinkA.appendChild(habitIcon);
+// Create menu element
+const menuDiv = document.createElement('div');
+menuDiv.classList.add('menu');
 
-const habitSpan = document.createElement("span");
-habitSpan.classList.add("title");
-habitSpan.innerText = "Habit";
-habitLinkA.appendChild(habitSpan);
+// Create search-box list item
+const searchBoxLi = document.createElement('li');
+searchBoxLi.classList.add('search-box');
 
-const notesLinkA = document.createElement("a");
-notesLinkA.href = "notesall.html";
-sidepanelDiv.appendChild(notesLinkA);
+// Create search icon element
+const searchIcon = document.createElement('i');
+searchIcon.classList.add('bx', 'bx-search', 'icon');
 
-const notesIcon = document.createElement("i");
-notesIcon.classList.add("far", "fa-paper-plane");
-notesLinkA.appendChild(notesIcon);
+// Create search input element
+const searchInputsd = document.createElement('input');
+searchInputsd.setAttribute('type', 'text');
+searchInputsd.setAttribute('placeholder', 'Search...');
 
-const notesSpan = document.createElement("span");
-notesSpan.classList.add("title");
-notesSpan.innerText = "Notes";
-notesLinkA.appendChild(notesSpan);
+searchBoxLi.appendChild(searchIcon);
+searchBoxLi.appendChild(searchInputsd);
 
-// const leaderboardLinkA = document.createElement("a");
-// leaderboardLinkA.href = "leaderboard.html";
-// sidepanelDiv.appendChild(leaderboardLinkA);
+// Create menu-links unordered list
+const menuLinksUl = document.createElement('ul');
+menuLinksUl.classList.add('menu-links');
 
-// const leaderboardIcon = document.createElement("i");
-// leaderboardIcon.classList.add("fa-solid", "fa-shield-halved");
-// leaderboardLinkA.appendChild(leaderboardIcon);
+// Create task nav-link
+const tasklielem = document.createElement('li');
+tasklielem.classList.add('nav-link');
+const taskLink = document.createElement('a');
+taskLink.setAttribute('href', 'task page.html');
+const taskIcon = document.createElement('i');
+taskIcon.classList.add('bx', 'bx-check-double', 'icon');
+const taskText = document.createElement('span');
+taskText.classList.add('text', 'nav-text');
+taskText.textContent = 'Task';
+taskLink.appendChild(taskIcon);
+taskLink.appendChild(taskText);
+tasklielem.appendChild(taskLink);
 
-// const leaderboardSpan = document.createElement("span");
-// leaderboardSpan.classList.add("title");
-// leaderboardSpan.innerText = "Leaderboard";
-// leaderboardLinkA.appendChild(leaderboardSpan);
+// Create timer nav-link
+const timerLi = document.createElement('li');
+timerLi.classList.add('nav-link');
+const timerLink = document.createElement('a');
+timerLink.setAttribute('href', 'timer.html');
+const timerIcon = document.createElement('i');
+timerIcon.classList.add('bx', 'bx-hourglass', 'icon');
+const timerText = document.createElement('span');
+timerText.classList.add('text', 'nav-text');
+timerText.textContent = 'Timer';
+timerLink.appendChild(timerIcon);
+timerLink.appendChild(timerText);
+timerLi.appendChild(timerLink);
 
-const profileLink = document.createElement("a");
-profileLink.href = "profile.html";
+// Create habit nav-link
+const habitLielem = document.createElement('li');
+habitLielem.classList.add('nav-link');
+const habitLink = document.createElement('a');
+habitLink.setAttribute('href', 'habit.html');
+const habitIcon = document.createElement('i');
+habitIcon.classList.add('bx', 'bx-leaf', 'icon');
+const habitText = document.createElement('span');
+habitText.classList.add('text', 'nav-text');
+habitText.textContent = 'Habit';
+habitLink.appendChild(habitIcon);
+habitLink.appendChild(habitText);
+habitLielem.appendChild(habitLink);
 
-const profileIcon = document.createElement("i");
-profileIcon.classList.add("fas", "fa-user-ninja");
+// Create notes nav-link
+const notesLi = document.createElement('li');
+notesLi.classList.add('nav-link');
+const notesLink = document.createElement('a');
+notesLink.setAttribute('href', 'notesall.html');
+const notesIcon = document.createElement('i');
+notesIcon.classList.add('bx', 'bxs-pencil', 'icon');
+const notesText = document.createElement('span');
+notesText.classList.add('text', 'nav-text');
+notesText.textContent = 'Notes';
+notesLink.appendChild(notesIcon);
+notesLink.appendChild(notesText);
+notesLi.appendChild(notesLink);
+
+// Create profile nav-link
+const profileLi = document.createElement('li');
+profileLi.classList.add('nav-link');
+const profileLink = document.createElement('a');
+profileLink.setAttribute('href', 'profile.html');
+const profileIcon = document.createElement('i');
+profileIcon.classList.add('bx', 'bx-user', 'icon');
+const profileText = document.createElement('span');
+profileText.classList.add('text', 'nav-text');
+profileText.textContent = 'Profile';
 profileLink.appendChild(profileIcon);
+profileLink.appendChild(profileText);
+profileLi.appendChild(profileLink);
 
-const profileSpan = document.createElement("span");
-profileSpan.classList.add("title");
-profileSpan.innerText = "Profile";
-profileLink.appendChild(profileSpan);
-sidepanelDiv.appendChild(profileLink);
+// Append nav-links to menu-links unordered list
+menuLinksUl.appendChild(tasklielem);
+menuLinksUl.appendChild(timerLi);
+menuLinksUl.appendChild(habitLielem);
+menuLinksUl.appendChild(notesLi);
+menuLinksUl.appendChild(profileLi);
 
-const toggleDiv = document.createElement("div");
-toggleDiv.classList.add("toggle");
-sidepanelDiv.appendChild(toggleDiv);
+menuDiv.appendChild(searchBoxLi);
+menuDiv.appendChild(menuLinksUl);
 
-// const circle1 = document.createElement("div");
-// circle1.classList.add("circle1");
-// document.body.appendChild(circle1);
+// Create bottom-content element
+const bottomContentDiv = document.createElement('div');
+bottomContentDiv.classList.add('bottom-content');
 
-// const circle2 = document.createElement("div");
-// circle2.classList.add("circle2");
-// document.body.appendChild(circle2);
+// Create logout list item
+const logoutLi = document.createElement('li');
+const logoutLink = document.createElement('a');
+logoutLink.setAttribute('href', '#');
+const logoutIcon = document.createElement('i');
+logoutIcon.classList.add('bx', 'bx-log-out', 'icon');
+const logoutText = document.createElement('span');
+logoutText.classList.add('text', 'nav-text');
+logoutText.textContent = 'Logout';
+logoutLink.appendChild(logoutIcon);
+logoutLink.appendChild(logoutText);
+logoutLi.appendChild(logoutLink);
 
-// const circle3 = document.createElement("div");
-// circle3.classList.add("circle3");
-// document.body.appendChild(circle3);
+bottomContentDiv.appendChild(logoutLi);
 
-// const circle4 = document.createElement("div");
-// circle4.classList.add("circle4");
-// document.body.appendChild(circle4);
+// Append elements to their respective parent elements
+header.appendChild(imageTextDiv);
+// header.appendChild(toggleIcon);
+menuBarDiv.appendChild(menuDiv);
+menuBarDiv.appendChild(bottomContentDiv);
+nav.appendChild(header);
+nav.appendChild(menuBarDiv);
+sidebarDiv.appendChild(nav);
 
-// const circle5 = document.createElement("div");
-// circle5.classList.add("circle5");
-// document.body.appendChild(circle5);
+// Add main container to the document body
+const mainDiv = document.querySelector(".main")
+mainDiv.appendChild(sidebarDiv);
 
-// toggle sidebar
-const sidepanel = document.querySelector(".sidepanel");
-const toggle = document.querySelector(".toggle");
-toggle.onclick = function () {
-  sidepanel.classList.toggle("active");
-};
+
+const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+
+// toggle.addEventListener("click" , () =>{
+//     sidebar.classList.toggle("close");
+// })
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+
+// Get the current URL
+const currentURL = window.location.href;
+
+// Get all the sidebar links
+const sidebarLinks = document.querySelectorAll('.menu a');
+
+// Iterate through each link and check if it matches the current URL
+sidebarLinks.forEach(link => {
+  if (link.href === currentURL) {
+    link.classList.add('active');
+  }
+});
+
 
 // Display Username
 const signedupusers = JSON.parse(localStorage.getItem("userdata"));

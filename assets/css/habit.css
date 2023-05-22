@@ -848,11 +848,13 @@ input[type=color] {
   padding: 10px;
   border: none;
   border-radius: 10px;
+  background-color: #f6f5ff;
 }
 .fa-search{
   margin-left: -30px;
   color: grey;
   margin-top: 10px;
+
 }
 
 #habitdate{

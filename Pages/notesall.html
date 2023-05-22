@@ -31,6 +31,8 @@
 
     <link href="../assets/css/notify.css">
 
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -38,12 +40,13 @@
         <!--The Total Page starts-->
         <!-- journal page starts -->
         <div class="journal">
-            <a href="/">
-                <button>All Notes</button>
-            </a>
-            <a href="/">
-                <button>Folder</button>
-            </a>
+            <div class="greeting">
+                <p class="wish">
+                    Good Morning, <span id="username"></span>
+                    <span class="dot">.</span>
+                </p>
+                <p type="text" id="bedtime">When heart speaks take good notes.</p>
+            </div>
 
             <h1>Journal</h1>
             <h3 id="date"></h3>
