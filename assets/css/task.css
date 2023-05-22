@@ -279,10 +279,10 @@
 #savetask {
   background-color: #0083FF;
 }
-.fa-calendar-check, .fa-hourglass-start,.fa-hourglass-end{
+/* .fa-calendar-check, .fa-hourglass-start,.fa-hourglass-end{
   margin-right: -40px;
   
-}
+} */
 .detailsCard i, .taskdetailsdiv i{
   color: #0083ff;
 }

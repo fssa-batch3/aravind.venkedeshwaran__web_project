@@ -277,8 +277,8 @@
         const endevent = existingtask[indexval]['endingtime']
 
         const event = {
-            'summary': 'FreshTime test event',
-            'description': 'Freshtime test event',
+            'summary': existingtask[indexval]["taskname"],
+            'description': existingtask[indexval]["taskname"],
             'start': {
                 'dateTime': duedateevent + 'T' + startevent + ':00+05:30',
                 'timeZone': 'Asia/Kolkata'
