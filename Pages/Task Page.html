@@ -168,7 +168,7 @@
                 </div>
 
                 <div class="btn-group">
-                    <button class="start"><i class="fa-solid fa-play"></i>Start</button>
+                    <!-- <button class="start"><i class="fa-solid fa-play"></i>Start</button> -->
                     <button class="pause"><i class="fa fa-pause"></i> Pause</button>
                     <button class="reset"><i class="fa fa-undo"></i> Reset</button>
                 </div>
@@ -183,10 +183,11 @@
 </body>
 <script src="../assets/JS/task.js"> </script>
 <script type="text/javascript">
-    let indexval;
+    // let indexval;
     function setindex(index) {
-        indexval = index;
-    }
+        // indexval = index;
+        console.log(index);
+    
 
 
     // TODO: Set to client ID and API key from the Developer Console
@@ -272,13 +273,13 @@
      */
     async function createEvent() {
 
-        const duedateevent = existingtask[indexval]["duedate"]
-        const startevent = existingtask[indexval]["startingtime"]
-        const endevent = existingtask[indexval]['endingtime']
+        const duedateevent = existingtask[index]["duedate"]
+        const startevent = existingtask[index]["startingtime"]
+        const endevent = existingtask[index]['endingtime']
 
         const event = {
-            'summary': existingtask[indexval]["taskname"],
-            'description': existingtask[indexval]["taskname"],
+            'summary': existingtask[index]["taskname"],
+            'description': existingtask[index]["taskname"],
             'start': {
                 'dateTime': duedateevent + 'T' + startevent + ':00+05:30',
                 'timeZone': 'Asia/Kolkata'
@@ -314,6 +315,7 @@
         const pre = document.getElementById('content');
         const textContent = document.createTextNode(message + '\n');
         pre.appendChild(textContent);
+    }
     }
 </script>
 <script src="https://apis.google.com/js/api.js" onload="gapiLoaded()" async defer></script>

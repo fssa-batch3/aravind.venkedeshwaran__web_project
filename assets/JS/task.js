@@ -58,8 +58,11 @@ function rendertask(task) {
 
   li.innerHTML = `
                     <div class="taskname">
-                      <input id="02-11" type="checkbox" name="r" value="2">
-                      <label for="02-11" >${task.taskname}</</label>
+                      <label>
+                        <input type="checkbox"/>
+                        <span class="checkbox"></span>
+                      </label>
+                      <p id="nametask">${task.taskname}</p>
                     </div>
                     <p id="habitpriority">${task.priority}</p>
                     <p id="timeleft">${task.timeneeded}</p>
@@ -136,9 +139,9 @@ const timeNeededtd = document.getElementById("timeneededtd");
 const notestd = document.getElementById("notestd");
 const savedetailsdiv = document.getElementById("savedetailsdiv");
 let taskLi = document.querySelectorAll("li");
+const nametask = document.querySelectorAll("#nametask")
 
-
-taskLi.forEach((item, index)=>{
+nametask.forEach((item, index)=>{
   item.addEventListener('click',()=>{
     setindex(index);
     taskdetailsdiv.style.display = "block";
@@ -150,6 +153,7 @@ taskLi.forEach((item, index)=>{
     PriorityTasktd.value = existingtask[index]['priority']
     // notestd.value = existingtask[index]["notes"]
     savedetailsdiv.setAttribute("onclick", `savedetails(${index})`);
+    taskPage.style.filter = "blur(3px)";
   })
 })
 
@@ -164,5 +168,12 @@ function savedetails(index){
    localStorage.setItem("usertasks", JSON.stringify(existingtask));
    Notify.success("Task Details Edited");
    taskdetailsdiv.style.display = "none";
+   taskPage.style.filter = "none"
    location.reload();
 }
+
+const canceldetailsdiv = document.querySelector("#canceldetailsdiv")
+canceldetailsdiv.onclick = ()=>{
+  taskdetailsdiv.style.display = "none";
+  taskPage.style.filter = "none"
+} 
