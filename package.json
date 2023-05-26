@@ -5,7 +5,9 @@
   "main": "main.js",
   "scripts": {
     "dev": "http-server ./",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "start": "run-script-os",
+"start:win32": "browser-sync start --server --files '**/*.html, **/*.css, **/*.js, !node_modules/**/*' --directory --port 3033 --browser \"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@html-eslint/eslint-plugin": "^0.18.0",
     "@html-eslint/parser": "^0.18.0",
+    "browser-sync": "^2.29.3",
     "eslint": "^8.40.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-code-complexity": "^1.1.1",
@@ -46,7 +49,8 @@
     "eslint-plugin-vue": "^9.11.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
-    "prettier-config-standard": "^5.0.0"
+    "prettier-config-standard": "^5.0.0",
+    "run-script-os": "^1.1.6"
   },
   "keywords": []
 }

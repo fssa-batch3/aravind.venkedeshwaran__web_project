@@ -1,0 +1,51 @@
+:root{
+    --primaycolor : #283ce2;
+    --bgcolor: #fbfbfd;
+    --mainfont : 23px;
+    --subfont : 21px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu';
+}
+.weeklycol{
+    width: 400px;
+    height: 100vh;
+    /* background-color: var(--bgcolor); */
+    padding: 15px;
+}
+.logosection{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.logoimg{
+    width: 60px;
+    height: 50px;
+}
+.weeklyheader{
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--subfont);
+    margin-bottom: 30px;
+}
+#viewall{
+    color: var(--primaycolor);
+    font-weight: 700;
+    font-size:  16px;
+}
+.weeklygoal, .goalcard{
+    width: 300px;
+}
+.goaldiv{
+    display: flex;
+}
+#weeklygoalemoji{
+    width: 30px;
+    height: 30px;
+    /* margin: 20px; */
+    background-color: var(--primaycolor);
+    z-index: 1;
+}
