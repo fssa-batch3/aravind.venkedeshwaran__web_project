@@ -92,18 +92,6 @@ body{
     margin-left: 60px;
     margin-top: 20px;
 }
-#priority{
-    /* margin-bottom: 20px; */
-    /* background-color: white;
-    color: black; */
-    padding: 5px;
-    width: 130px;
-    height: 30px;
-    border-radius: 30px;
-    text-align: center;
-    position: relative;
-    left: 100px;
-}
 .monthlycalendar img{
     width: 300px;
     height: 400px;
@@ -167,18 +155,30 @@ body{
     font-size: 22px;
 }
 .taskli p:nth-of-type(1){
-    margin-left: 20px;
+  width: 170px;
+  margin-left: 20px;
+  word-wrap:break-word;
+  /* border: 1px solid white; */
+  text-align: left;
+}
+.taskli p:nth-of-type(2){
+  padding: 5px;
+  width: 130px;
+  height: 30px;
+  border-radius: 30px;
+  text-align: center;
+  position: fixed;
+  left: 625px;
 }
 .taskli p:nth-of-type(3){
-    position: relative;
-    /* top: -10px; */
-    left: 250px;
-    /* margin-left: 200px; */
+    position:fixed;
+    left: 850px;
 }
+
 .taskli p:nth-of-type(4){
-    position: relative;
+    position: fixed;
     /* top: 15px; */
-    left: 252px;
+    left: 900px;
 }
 .taskaddcol{
     padding: 30px;
@@ -230,7 +230,8 @@ body{
     margin-top: 10px;
 }
 .quotes{
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-left: 20px;
 }
 .quotes h3{
     font-size: 28px;

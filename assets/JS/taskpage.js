@@ -158,6 +158,15 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
     });
 });
 
+
+
+// --------------------------------index of li-------------------------------------------------------
+  document.querySelectorAll(".days li").forEach((item, index)=>{
+    item.onclick = ()=>{
+      console.log(index);
+    }
+})
+
 function getRandomMotivationalQuote() {
   const quotes = [
     "Believe you can and you're halfway there. - Theodore Roosevelt",

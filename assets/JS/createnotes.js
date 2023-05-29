@@ -102,7 +102,7 @@ for(let i = 0; i < existingNotes.length; i++){
 
 
 
-notesform.addEventListener("submit", (e)=>{
+savenotes.addEventListener("click", (e)=>{
 	e.preventDefault();
 	if(notesId){
 		for(let i = 0; i < existingNotes.length; i++){

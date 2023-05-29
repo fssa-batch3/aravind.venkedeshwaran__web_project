@@ -46,17 +46,17 @@ for (let i = 0; i < notes.length; i++) {
   notesDiv.classList.add("notes");
   mainNotesDiv.appendChild(notesDiv);
 
+
+  // const filetitle = document.getElementById("filename")
+  // filetitle.value = notes[i].heading;
+
+
   const notesParagraph = document.createElement("div");
   notesParagraph.id = "notesPara"
   notesParagraph.setAttribute('contenteditable', true)
   const storedString = notes[i]["notes"];
   const sanitizedString = DOMPurify.sanitize(storedString);
-  notesParagraph.innerHTML = sanitizedString
+  notesParagraph.innerHTML = sanitizedString.slice(100);
   notesDiv.appendChild(notesParagraph);
 }
 
-// let dot = document.querySelector(".dot");
-// let viewnotes = document.querySelector(".viewnotes")
-// dot.onclick = function () {
-//     viewnotes.style.display = "block"
-// }

@@ -205,7 +205,7 @@
 	flex-wrap: wrap;
 	/* align-items: center; */
 	grid-gap: 10px;
-    margin-left: -50px;
+    /* margin-left: -50px; */
 }
 .toolbar .btn-toolbar button {
 	background: #fff;
@@ -254,4 +254,13 @@
 #deletenotes{
     left: 1180px;
     background-color:black;
+}
+
+#filename{
+    width: 100%;
+    background-color: white;
+    font-size: 32px;
+}
+#filename:active{
+    /* background-color: blue; */
 }

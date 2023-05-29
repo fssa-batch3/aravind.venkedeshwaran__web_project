@@ -37,11 +37,11 @@
     <div class="main">
         <!--The Total Page starts-->
         <!-- journal starts -->
-        <form id="notesform">
+        <!-- <form id="notesform"> -->
         <div class="journal container">
                 <div class="toolbar">
                     <div class="head">
-                        <input type="text" placeholder="Filename"  id="filename" required>
+                        
                         <select onchange="fileHandle(this.value); this.selectedIndex=0">
                             <option value="" selected="" hidden="" disabled="">File</option>
                             <option value="new">New file</option>
@@ -93,17 +93,16 @@
                         <button onclick="formatDoc('insertUnorderedList')"><i class='bx bx-list-ul'></i></button>
                         <button onclick="addLink()"><i class='bx bx-link'></i></button>
                         <button onclick="formatDoc('unlink')"><i class='bx bx-unlink'></i></button>
-                        <button id="show-code" data-active="false">&lt;/&gt;</button>
                     </div>
                 </div>
                 <!-- <hr> -->
-                <div id="content" contenteditable="true" spellcheck="true">
-                    Type Your Notes Here
+                <div id="content" contenteditable="true" spellcheck="true" placeholder="Type Your Notes Here">
+                    <input type="text" placeholder="Title"  id="filename" required>
                 </div>
             </div>
             <button id="savenotes">Save</button>
             <button id="deletenotes">Delete</button>
-        </form>
+        <!-- </form> -->
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
