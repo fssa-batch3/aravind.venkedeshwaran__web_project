@@ -4,7 +4,10 @@
   "description": "About:",
   "main": "main.js",
   "scripts": {
-    "dev": "http-server ./"
+    "dev": "http-server ./",
+    "lint": "npx eslint .",
+    "start": "run-script-os",
+"start:win32": "browser-sync start --server --files '**/*.html, **/*.css, **/*.js, !node_modules/**/*' --directory --port 3033 --browser \"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\""
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,37 @@
   },
   "homepage": "https://github.com/fssa-batch3/aravind.venkedeshwaran__web_project#readme",
   "dependencies": {
-    "http-server": "^14.1.1"
-  }
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "http-server": "^14.1.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@html-eslint/eslint-plugin": "^0.18.0",
+    "@html-eslint/parser": "^0.18.0",
+    "browser-sync": "^2.29.3",
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-code-complexity": "^1.1.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier-standard": "^4.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "prettier-config-standard": "^5.0.0",
+    "run-script-os": "^1.1.6"
+  },
+  "keywords": []
 }
